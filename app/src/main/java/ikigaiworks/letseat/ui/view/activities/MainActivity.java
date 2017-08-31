@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.login) {
-            replaceFragment(FragmentLogin.newInstance());
+            //replaceFragment(FragmentLogin.newInstance());
         } else if (id == R.id.carta) {
             Intent intent = new Intent(this,LoginActivity.class);
             startActivity(intent);

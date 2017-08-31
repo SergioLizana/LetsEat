@@ -3,15 +3,13 @@ package ikigaiworks.letseat.ui.view.fragments;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
@@ -20,7 +18,7 @@ import ikigaiworks.letseat.R;
 /**
  * A login screen that offers login via email/password.
  */
-public class FragmentLogin extends android.app.Fragment {
+public class FragmentRegistro extends android.app.Fragment {
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -28,15 +26,15 @@ public class FragmentLogin extends android.app.Fragment {
     private View mProgressView;
     private View mLoginFormView;
 
-    public static FragmentLogin newInstance(){
-        FragmentLogin fragmentLogin = new FragmentLogin();
+    public static FragmentRegistro newInstance(){
+        FragmentRegistro fragmentLogin = new FragmentRegistro();
         return fragmentLogin;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login,container,false);
+        View view = inflater.inflate(R.layout.fragment_registro,container,false);
         mEmailView = (AutoCompleteTextView) view.findViewById(R.id.email);
 
         mPasswordView = (EditText) view.findViewById(R.id.password);
