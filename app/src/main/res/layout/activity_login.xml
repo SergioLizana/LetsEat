@@ -42,6 +42,7 @@
             android:showText="true"
             android:textOff="@string/login"
             android:textOn="@string/registro"
+            android:switchTextAppearance="@style/SwitchTextAppearance"
             android:textSize="@dimen/textSizeButtonLogin"
             android:thumb="@drawable/customswitchselector"
             android:track="@drawable/custom_track"

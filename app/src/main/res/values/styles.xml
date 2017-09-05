@@ -5,12 +5,24 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/soft_orange</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Autocomplete">
+        <item name="colorControlNormal">@color/grayIconTint</item>
+        <item name="colorControlActivated">@color/soft_orange</item>
+        <item name="android:textColorHint">@color/grayIconTint</item>
+        <item name="colorAccent">@android:color/white</item>
+        <item name="colorControlHighlight">@color/soft_orange</item>
+    </style>
+
+    <style name="SwitchTextAppearance" parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

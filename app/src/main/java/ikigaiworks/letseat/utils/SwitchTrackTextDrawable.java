@@ -47,7 +47,7 @@ public class SwitchTrackTextDrawable extends Drawable {
     private Paint createTextPaint() {
         Paint textPaint = new Paint();
         //noinspection deprecation
-        textPaint.setColor(mContext.getResources().getColor(android.R.color.white));
+        textPaint.setColor(mContext.getResources().getColor(R.color.grayIconTint));
         textPaint.setAntiAlias(true);
         textPaint.setStyle(Paint.Style.FILL);
         textPaint.setTextAlign(Paint.Align.CENTER);

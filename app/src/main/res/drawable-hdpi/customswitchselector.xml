@@ -6,9 +6,9 @@
             android:dither="true"
             android:useLevel="false">
             <gradient
-                android:startColor="#FFB74D"
-                android:endColor="#FFB74D"
-                android:angle="270"/>
+                android:startColor="@color/dark_orange"
+                android:endColor="@color/soft_orange"
+                android:angle="135" />
             <corners
                 android:radius="40dp"/>
             <size
@@ -25,9 +25,9 @@
             android:dither="true"
             android:useLevel="false">
             <gradient
-                android:startColor="#FFB74D"
-                android:endColor="#FFB74D"
-                android:angle="270"/>
+                android:startColor="@color/dark_orange"
+                android:endColor="@color/soft_orange"
+                android:angle="135" />
             <corners
                 android:radius="40dp"/>
             <size
