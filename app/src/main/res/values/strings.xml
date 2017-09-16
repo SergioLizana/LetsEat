@@ -26,4 +26,8 @@
     <string name="login">LOG IN</string>
     <string name="registro">SIGN IN</string>
 
+
+    <string name="desc_pedidos">Revisa el estado de tus pedidos o\n ¡pide de nuevo aquel plato que\n tanto te gustó!</string>
+    <string name="desc_menu">"Descrubre toda nuestra carta.\n Desayunos, deliciosos dulces,\n pastas y muchos más!"</string>
+    <string name="desc_promos">"¿Tienes cupones de descuento? \n¡Consulta todas nuestras promos\n y pide más por menos!"</string>
 </resources>

@@ -42,7 +42,6 @@ public class FragmentLogin extends android.app.Fragment {
         mPasswordView = (EditText) view.findViewById(R.id.password);
         mLoginFormView = view.findViewById(R.id.email_login_form);
         mProgressView = view.findViewById(R.id.login_progress);
-
         return view;
 
     }

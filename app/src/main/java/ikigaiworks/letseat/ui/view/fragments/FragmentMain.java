@@ -6,10 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
+import com.yarolegovich.discretescrollview.Orientation;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
@@ -30,28 +33,31 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.model.Carrusel;
+import ikigaiworks.letseat.model.CarruselSlide;
 import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Menu;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.view.adapters.CarruselAdapter;
+import ikigaiworks.letseat.ui.view.viewholders.RecyclerViewClickListener;
 import ikigaiworks.letseat.utils.DiscreteScrollViewOptions;
 import ikigaiworks.letseat.utils.ImageGallery;
 
 
-public class FragmentMain extends Fragment implements
-        DiscreteScrollView.ScrollListener<CarruselAdapter.ViewHolder>,
-        DiscreteScrollView.OnItemChangedListener<CarruselAdapter.ViewHolder>,
-        View.OnClickListener  {
+public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemChangedListener{
 
     Unbinder unbind;
 
     @BindView(R.id.picker)
     DiscreteScrollView scrollView;
-    private ArgbEvaluator evaluator;
-    private int currentOverlayColor;
-    private int overlayColor;
+    @BindView(R.id.titleCarrusel)
+    TextView title;
+
+
+    private Carrusel carrusel;
     private InfiniteScrollAdapter infiniteAdapter;
     FirebaseDatabase database;
+    ArrayList<CarruselSlide> data;
 
 
     public static FragmentMain newInstance(){
@@ -62,6 +68,8 @@ public class FragmentMain extends Fragment implements
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        carrusel = Carrusel.newInstance();
+        data = carrusel.getSlides();
     }
 
     @Nullable
@@ -71,11 +79,12 @@ public class FragmentMain extends Fragment implements
         View view = inflater.inflate(R.layout.fragment_main,container,false);
         unbind  = ButterKnife.bind(this,view);
         database = FirebaseDatabase.getInstance();
-        evaluator = new ArgbEvaluator();
+
+        /*evaluator = new ArgbEvaluator();
         currentOverlayColor = ContextCompat.getColor(getActivity(), R.color.galleryCurrentItemOverlay);
         overlayColor = ContextCompat.getColor(getActivity(), R.color.galleryItemOverlay);
-        ImageGallery gallery = new ImageGallery(getActivity());
-        infiniteAdapter = InfiniteScrollAdapter.wrap(new CarruselAdapter(gallery.getData(), new CarruselAdapter.OnItemClickListener(){
+
+        infiniteAdapter = InfiniteScrollAdapter.wrap(new CarruselAdapter(carrusel.getSlides(), new CarruselAdapter.OnItemClickListener(){
             @Override public void onItemClick(Integer item) {
                 Toast.makeText(getContext(), "Item Clicked "+item, Toast.LENGTH_LONG).show();
             }
@@ -88,10 +97,34 @@ public class FragmentMain extends Fragment implements
         scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMinScale(0.8f)
                 .build());
-   //     getCategories();
+   //     getCategories();*/
+
+        carrusel = new Carrusel();
+        scrollView.setOrientation(Orientation.HORIZONTAL);
+        scrollView.addOnItemChangedListener(this);
+        infiniteAdapter = InfiniteScrollAdapter.wrap(new CarruselAdapter(data, new CarruselAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(CarruselSlide item) {
+                Toast.makeText(getActivity().getApplicationContext(),"test",Toast.LENGTH_LONG).show();
+            }
+        },getActivity().getApplicationContext()));
+
+            scrollView.setAdapter(infiniteAdapter);
+        scrollView.setItemTransitionTimeMillis(DiscreteScrollViewOptions.getTransitionTime());
+        scrollView.setItemTransformer(new ScaleTransformer.Builder()
+                .setMinScale(0.8f)
+                .build());
+
+        onItemChanged(data.get(0));
+
+
 
         return view;
 
+    }
+
+    private void onItemChanged(CarruselSlide item) {
+        title.setText(item.getTitle());
     }
 
 /*    public void getCategories(){
@@ -195,30 +228,13 @@ public class FragmentMain extends Fragment implements
         super.onDestroy();
     }
 
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(getContext(),"Click",Toast.LENGTH_LONG);
-    }
 
     @Override
-    public void onCurrentItemChanged(@Nullable CarruselAdapter.ViewHolder viewHolder, int adapterPosition) {
-        //viewHolder will never be null, because we never remove items from adapter's list
-        if (viewHolder != null) {
-            viewHolder.setOverlayColor(currentOverlayColor);
-        }
+    public void onCurrentItemChanged(@Nullable RecyclerView.ViewHolder viewHolder, int adapterPosition) {
+        int positionInDataSet = infiniteAdapter.getRealPosition(adapterPosition);
+        onItemChanged(data.get(positionInDataSet));
     }
 
-    @Override
-    public void onScroll(float scrollPosition, @NonNull CarruselAdapter.ViewHolder currentHolder, @NonNull CarruselAdapter.ViewHolder newCurrent) {
-        float position = Math.abs(scrollPosition);
-        currentHolder.setOverlayColor(interpolate(position, currentOverlayColor, overlayColor));
-        newCurrent.setOverlayColor(interpolate(position, overlayColor, currentOverlayColor));
-    }
-
-
-    private int interpolate(float fraction, int c1, int c2) {
-        return (int) evaluator.evaluate(fraction, c1, c2);
-    }
 
 
 //    @OnClick(R.id.button_carta)
