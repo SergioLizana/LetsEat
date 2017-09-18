@@ -1,33 +1,22 @@
 package ikigaiworks.letseat.ui.view.fragments;
 
-import android.animation.ArgbEvaluator;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.Orientation;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,13 +24,8 @@ import butterknife.Unbinder;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.Carrusel;
 import ikigaiworks.letseat.model.CarruselSlide;
-import ikigaiworks.letseat.model.Category;
-import ikigaiworks.letseat.model.Menu;
-import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.view.adapters.CarruselAdapter;
-import ikigaiworks.letseat.ui.view.viewholders.RecyclerViewClickListener;
 import ikigaiworks.letseat.utils.DiscreteScrollViewOptions;
-import ikigaiworks.letseat.utils.ImageGallery;
 
 
 public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemChangedListener{
@@ -65,10 +49,12 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
         return fragmentMain;
     }
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         carrusel = Carrusel.newInstance();
+        getActivity().setTitle("Taste Bakery");
         data = carrusel.getSlides();
     }
 

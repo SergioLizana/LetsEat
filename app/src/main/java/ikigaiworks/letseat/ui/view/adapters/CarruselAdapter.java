@@ -3,9 +3,6 @@ package ikigaiworks.letseat.ui.view.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.support.annotation.ColorInt;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +13,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.CarruselSlide;
-import ikigaiworks.letseat.ui.view.viewholders.RecyclerViewClickListener;
+
 
 /**
  * Created by sergiolizanamontero on 17/8/17.
@@ -53,17 +49,12 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
         Activity context = (Activity) recyclerView.getContext();
         Point windowDimensions = new Point();
         context.getWindowManager().getDefaultDisplay().getSize(windowDimensions);
-//        itemHeight = Math.round(windowDimensions.y * 0.6f);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View v = inflater.inflate(R.layout.image_carrusel, parent, false);
-        /*ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                itemHeight);
-        v.setLayoutParams(params);*/
+        View v = inflater.inflate(R.layout.carrusel_slide, parent, false);
         return new ViewHolder(v);
     }
 
