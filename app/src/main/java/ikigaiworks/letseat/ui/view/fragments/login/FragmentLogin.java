@@ -1,17 +1,15 @@
-package ikigaiworks.letseat.ui.view.fragments;
+package ikigaiworks.letseat.ui.view.fragments.login;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 

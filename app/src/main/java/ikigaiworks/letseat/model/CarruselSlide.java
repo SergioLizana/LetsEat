@@ -1,10 +1,13 @@
 package ikigaiworks.letseat.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by sergiolizanamontero on 13/9/17.
  */
 
-public class CarruselSlide {
+public class CarruselSlide implements Parcelable {
 
     private String title;
     private int id;
@@ -51,4 +54,36 @@ public class CarruselSlide {
     public void setIdText(int idText) {
         this.idText = idText;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.title);
+        dest.writeInt(this.id);
+        dest.writeInt(this.idText);
+        dest.writeInt(this.icon);
+    }
+
+    protected CarruselSlide(Parcel in) {
+        this.title = in.readString();
+        this.id = in.readInt();
+        this.idText = in.readInt();
+        this.icon = in.readInt();
+    }
+
+    public static final Parcelable.Creator<CarruselSlide> CREATOR = new Parcelable.Creator<CarruselSlide>() {
+        @Override
+        public CarruselSlide createFromParcel(Parcel source) {
+            return new CarruselSlide(source);
+        }
+
+        @Override
+        public CarruselSlide[] newArray(int size) {
+            return new CarruselSlide[size];
+        }
+    };
 }

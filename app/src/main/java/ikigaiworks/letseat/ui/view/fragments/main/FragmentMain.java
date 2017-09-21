@@ -1,4 +1,4 @@
-package ikigaiworks.letseat.ui.view.fragments;
+package ikigaiworks.letseat.ui.view.fragments.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,6 +24,8 @@ import butterknife.Unbinder;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.Carrusel;
 import ikigaiworks.letseat.model.CarruselSlide;
+import ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenter;
+import ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenterImpl;
 import ikigaiworks.letseat.ui.view.adapters.CarruselAdapter;
 import ikigaiworks.letseat.utils.DiscreteScrollViewOptions;
 
@@ -37,9 +39,10 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
     @BindView(R.id.titleCarrusel)
     TextView title;
 
+    MainFragmentPresenter presenter;
 
-    private Carrusel carrusel;
     private InfiniteScrollAdapter infiniteAdapter;
+    private CarruselAdapter adapter;
     FirebaseDatabase database;
     ArrayList<CarruselSlide> data;
 
@@ -53,9 +56,16 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        carrusel = Carrusel.newInstance();
+
+        if (savedInstanceState == null){
+            data = new ArrayList<CarruselSlide>();
+        }else{
+            data = savedInstanceState.getParcelableArrayList("slides");
+        }
+        presenter = new MainFragmentPresenterImpl();
+        presenter.setMainFragmentActivity(this);
+
         getActivity().setTitle("Taste Bakery");
-        data = carrusel.getSlides();
     }
 
     @Nullable
@@ -64,49 +74,39 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
 
         View view = inflater.inflate(R.layout.fragment_main,container,false);
         unbind  = ButterKnife.bind(this,view);
-        database = FirebaseDatabase.getInstance();
+       // database = FirebaseDatabase.getInstance();
+        initCarruselConf();
 
-        /*evaluator = new ArgbEvaluator();
-        currentOverlayColor = ContextCompat.getColor(getActivity(), R.color.galleryCurrentItemOverlay);
-        overlayColor = ContextCompat.getColor(getActivity(), R.color.galleryItemOverlay);
+        return view;
 
-        infiniteAdapter = InfiniteScrollAdapter.wrap(new CarruselAdapter(carrusel.getSlides(), new CarruselAdapter.OnItemClickListener(){
-            @Override public void onItemClick(Integer item) {
-                Toast.makeText(getContext(), "Item Clicked "+item, Toast.LENGTH_LONG).show();
-            }
-        }));
-        scrollView.setAdapter(infiniteAdapter);
-        scrollView.addScrollListener(this);
-        scrollView.addOnItemChangedListener(this);
-        scrollView.scrollToPosition(0);
-        scrollView.setItemTransitionTimeMillis(DiscreteScrollViewOptions.getTransitionTime());
-        scrollView.setItemTransformer(new ScaleTransformer.Builder()
-                .setMinScale(0.8f)
-                .build());
-   //     getCategories();*/
+    }
 
-        carrusel = new Carrusel();
+    private void initCarruselConf(){
         scrollView.setOrientation(Orientation.HORIZONTAL);
         scrollView.addOnItemChangedListener(this);
-        infiniteAdapter = InfiniteScrollAdapter.wrap(new CarruselAdapter(data, new CarruselAdapter.OnItemClickListener() {
+
+        adapter = new CarruselAdapter(data, new CarruselAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(CarruselSlide item) {
                 Toast.makeText(getActivity().getApplicationContext(),"test",Toast.LENGTH_LONG).show();
             }
-        },getActivity().getApplicationContext()));
+        },getActivity().getApplicationContext(),presenter);
 
-            scrollView.setAdapter(infiniteAdapter);
+
+        infiniteAdapter = InfiniteScrollAdapter.wrap(adapter);
+        scrollView.setAdapter(infiniteAdapter);
         scrollView.setItemTransitionTimeMillis(DiscreteScrollViewOptions.getTransitionTime());
         scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMinScale(0.8f)
                 .build());
+        presenter.retrieveSlides();
+    }
 
-        onItemChanged(data.get(0));
-
-
-
-        return view;
-
+    public void printCarrusel(Carrusel carrusel){
+        data =  carrusel.getSlides();
+        adapter.updateCarrusel(data);
+        infiniteAdapter.notifyDataSetChanged();
+//        onItemChanged(data.get(0));
     }
 
     private void onItemChanged(CarruselSlide item) {
@@ -222,9 +222,4 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
     }
 
 
-
-//    @OnClick(R.id.button_carta)
-//    public void initCarta(View view) {
-//        ((MainActivity) getActivity()).replaceFragment(FragmentLogin.newInstance());
-//    }
 }

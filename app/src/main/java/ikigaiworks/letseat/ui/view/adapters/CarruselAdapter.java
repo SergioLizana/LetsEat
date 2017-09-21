@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.CarruselSlide;
+import ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenter;
 
 
 /**
@@ -28,16 +29,18 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
     private ArrayList<CarruselSlide> data;
     private OnItemClickListener listener;
     private Context context;
+    private MainFragmentPresenter presenter;
 
 
     public interface OnItemClickListener {
         void onItemClick(CarruselSlide item);
     }
 
-    public CarruselAdapter(ArrayList<CarruselSlide> data , OnItemClickListener listener,Context context){
+    public CarruselAdapter(ArrayList<CarruselSlide> data , OnItemClickListener listener, Context context, MainFragmentPresenter presenter){
         this.data = data;
         this.listener = listener;
         this.context = context;
+        this.presenter = presenter;
     }
     public CarruselAdapter(ArrayList<CarruselSlide> data){
         this.data = data;
@@ -67,6 +70,20 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
         holder.descripcion.setText(context.getString(data.get(position).getIdText()));
 
     }
+
+    public void addItem(int position , CarruselSlide slide){
+        data.add(position,slide);
+    }
+
+    public void updateCarrusel(ArrayList<CarruselSlide> slideList){
+        data = slideList;
+        notifyDataSetChanged();
+    }
+
+    public CarruselSlide getSlide(int adapterPosition){
+        return data.get(adapterPosition);
+    }
+
 
     @Override
     public int getItemCount() {

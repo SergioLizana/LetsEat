@@ -7,9 +7,12 @@ import java.util.Map;
  */
 
 public class Category {
+
     private Double discount;
     private String name;
     private String reference;
+    private int order;
+    private String image;
     private Map<String, Category> subtype;
 
     public Category(Double discount, String name, String reference, Map<String, Category> subtype) {
@@ -22,6 +25,30 @@ public class Category {
 
     public Category(){
 
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Map<String, Category> getSubtype() {
+        return subtype;
+    }
+
+    public void setSubtype(Map<String, Category> subtype) {
+        this.subtype = subtype;
     }
 
     public Double getDiscount() {

@@ -4,13 +4,12 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.ui.view.fragments.FragmentLogin;
-import ikigaiworks.letseat.ui.view.fragments.FragmentRegistro;
+import ikigaiworks.letseat.ui.view.fragments.login.FragmentLogin;
+import ikigaiworks.letseat.ui.view.fragments.login.FragmentRegistro;
 import ikigaiworks.letseat.utils.SwitchTrackTextDrawable;
 
 public class LoginActivity extends AppCompatActivity {

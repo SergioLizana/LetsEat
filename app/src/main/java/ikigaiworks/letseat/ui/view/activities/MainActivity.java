@@ -16,8 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.ui.view.fragments.FragmentMain;
-import ikigaiworks.letseat.ui.view.fragments.FragmentLogin;
+import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,14 +46,17 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    //Extraer del main Activity
+
     private void initNavDrawer(){
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
     }
+
 
     private void initFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction()
@@ -66,13 +68,11 @@ public class MainActivity extends AppCompatActivity
 
         transaction.replace(R.id.content_main, fragment);
         transaction.addToBackStack(null);
-
         transaction.commit();
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -105,7 +105,6 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
