@@ -1,15 +1,28 @@
 package ikigaiworks.letseat.ui.view.activities;
-
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import ikigaiworks.letseat.R;
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
 
-public class MenuActivity extends AppCompatActivity {
+import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.BaseActivity;
+import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain_;
+import ikigaiworks.letseat.ui.view.fragments.menu.FragmentMenu;
+import ikigaiworks.letseat.ui.view.fragments.menu.FragmentMenu_;
+
+
+@EActivity(R.layout.activity_menu)
+public class MenuActivity extends BaseActivity {
+
+    FragmentMenu menu;
+    @AfterViews
+    void init(){
+        menu = FragmentMenu_.builder().build();
+        replaceFragment(menu,R.id.content_menu,"menu",false,false);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+    protected int getLayoutResource() {
+        return R.layout.activity_menu;
     }
 }

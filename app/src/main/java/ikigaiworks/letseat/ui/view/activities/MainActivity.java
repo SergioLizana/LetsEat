@@ -1,54 +1,48 @@
 package ikigaiworks.letseat.ui.view.activities;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
 import butterknife.Unbinder;
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
+import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain_;
 
-public class MainActivity extends AppCompatActivity
+@EActivity(R.layout.activity_main)
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Unbinder unbinder;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.drawer_layout)
+    @ViewById(R.id.drawer_layout)
     DrawerLayout drawer;
-    @BindView(R.id.nav_view)
+    @ViewById(R.id.nav_view)
     NavigationView navigationView;
+    Toolbar toolbar;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        unbinder = ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
+    FragmentMain fragment;
+
+    @AfterViews
+    void init(){
         initNavDrawer();
-
+        toolbar.setTitle("Taste Bakery");
         if (findViewById(R.id.content_main) != null) {
-            if (savedInstanceState != null) {
-                return;
-            }
-            initFragment(FragmentMain.newInstance());
-
+            fragment = FragmentMain_.builder().build();
+            replaceFragment(fragment,R.id.content_main,"main",false,false);
         }
     }
 
-    //Extraer del main Activity
-
     private void initNavDrawer(){
+        toolbar = getToolbar();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -57,19 +51,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-
-    private void initFragment(Fragment fragment){
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.content_main, fragment).commit();
-    }
-
-    public void replaceFragment(Fragment fragment){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        transaction.replace(R.id.content_main, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
     @Override
     public void onBackPressed() {
@@ -87,10 +68,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.login) {
-            //replaceFragment(FragmentLogin.newInstance());
-        } else if (id == R.id.carta) {
             Intent intent = new Intent(this,LoginActivity.class);
             startActivity(intent);
+        } else if (id == R.id.carta) {
+            Intent intent = MenuActivity_.intent(this).get();
+            startActivity(intent);
+
         } else if (id == R.id.pedido) {
 
         } else if (id == R.id.mis_pedidos) {
@@ -113,5 +96,10 @@ public class MainActivity extends AppCompatActivity
     protected void onDestroy() {
         unbinder.unbind();
         super.onDestroy();
+    }
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_main;
     }
 }

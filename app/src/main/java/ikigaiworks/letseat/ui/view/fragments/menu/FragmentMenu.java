@@ -7,15 +7,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EFragment;
+
 import butterknife.Unbinder;
+import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.ui.presenters.menu.MenuFragmentPresenterImpl;
 
 /**
  * Created by sergiolizanamontero on 21/9/17.
  */
 
+@EFragment(R.layout.fragment_menu_categorias)
 public class FragmentMenu extends Fragment {
 
-    Unbinder unbind;
+    MenuFragmentPresenterImpl presenter;
+    @AfterViews
+    void init(){
+        presenter = new MenuFragmentPresenterImpl();
+        presenter.setMenuFragment(this);
+        presenter.retrieveData();
+    }
 
     public static FragmentMenu newInstance(){
         FragmentMenu fragmentMenu = new FragmentMenu();

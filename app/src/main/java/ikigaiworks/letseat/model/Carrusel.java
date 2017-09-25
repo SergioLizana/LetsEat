@@ -25,8 +25,8 @@ public class Carrusel {
 
     void init(){
         menu = new CarruselSlide("Menu",1,R.string.desc_menu, R.drawable.menu);
-        promos = new CarruselSlide("Orders",2,R.string.desc_pedidos,R.drawable.promos);
-        orders = new CarruselSlide("Promos",3,R.string.desc_promos,R.drawable.orders);
+        promos = new CarruselSlide("Orders",2,R.string.desc_pedidos,R.drawable.orders);
+        orders = new CarruselSlide("Promos",3,R.string.desc_promos,R.drawable.promos);
         slides.add(menu);
         slides.add(orders);
         slides.add(promos);

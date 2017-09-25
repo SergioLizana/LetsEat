@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.CarruselSlide;
+import ikigaiworks.letseat.ui.presenters.Presenter;
 import ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenter;
 
 
@@ -29,14 +30,14 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
     private ArrayList<CarruselSlide> data;
     private OnItemClickListener listener;
     private Context context;
-    private MainFragmentPresenter presenter;
+    private Presenter presenter;
 
 
     public interface OnItemClickListener {
         void onItemClick(CarruselSlide item);
     }
 
-    public CarruselAdapter(ArrayList<CarruselSlide> data , OnItemClickListener listener, Context context, MainFragmentPresenter presenter){
+    public CarruselAdapter(ArrayList<CarruselSlide> data , OnItemClickListener listener, Context context, Presenter presenter){
         this.data = data;
         this.listener = listener;
         this.context = context;

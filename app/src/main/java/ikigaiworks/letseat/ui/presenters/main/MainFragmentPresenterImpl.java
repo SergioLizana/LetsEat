@@ -1,5 +1,7 @@
 package ikigaiworks.letseat.ui.presenters.main;
 
+import org.androidannotations.annotations.EBean;
+
 import ikigaiworks.letseat.model.Carrusel;
 import ikigaiworks.letseat.ui.presenters.Presenter;
 import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
@@ -8,7 +10,7 @@ import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
  * Created by sergiolizanamontero on 21/9/17.
  */
 
-public class MainFragmentPresenterImpl extends Presenter implements MainFragmentPresenter  {
+public class MainFragmentPresenterImpl  implements Presenter  {
 
     Carrusel carrusel;
     FragmentMain fragmentMain;
@@ -17,26 +19,37 @@ public class MainFragmentPresenterImpl extends Presenter implements MainFragment
 
     }
 
+    public Carrusel getCarrusel() {
+        return carrusel;
+    }
+
+    public void setCarrusel(Carrusel carrusel) {
+        this.carrusel = carrusel;
+    }
+
+    public FragmentMain getFragmentMain() {
+        return fragmentMain;
+    }
+
+    public void setFragmentMain(FragmentMain fragmentMain) {
+        this.fragmentMain = fragmentMain;
+    }
+
     @Override
-    public void retrieveSlides() {
+    public void retrieveData() {
         if (carrusel != null){
-            printSlides(carrusel);
+            printData(carrusel);
         }else{
             carrusel = Carrusel.newInstance();
-            printSlides(carrusel);
+            printData(carrusel);
         }
 
     }
 
     @Override
-    public void setMainFragmentActivity(FragmentMain fragmentMain) {
-        this.fragmentMain = fragmentMain;
-    }
-
-    @Override
-    public void printSlides(Carrusel carrusel) {
-           if (fragmentMain != null) {
-               fragmentMain.printCarrusel(carrusel);
-           }
+    public void printData(Object object) {
+        if (fragmentMain != null) {
+            fragmentMain.printCarrusel((Carrusel)object);
+        }
     }
 }

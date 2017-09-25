@@ -75,11 +75,4 @@ public class Category {
         this.reference = reference;
     }
 
-    public Map<String, Category> getsubtype() {
-        return subtype;
-    }
-
-    public void setsubtype(Map<String, Category> subtype) {
-        this.subtype = subtype;
-    }
 }
