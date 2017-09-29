@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/image_menu_list"
+    <data>
+        <variable name="category" type="ikigaiworks.letseat.model.Category"/>
+        <variable name="presenter" type="ikigaiworks.letseat.ui.presenters.menu.MenuFragmentPresenterImpl" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:src="@drawable/drinks"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Drinks"
-        android:textSize="30dp"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="@+id/image_menu_list"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="@+id/image_menu_list" />
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:onClick="@{() -> presenter.onClickEvent(category)}">
+
+        <ImageView
+            android:id="@+id/image_menu_list"
+            android:layout_width="0dp"
+            android:layout_height="145dp"
+            android:scaleType="fitXY"
+            android:src="@{category.image}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{category.name}"
+            tools:text="Drinks"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            app:layout_constraintRight_toRightOf="@+id/image_menu_list"
+            app:layout_constraintTop_toTopOf="@+id/image_menu_list" />
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

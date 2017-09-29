@@ -25,11 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.activities.LoginActivity"
+            android:name=".ui.view.activities.LoginActivity_"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.view.activities.MenuActivity_">
-
+        <activity android:name=".ui.view.activities.MenuActivity_"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

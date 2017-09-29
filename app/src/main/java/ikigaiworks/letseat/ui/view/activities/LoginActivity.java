@@ -1,58 +1,44 @@
 package ikigaiworks.letseat.ui.view.activities;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.CheckedChange;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.ui.view.fragments.login.FragmentLogin;
-import ikigaiworks.letseat.ui.view.fragments.login.FragmentRegistro;
+import ikigaiworks.letseat.app.BaseActivity;
+import ikigaiworks.letseat.ui.view.fragments.login.FragmentLogin_;
+import ikigaiworks.letseat.ui.view.fragments.login.FragmentRegistro_;
+import ikigaiworks.letseat.utils.LoginUtils;
 import ikigaiworks.letseat.utils.SwitchTrackTextDrawable;
 
-public class LoginActivity extends AppCompatActivity {
+@EActivity(R.layout.activity_login)
+public class LoginActivity extends BaseActivity {
 
+    @ViewById(R.id.mySwitch)
     Switch switchButton;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        switchButton = (Switch) findViewById(R.id.mySwitch);
-        switchButton.setTrackDrawable(new SwitchTrackTextDrawable(this,R.string.login,R.string.registro));
-        if (switchButton != null) {
-            switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked == false){
-                        replaceFragment(FragmentLogin.newInstance());
-                    }else{
-                        replaceFragment(FragmentRegistro.newInstance());
-                    }
-                }
-            });
+    @AfterViews
+    void init(){
+        initComponents();
+    }
+
+    @CheckedChange(R.id.mySwitch)
+    void checkedChange(CompoundButton button, boolean isChecked) {
+        if (!isChecked){
+            replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,"LOGINFRAGMENT",false,true);
+        }else{
+            replaceFragment(FragmentRegistro_.builder().build(),R.id.content_login,"REGISTROFRAGMENT",false,true);
         }
-        init();
-
     }
 
-    public void replaceFragment(Fragment fragment){
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.animator.slide_left_animation,R.animator.slide_right_animation);
-        transaction.replace(R.id.content_login, fragment);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
+    private void initComponents(){
+        switchButton.setTrackDrawable(new SwitchTrackTextDrawable(this,R.string.login,R.string.registro));
+        replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,"LOGINFRAGMENT",false,false);
     }
-
-    public void init(){
-
-        getFragmentManager().beginTransaction()
-                .add(R.id.content_login, FragmentLogin.newInstance()).commit();
-    }
-
 
 }

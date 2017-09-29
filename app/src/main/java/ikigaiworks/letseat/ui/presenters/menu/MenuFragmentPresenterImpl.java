@@ -1,5 +1,7 @@
 package ikigaiworks.letseat.ui.presenters.menu;
 
+import android.util.Log;
+
 import org.androidannotations.annotations.Bean;
 
 import java.util.ArrayList;
@@ -16,10 +18,9 @@ import ikigaiworks.letseat.ui.view.fragments.menu.FragmentMenu;
 
 public class MenuFragmentPresenterImpl implements Presenter {
 
-    FirebaseManagerImpl firebaseManager;
-    ArrayList<Category> categories;
-
-    FragmentMenu fragmentMenu;
+    private FirebaseManagerImpl firebaseManager;
+    private ArrayList<Category> categories;
+    private FragmentMenu fragmentMenu;
 
    public MenuFragmentPresenterImpl(){
         firebaseManager = new FirebaseManagerImpl();
@@ -41,6 +42,10 @@ public class MenuFragmentPresenterImpl implements Presenter {
     @Override
     public void printData(Object object) {
         categories = (ArrayList<Category>) object;
+        fragmentMenu.printData(categories);
+    }
 
+    public void onClickEvent(Category c){
+        Log.d("Onclick","Onclick");
     }
 }

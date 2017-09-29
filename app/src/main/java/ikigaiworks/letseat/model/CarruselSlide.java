@@ -11,15 +11,15 @@ public class CarruselSlide implements Parcelable {
 
     private String title;
     private int id;
-    private int idText;
+    private String text;
     private int icon;
 
     public CarruselSlide(){}
 
-    public CarruselSlide(String title, int id, int idText, int icon) {
+    public CarruselSlide(String title, int id, String text, int icon) {
         this.title = title;
         this.id = id;
-        this.idText = idText;
+        this.text = text;
         this.icon = icon;
     }
 
@@ -47,12 +47,12 @@ public class CarruselSlide implements Parcelable {
         this.icon = icon;
     }
 
-    public int getIdText() {
-        return idText;
+    public String getText() {
+        return text;
     }
 
-    public void setIdText(int idText) {
-        this.idText = idText;
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override
@@ -64,14 +64,14 @@ public class CarruselSlide implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.title);
         dest.writeInt(this.id);
-        dest.writeInt(this.idText);
+        dest.writeString(this.text);
         dest.writeInt(this.icon);
     }
 
     protected CarruselSlide(Parcel in) {
         this.title = in.readString();
         this.id = in.readInt();
-        this.idText = in.readInt();
+        this.text = in.readString();
         this.icon = in.readInt();
     }
 

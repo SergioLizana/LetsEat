@@ -19,6 +19,7 @@ apt {
 }
 
 
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -36,6 +37,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -43,6 +47,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
 
     compile 'com.android.support:appcompat-v7:26.0.2'
     compile 'com.android.support:support-v4:26.0.2'
@@ -58,6 +63,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
     apt "org.androidannotations:androidannotations:$AAVersion"
+    apt 'com.android.databinding:compiler:2.3.0'
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 }
 apply plugin: 'com.google.gms.google-services'

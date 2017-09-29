@@ -1,8 +1,11 @@
 package ikigaiworks.letseat.ui.presenters.main;
 
+import android.util.Log;
+
 import org.androidannotations.annotations.EBean;
 
 import ikigaiworks.letseat.model.Carrusel;
+import ikigaiworks.letseat.model.CarruselSlide;
 import ikigaiworks.letseat.ui.presenters.Presenter;
 import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
 
@@ -35,12 +38,16 @@ public class MainFragmentPresenterImpl  implements Presenter  {
         this.fragmentMain = fragmentMain;
     }
 
+    public void onClickEvent(CarruselSlide c){
+        Log.d("Onclick","Onclick");
+    }
+
     @Override
     public void retrieveData() {
         if (carrusel != null){
             printData(carrusel);
         }else{
-            carrusel = Carrusel.newInstance();
+            carrusel = Carrusel.newInstance(fragmentMain.getContext());
             printData(carrusel);
         }
 

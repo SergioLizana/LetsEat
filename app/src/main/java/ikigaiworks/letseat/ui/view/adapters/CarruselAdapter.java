@@ -2,10 +2,12 @@ package ikigaiworks.letseat.ui.view.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.databinding.BindingAdapter;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.graphics.Point;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,10 +16,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import ikigaiworks.letseat.BR;
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.databinding.CarruselSlideBinding;
 import ikigaiworks.letseat.model.CarruselSlide;
 import ikigaiworks.letseat.ui.presenters.Presenter;
-import ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenter;
 
 
 /**
@@ -26,22 +29,18 @@ import ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenter;
 
 public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHolder> {
 
-    private int itemHeight;
     private ArrayList<CarruselSlide> data;
-    private OnItemClickListener listener;
     private Context context;
     private Presenter presenter;
+    private LayoutInflater inflater;
+    private CarruselSlideBinding binding;
 
 
-    public interface OnItemClickListener {
-        void onItemClick(CarruselSlide item);
-    }
-
-    public CarruselAdapter(ArrayList<CarruselSlide> data , OnItemClickListener listener, Context context, Presenter presenter){
+    public CarruselAdapter(ArrayList<CarruselSlide> data , Context context, Presenter presenter){
         this.data = data;
-        this.listener = listener;
         this.context = context;
         this.presenter = presenter;
+        inflater = LayoutInflater.from(context);
     }
     public CarruselAdapter(ArrayList<CarruselSlide> data){
         this.data = data;
@@ -57,19 +56,14 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View v = inflater.inflate(R.layout.carrusel_slide, parent, false);
-        return new ViewHolder(v);
+        binding = DataBindingUtil.inflate(inflater,R.layout.carrusel_slide,parent,false);
+        return new CarruselAdapter.ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Glide.with(holder.itemView.getContext())
-                .load(data.get(position).getIcon())
-                .into(holder.image);
-        holder.bind(data.get(position), listener);
-        holder.descripcion.setText(context.getString(data.get(position).getIdText()));
-
+        final CarruselSlide category = data.get(position);
+        holder.bind(category,presenter);
     }
 
     public void addItem(int position , CarruselSlide slide){
@@ -79,6 +73,11 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
     public void updateCarrusel(ArrayList<CarruselSlide> slideList){
         data = slideList;
         notifyDataSetChanged();
+    }
+
+    @BindingAdapter("android:src")
+    public static void setImageUrl(ImageView view, int id) {
+        view.setImageResource(id);
     }
 
     public CarruselSlide getSlide(int adapterPosition){
@@ -93,22 +92,18 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView image;
-        private TextView descripcion;
+        private ViewDataBinding binding;
 
-        public ViewHolder(View itemView) {
-            super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.imageSlide);
-            descripcion = (TextView) itemView.findViewById(R.id.descSlide);
+        public ViewHolder(ViewDataBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+
         }
 
-        public void bind(final CarruselSlide slide, final OnItemClickListener listener) {
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    listener.onItemClick(slide);
-                }
-            });
+        public void bind(final CarruselSlide slide, Presenter presenter) {
+            binding.setVariable(BR.slide, slide);
+            binding.setVariable(BR.presenter,presenter);
+            binding.executePendingBindings();
         }
 
 

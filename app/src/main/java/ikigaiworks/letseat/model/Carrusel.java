@@ -1,5 +1,7 @@
 package ikigaiworks.letseat.model;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import ikigaiworks.letseat.R;
 /**
@@ -13,20 +15,22 @@ public class Carrusel {
     CarruselSlide menu;
     CarruselSlide orders;
     CarruselSlide promos;
+    Context c;
 
-    public static Carrusel newInstance(){
-        Carrusel fragmentLogin = new Carrusel();
-        return fragmentLogin;
+    public static Carrusel newInstance(Context c){
+        Carrusel carrusel = new Carrusel(c);
+        return carrusel;
     }
 
-    public Carrusel(){
+    public Carrusel(Context c){
+        this.c = c;
         init();
     }
 
     void init(){
-        menu = new CarruselSlide("Menu",1,R.string.desc_menu, R.drawable.menu);
-        promos = new CarruselSlide("Orders",2,R.string.desc_pedidos,R.drawable.orders);
-        orders = new CarruselSlide("Promos",3,R.string.desc_promos,R.drawable.promos);
+        menu = new CarruselSlide("Menu",1,c.getString(R.string.desc_menu), R.drawable.menu);
+        promos = new CarruselSlide("Orders",2,c.getString(R.string.desc_pedidos),R.drawable.orders);
+        orders = new CarruselSlide("Promos",3,c.getString(R.string.desc_promos),R.drawable.promos);
         slides.add(menu);
         slides.add(orders);
         slides.add(promos);

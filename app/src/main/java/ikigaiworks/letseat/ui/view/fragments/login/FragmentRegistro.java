@@ -6,50 +6,39 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
+
 import ikigaiworks.letseat.R;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class FragmentRegistro extends android.app.Fragment {
 
-    // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
+@EFragment(R.layout.fragment_registro)
+public class FragmentRegistro extends Fragment {
 
-    public static FragmentRegistro newInstance(){
-        FragmentRegistro fragmentLogin = new FragmentRegistro();
-        return fragmentLogin;
-    }
+    @ViewById(R.id.email)
+    protected AutoCompleteTextView mEmailView;
+    @ViewById(R.id.password)
+    protected EditText mPasswordView;
+    @ViewById(R.id.login_progress)
+    protected View mProgressView;
+    @ViewById(R.id.email_login_form)
+    protected View mLoginFormView;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_registro,container,false);
-        mEmailView = (AutoCompleteTextView) view.findViewById(R.id.email);
-
-        mPasswordView = (EditText) view.findViewById(R.id.password);
-        mLoginFormView = view.findViewById(R.id.email_login_form);
-        mProgressView = view.findViewById(R.id.login_progress);
-
-        return view;
+    @AfterViews
+    void init(){
 
     }
-
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic

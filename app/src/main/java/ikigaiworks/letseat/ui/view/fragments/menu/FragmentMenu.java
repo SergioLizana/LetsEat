@@ -1,48 +1,50 @@
 package ikigaiworks.letseat.ui.view.fragments.menu;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
 
-import butterknife.Unbinder;
+import java.util.ArrayList;
+
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.ui.presenters.menu.MenuFragmentPresenterImpl;
+import ikigaiworks.letseat.ui.view.adapters.MenuAdapter;
 
-/**
- * Created by sergiolizanamontero on 21/9/17.
- */
+
 
 @EFragment(R.layout.fragment_menu_categorias)
 public class FragmentMenu extends Fragment {
 
     MenuFragmentPresenterImpl presenter;
+    ArrayList<Category> data;
+    MenuAdapter adapter;
+    @ViewById(R.id.recyler_menu_categorias)
+    protected RecyclerView recyclerView;
+
     @AfterViews
-    void init(){
+    void init() {
+        data = new ArrayList<>();
         presenter = new MenuFragmentPresenterImpl();
         presenter.setMenuFragment(this);
+        configureRecyclerView();
         presenter.retrieveData();
     }
 
-    public static FragmentMenu newInstance(){
-        FragmentMenu fragmentMenu = new FragmentMenu();
-        return fragmentMenu;
+    private void configureRecyclerView(){
+        adapter = new MenuAdapter(data, getActivity().getApplicationContext(), presenter);
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+    public void printData(ArrayList<Category> data){
+        this.data = data;
+        adapter.updateItem(data);
     }
 
     @Override
