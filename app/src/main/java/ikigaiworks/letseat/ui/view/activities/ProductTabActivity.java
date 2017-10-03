@@ -9,37 +9,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.ui.view.fragments.product.ProductFragment;
 
-public class ProductTabActivity extends AppCompatActivity {
+@EActivity(R.layout.activity_product_tab)
+public class ProductTabActivity extends BaseActivity {
 
-    private Toolbar toolbar;
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_tab);
-
-//        toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    @AfterViews
+    void init(){
+        addToolbar();
+        setToolbarTitle("Product");
+        setToolbarBackgroundColor(R.color.colorPrimaryDark);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
     }
-
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());

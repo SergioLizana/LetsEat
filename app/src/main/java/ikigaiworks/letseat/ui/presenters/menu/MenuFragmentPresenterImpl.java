@@ -12,6 +12,7 @@ import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Menu;
 import ikigaiworks.letseat.ui.presenters.Presenter;
 import ikigaiworks.letseat.ui.view.activities.ProductTabActivity;
+import ikigaiworks.letseat.ui.view.activities.ProductTabActivity_;
 import ikigaiworks.letseat.ui.view.fragments.menu.FragmentMenu;
 import ikigaiworks.letseat.ui.view.fragments.product.ProductFragment;
 
@@ -49,7 +50,6 @@ public class MenuFragmentPresenterImpl implements Presenter {
     }
 
     public void onClickEvent(Category c){
-        Intent intent = new Intent(fragmentMenu.getActivity().getApplicationContext(), ProductTabActivity.class);
-        fragmentMenu.getActivity().startActivity(intent);
+        fragmentMenu.launchDetail();
     }
 }

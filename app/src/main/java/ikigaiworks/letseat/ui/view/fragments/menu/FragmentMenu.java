@@ -1,5 +1,6 @@
 package ikigaiworks.letseat.ui.view.fragments.menu;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.ui.presenters.menu.MenuFragmentPresenterImpl;
+import ikigaiworks.letseat.ui.view.activities.ProductTabActivity_;
 import ikigaiworks.letseat.ui.view.adapters.MenuAdapter;
 
 
@@ -45,6 +47,11 @@ public class FragmentMenu extends Fragment {
     public void printData(ArrayList<Category> data){
         this.data = data;
         adapter.updateItem(data);
+    }
+
+    public void launchDetail(){
+        Intent intent = ProductTabActivity_.intent(this).get();
+        startActivity(intent);
     }
 
     @Override
