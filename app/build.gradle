@@ -49,6 +49,8 @@ dependencies {
     })
 
 
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
     compile 'com.android.support:appcompat-v7:26.0.2'
     compile 'com.android.support:support-v4:26.0.2'
     compile 'com.android.support:design:26.0.2'
@@ -62,8 +64,6 @@ dependencies {
     compile 'com.google.firebase:firebase-storage:10.2.6'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
-    apt "org.androidannotations:androidannotations:$AAVersion"
     apt 'com.android.databinding:compiler:2.3.0'
-    compile "org.androidannotations:androidannotations-api:$AAVersion"
 }
 apply plugin: 'com.google.gms.google-services'
