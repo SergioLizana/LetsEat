@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ikigaiworks.letseat.model.Category;
+import ikigaiworks.letseat.model.Menu;
 import ikigaiworks.letseat.ui.presenters.Presenter;
 
 /**
@@ -56,8 +57,42 @@ public class FirebaseManagerImpl implements FirebaseManager {
     }
 
     @Override
-    public void getProductos(Category category, Presenter presenter) {
+    public void getProductos(Category category, final Presenter presenter) {
+        DatabaseReference menu =  database.getReference("MENU").child(category.getReference());
+        menu.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("succes",dataSnapshot.toString());
 
+           //     Log.d("Firebase Category",category.getName());
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Menu menu = postSnapshot.getValue(Menu.class);
+                    presenter.printData(menu);
+                }
+
+//                if (category.getsubtype() != null) {
+//                    for (String key : category.getsubtype().keySet()) {
+//                        Menu menu = dataSnapshot.child(key).getValue(Menu.class);
+//                        for (String keyProd: menu.getProducts().keySet()){
+//                            getProductById(keyProd);
+//                        }
+//
+//                    }
+//
+//                }else{
+//                    Menu menu1 = dataSnapshot.child(category.getReference()).getValue(Menu.class);
+//                    for (String keyProd: menu1.getProducts().keySet()){
+//                        getProductById(keyProd);
+//                    }
+//                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("error",databaseError.toString());
+            }
+        });
     }
 
     @Override

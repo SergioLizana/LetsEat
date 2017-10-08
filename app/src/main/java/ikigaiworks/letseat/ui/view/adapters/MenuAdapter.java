@@ -17,7 +17,7 @@ import ikigaiworks.letseat.BR;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.databinding.MenuListContentBinding;
 import ikigaiworks.letseat.model.Category;
-import ikigaiworks.letseat.ui.presenters.menu.MenuFragmentPresenterImpl;
+import ikigaiworks.letseat.ui.presenters.menu.CategoryFragmentPresenterImpl;
 
 
 /**
@@ -28,11 +28,11 @@ public class MenuAdapter  extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     private ArrayList<Category> data;
     private Context context;
-    private MenuFragmentPresenterImpl presenter;
+    private CategoryFragmentPresenterImpl presenter;
     private LayoutInflater inflater;
     private MenuListContentBinding binding;
 
-    public MenuAdapter(ArrayList<Category> data , Context context, MenuFragmentPresenterImpl presenter){
+    public MenuAdapter(ArrayList<Category> data , Context context, CategoryFragmentPresenterImpl presenter){
         this.data = data;
         this.context = context;
         this.presenter = presenter;
@@ -93,7 +93,7 @@ public class MenuAdapter  extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
         }
 
-        public void bind (Category category, MenuFragmentPresenterImpl p){
+        public void bind (Category category, CategoryFragmentPresenterImpl p){
             binding.setVariable(BR.category, category);
             binding.setVariable(BR.presenter,p);
             binding.executePendingBindings();

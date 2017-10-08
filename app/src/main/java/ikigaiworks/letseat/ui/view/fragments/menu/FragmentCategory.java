@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
@@ -13,25 +14,28 @@ import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.Category;
-import ikigaiworks.letseat.ui.presenters.menu.MenuFragmentPresenterImpl;
+import ikigaiworks.letseat.model.beans.ProductsBean;
+import ikigaiworks.letseat.ui.presenters.menu.CategoryFragmentPresenterImpl;
 import ikigaiworks.letseat.ui.view.activities.ProductTabActivity_;
 import ikigaiworks.letseat.ui.view.adapters.MenuAdapter;
 
 
 
 @EFragment(R.layout.fragment_menu_categorias)
-public class FragmentMenu extends Fragment {
+public class FragmentCategory extends Fragment {
 
-    MenuFragmentPresenterImpl presenter;
+    CategoryFragmentPresenterImpl presenter;
     ArrayList<Category> data;
     MenuAdapter adapter;
     @ViewById(R.id.recyler_menu_categorias)
     protected RecyclerView recyclerView;
+    @Bean
+    ProductsBean pBean;
 
     @AfterViews
     void init() {
         data = new ArrayList<>();
-        presenter = new MenuFragmentPresenterImpl();
+        presenter = new CategoryFragmentPresenterImpl();
         presenter.setMenuFragment(this);
         configureRecyclerView();
         presenter.retrieveData();
@@ -46,10 +50,12 @@ public class FragmentMenu extends Fragment {
 
     public void printData(ArrayList<Category> data){
         this.data = data;
+        pBean.setData(data);
         adapter.updateItem(data);
     }
 
-    public void launchDetail(){
+    public void launchDetail(Category category){
+        pBean.setCategory(category);
         Intent intent = ProductTabActivity_.intent(this).get();
         startActivity(intent);
     }

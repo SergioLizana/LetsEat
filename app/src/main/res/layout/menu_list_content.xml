@@ -5,7 +5,7 @@
 
     <data>
         <variable name="category" type="ikigaiworks.letseat.model.Category"/>
-        <variable name="presenter" type="ikigaiworks.letseat.ui.presenters.menu.MenuFragmentPresenterImpl" />
+        <variable name="presenter" type="ikigaiworks.letseat.ui.presenters.menu.CategoryFragmentPresenterImpl" />
     </data>
 
     <android.support.constraint.ConstraintLayout

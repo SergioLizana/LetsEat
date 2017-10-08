@@ -5,45 +5,55 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.app.BaseActivity;
-import ikigaiworks.letseat.ui.view.fragments.product.ProductFragment;
+import ikigaiworks.letseat.model.Category;
+import ikigaiworks.letseat.model.beans.ProductsBean;
+import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList;
+import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList_;
 
 @EActivity(R.layout.activity_product_tab)
 public class ProductTabActivity extends BaseActivity {
 
-
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    @ViewById(R.id.tabs)
+    protected TabLayout tabLayout;
+    @ViewById(R.id.viewpager)
+    protected ViewPager viewPager;
+    @Bean
+    protected ProductsBean pBean;
 
     @AfterViews
     void init(){
         addToolbar();
         setToolbarTitle("Product");
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ProductFragment(), "ONE");
-        adapter.addFragment(new ProductFragment(), "TWO");
-        adapter.addFragment(new ProductFragment(), "THREE");
+        if(pBean.getCategory().getSubtype()== null){
+            Fragment frag = FragmentProductList_.builder().category(pBean.getCategory()).build();
+            adapter.addFragment(frag,pBean.getCategory().getName());
+        }else{
+           Map<String,Category> subCat = pBean.getCategory().getSubtype();
+            for(Category cat: subCat.values()){
+                Fragment frag = FragmentProductList_.builder().category(cat).build();
+                adapter.addFragment(frag,cat.getName());
+            }
+
+        }
         viewPager.setAdapter(adapter);
     }
 

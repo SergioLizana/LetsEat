@@ -1,12 +1,13 @@
 package ikigaiworks.letseat.model;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * Created by sergiolizanamontero on 25/8/17.
  */
 
-public class Category {
+public class Category implements Serializable{
 
     private Double discount;
     private String name;
