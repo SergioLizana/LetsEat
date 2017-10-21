@@ -12,6 +12,7 @@
     <color name="soft_orange">#f07241</color>
     <color name="dark_orange">#cb5246</color>
     <color name="background_grey">#F5F5F5</color>
+    <color name="toolbar_text_color">#FFFFFF</color>
 
 
 </resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="java.lang.String"/>
+        <variable
+            name="producto"
+            type="ikigaiworks.letseat.model.Producto" />
+
+        <variable
+            name="presenter"
+            type="ikigaiworks.letseat.ui.presenters.menu.ProductListFragmentPresenterImpl" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#FFF"
+        android:onClick="@{() -> presenter.onClickEvent(producto)}">>
+
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="140dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            tools:src="@drawable/product"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@{producto.image}" />
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@{producto.name}"
+            android:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.441"
+            app:layout_constraintLeft_toRightOf="@+id/product_image"
+            app:layout_constraintRight_toLeftOf="@+id/product_prize"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Café Expresso"
+            app:layout_constraintVertical_bias="0.504" />
+
+        <TextView
+            android:id="@+id/product_prize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="41dp"
+            android:layout_marginTop="8dp"
+            android:textSize="19sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:text="@{String.valueOf(safeUnbox(producto.price))}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="19.05€" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

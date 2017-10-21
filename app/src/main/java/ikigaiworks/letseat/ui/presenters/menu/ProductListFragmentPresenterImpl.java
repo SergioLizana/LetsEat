@@ -49,6 +49,10 @@ public class ProductListFragmentPresenterImpl implements Presenter {
 
     @Override
     public void printData(Object object) {
-        fragmentProductList.printData((List<Producto>)object);
+        fragmentProductList.printData((ArrayList<Producto>)object);
+    }
+
+    public void onClickEvent(Producto producto){
+
     }
 }

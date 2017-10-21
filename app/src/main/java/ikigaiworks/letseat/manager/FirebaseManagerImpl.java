@@ -7,14 +7,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.yarolegovich.discretescrollview.transform.Pivot;
 
 import org.androidannotations.annotations.EBean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Menu;
+import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.Presenter;
 
 /**
@@ -62,30 +66,8 @@ public class FirebaseManagerImpl implements FirebaseManager {
         menu.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("succes",dataSnapshot.toString());
-
-           //     Log.d("Firebase Category",category.getName());
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    Menu menu = postSnapshot.getValue(Menu.class);
-                    presenter.printData(menu);
-                }
-
-//                if (category.getsubtype() != null) {
-//                    for (String key : category.getsubtype().keySet()) {
-//                        Menu menu = dataSnapshot.child(key).getValue(Menu.class);
-//                        for (String keyProd: menu.getProducts().keySet()){
-//                            getProductById(keyProd);
-//                        }
-//
-//                    }
-//
-//                }else{
-//                    Menu menu1 = dataSnapshot.child(category.getReference()).getValue(Menu.class);
-//                    for (String keyProd: menu1.getProducts().keySet()){
-//                        getProductById(keyProd);
-//                    }
-//                }
-
+                Menu menu = dataSnapshot.getValue(Menu.class);
+                presenter.printData(getProductByMap(menu.getProducts()));
             }
 
             @Override
@@ -93,6 +75,16 @@ public class FirebaseManagerImpl implements FirebaseManager {
                 Log.d("error",databaseError.toString());
             }
         });
+    }
+
+    private ArrayList<Producto> getProductByMap(Map<String,Producto> map){
+
+        ArrayList<Producto> productos = new ArrayList<>();
+        for (Producto p : map.values()) {
+            productos.add(p);
+        }
+
+        return productos;
     }
 
     @Override

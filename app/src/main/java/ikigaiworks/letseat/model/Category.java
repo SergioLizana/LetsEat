@@ -14,6 +14,7 @@ public class Category implements Serializable{
     private String reference;
     private int order;
     private String image;
+    private String header;
     private Map<String, Category> subtype;
 
     public Category(Double discount, String name, String reference, Map<String, Category> subtype) {
@@ -21,6 +22,16 @@ public class Category implements Serializable{
         this.discount = discount;
         this.name = name;
         this.reference = reference;
+        this.subtype = subtype;
+    }
+
+    public Category(Double discount, String name, String reference, int order, String image, String header, Map<String, Category> subtype) {
+        this.discount = discount;
+        this.name = name;
+        this.reference = reference;
+        this.order = order;
+        this.image = image;
+        this.header = header;
         this.subtype = subtype;
     }
 
@@ -76,4 +87,11 @@ public class Category implements Serializable{
         this.reference = reference;
     }
 
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
 }

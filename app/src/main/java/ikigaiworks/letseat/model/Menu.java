@@ -1,9 +1,6 @@
 package ikigaiworks.letseat.model;
 
-import com.google.firebase.database.IgnoreExtraProperties;
-
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Menu implements Serializable{
