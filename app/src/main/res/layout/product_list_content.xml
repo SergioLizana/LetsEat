@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="#FFF"
-        android:onClick="@{() -> presenter.onClickEvent(producto)}">>
+        android:onClick="@{() -> presenter.onClickEvent(producto)}">
 
 
         <ImageView
@@ -49,7 +49,7 @@
             tools:text="Café Expresso"
             app:layout_constraintVertical_bias="0.504" />
 
-        <TextView
+        <ikigaiworks.letseat.ui.view.customview.PriceTextView
             android:id="@+id/product_prize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
