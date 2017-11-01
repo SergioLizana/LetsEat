@@ -25,6 +25,7 @@ import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.menu.CategoryFragmentPresenterImpl;
 import ikigaiworks.letseat.ui.presenters.menu.ProductListFragmentPresenterImpl;
+import ikigaiworks.letseat.ui.view.activities.ProductTabActivity;
 import ikigaiworks.letseat.ui.view.adapters.MenuAdapter;
 import ikigaiworks.letseat.ui.view.adapters.MenuListAdapter;
 
@@ -50,6 +51,8 @@ public class FragmentProductList extends Fragment {
     @AfterViews
     void init(){
         data = new ArrayList<>();
+        presenter = new ProductListFragmentPresenterImpl(category);
+        presenter.setFragmentProductList(this);
         configureRecyclerView();
         retrieveData();
     }
@@ -62,7 +65,10 @@ public class FragmentProductList extends Fragment {
     }
 
 
+    public void showDialog(Producto producto){
 
+        ((ProductTabActivity)getActivity()).showDialogProductos(producto);
+    }
 
     public void printData(ArrayList<Producto> data){
         this.data = data;
@@ -70,8 +76,6 @@ public class FragmentProductList extends Fragment {
     }
 
     private void retrieveData(){
-        presenter = new ProductListFragmentPresenterImpl(category);
-        presenter.setFragmentProductList(this);
-        presenter.retrieveData();
+        presenter.launchOperation();
     }
 }

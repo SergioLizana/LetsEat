@@ -1,5 +1,7 @@
 package ikigaiworks.letseat.ui.presenters.main;
 
+import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import org.androidannotations.annotations.EBean;
@@ -13,12 +15,15 @@ import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
  * Created by sergiolizanamontero on 21/9/17.
  */
 
-public class MainFragmentPresenterImpl  implements Presenter  {
+public class MainFragmentPresenterImpl  implements MainFragmentPresenter  {
 
     Carrusel carrusel;
     FragmentMain fragmentMain;
+    Context c;
 
-    public MainFragmentPresenterImpl(){
+    public MainFragmentPresenterImpl(Context c, FragmentMain fragmentMain){
+        this.fragmentMain = fragmentMain;
+        this.c = c;
 
     }
 
@@ -43,20 +48,20 @@ public class MainFragmentPresenterImpl  implements Presenter  {
     }
 
     @Override
-    public void retrieveData() {
+    public void retrieveSlides() {
         if (carrusel != null){
-            printData(carrusel);
+            printSlides(carrusel);
         }else{
             carrusel = Carrusel.newInstance(fragmentMain.getContext());
-            printData(carrusel);
+            printSlides(carrusel);
         }
 
     }
 
     @Override
-    public void printData(Object object) {
+    public void printSlides(Carrusel carrusel) {
         if (fragmentMain != null) {
-            fragmentMain.printCarrusel((Carrusel)object);
+            fragmentMain.printCarrusel(carrusel);
         }
     }
 }

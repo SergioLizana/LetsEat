@@ -34,8 +34,8 @@ public class FirebaseManagerImpl implements FirebaseManager {
     }
 
     @Override
-    public void getCategories(final Presenter presenter) {
-        final List<Category> categoryList = new ArrayList<Category>();
+    public void getCategories(final Presenter.OperationCategories listener) {
+        final ArrayList<Category> categoryList = new ArrayList<Category>();
         DatabaseReference myRef = database.getReference("CATEGORIES");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -44,7 +44,7 @@ public class FirebaseManagerImpl implements FirebaseManager {
                     Category category = postSnapshot.getValue(Category.class);
                     categoryList.add(category);
                 }
-                presenter.printData(categoryList);
+                listener.onCategoriesReceived(categoryList);
             }
 
             @Override
@@ -56,18 +56,18 @@ public class FirebaseManagerImpl implements FirebaseManager {
     }
 
     @Override
-    public void getSubCategories(Category category, Presenter presenter) {
+    public void getSubCategories(Category category, final Presenter.OperationCategories listener) {
 
     }
 
     @Override
-    public void getProductos(Category category, final Presenter presenter) {
+    public void getProductos(Category category, final Presenter.OperationProducts listener) {
         DatabaseReference menu =  database.getReference("MENU").child(category.getReference());
         menu.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Menu menu = dataSnapshot.getValue(Menu.class);
-                presenter.printData(getProductByMap(menu.getProducts()));
+                listener.onProductsReceived(getProductByMap(menu.getProducts()));
             }
 
             @Override
@@ -88,7 +88,19 @@ public class FirebaseManagerImpl implements FirebaseManager {
     }
 
     @Override
-    public void getProducto(int idProducto, Presenter presenter) {
+    public void getProducto(String idProducto, final Presenter.OperationProduct listener) {
+        DatabaseReference menu =  database.getReference("PRODUCTS").child(idProducto);
+        menu.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Producto producto = dataSnapshot.getValue(Producto.class);
+                listener.onProductReceived(producto);
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("error",databaseError.toString());
+            }
+        });
     }
 }

@@ -15,11 +15,8 @@ import java.util.ArrayList;
 
 import ikigaiworks.letseat.BR;
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.databinding.MenuListContentBinding;
 import ikigaiworks.letseat.databinding.ProductListContentBinding;
-import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Producto;
-import ikigaiworks.letseat.ui.presenters.menu.CategoryFragmentPresenterImpl;
 import ikigaiworks.letseat.ui.presenters.menu.ProductListFragmentPresenterImpl;
 
 /**

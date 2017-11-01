@@ -1,5 +1,6 @@
 package ikigaiworks.letseat.ui.view.activities;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,9 +21,12 @@ import java.util.Map;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.app.BaseActivity;
-import ikigaiworks.letseat.databinding.ActivityProductTabBinding;
+//import ikigaiworks.letseat.databinding.ActivityProductTabBinding;
 import ikigaiworks.letseat.model.Category;
+import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.model.beans.ProductsBean;
+import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment;
+import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment_;
 import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList;
 import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList_;
 
@@ -48,6 +52,12 @@ public class ProductTabActivity extends BaseActivity {
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
         setHeaderImage();
+    }
+
+    public void showDialogProductos(Producto p){
+        android.app.FragmentManager fm = getFragmentManager();
+        MyDialogFragment dialogFragment = MyDialogFragment_.builder().mProduct(p).build();
+        dialogFragment.show(fm, "Sample Fragment");
     }
 
 

@@ -14,10 +14,11 @@
             type="ikigaiworks.letseat.ui.presenters.menu.ProductListFragmentPresenterImpl" />
     </data>
 
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="#FFF"
+        android:background="@drawable/border_style"
         android:onClick="@{() -> presenter.onClickEvent(producto)}">
 
 
@@ -64,5 +65,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="19.05€" />
+
     </android.support.constraint.ConstraintLayout>
+
 </layout>

@@ -10,7 +10,6 @@ import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
 public interface MainFragmentPresenter {
 
     void retrieveSlides();
-    void setMainFragmentActivity(FragmentMain fragmentMain);
     void printSlides(Carrusel carrusel);
 
 

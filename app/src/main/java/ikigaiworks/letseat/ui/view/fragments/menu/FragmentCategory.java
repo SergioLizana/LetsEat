@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -27,8 +29,11 @@ public class FragmentCategory extends Fragment {
     CategoryFragmentPresenterImpl presenter;
     ArrayList<Category> data;
     MenuAdapter adapter;
+
     @ViewById(R.id.recyler_menu_categorias)
     protected RecyclerView recyclerView;
+    @ViewById(R.id.progressbar)
+    protected ProgressBar progressBar;
     @Bean
     ProductsBean pBean;
 
@@ -38,7 +43,8 @@ public class FragmentCategory extends Fragment {
         presenter = new CategoryFragmentPresenterImpl();
         presenter.setMenuFragment(this);
         configureRecyclerView();
-        presenter.retrieveData();
+        progressBar.setVisibility(View.VISIBLE);
+        presenter.launchOperation();
     }
 
     private void configureRecyclerView(){
@@ -52,6 +58,7 @@ public class FragmentCategory extends Fragment {
         this.data = data;
         pBean.setData(data);
         adapter.updateItem(data);
+        progressBar.setVisibility(View.GONE);
     }
 
     public void launchDetail(Category category){

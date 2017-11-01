@@ -21,6 +21,7 @@ import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.databinding.CarruselSlideBinding;
 import ikigaiworks.letseat.model.CarruselSlide;
 import ikigaiworks.letseat.ui.presenters.Presenter;
+import ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenter;
 
 
 /**
@@ -31,12 +32,12 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
 
     private ArrayList<CarruselSlide> data;
     private Context context;
-    private Presenter presenter;
+    private MainFragmentPresenter presenter;
     private LayoutInflater inflater;
     private CarruselSlideBinding binding;
 
 
-    public CarruselAdapter(ArrayList<CarruselSlide> data , Context context, Presenter presenter){
+    public CarruselAdapter(ArrayList<CarruselSlide> data , Context context, MainFragmentPresenter presenter){
         this.data = data;
         this.context = context;
         this.presenter = presenter;
@@ -100,7 +101,7 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
 
         }
 
-        public void bind(final CarruselSlide slide, Presenter presenter) {
+        public void bind(final CarruselSlide slide, MainFragmentPresenter presenter) {
             binding.setVariable(BR.slide, slide);
             binding.setVariable(BR.presenter,presenter);
             binding.executePendingBindings();

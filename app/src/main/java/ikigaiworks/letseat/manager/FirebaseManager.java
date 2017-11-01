@@ -12,9 +12,9 @@ import ikigaiworks.letseat.ui.presenters.Presenter;
 
 public interface FirebaseManager {
 
-    void getCategories(Presenter presenter);
-    void getSubCategories(Category category , Presenter presenter);
-    void getProductos(Category category ,Presenter presenter);
-    void getProducto(int idProducto, Presenter presenter);
+    void getCategories(final Presenter.OperationCategories listener);
+    void getSubCategories(Category category , final Presenter.OperationCategories listener);
+    void getProductos(Category category ,final Presenter.OperationProducts listener);
+    void getProducto(String idProducto, final Presenter.OperationProduct listener);
 
 }

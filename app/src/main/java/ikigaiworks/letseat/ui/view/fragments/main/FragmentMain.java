@@ -46,7 +46,7 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
 
     @AfterViews
     protected void init(){
-        presenter = new MainFragmentPresenterImpl();
+        presenter = new MainFragmentPresenterImpl(getActivity().getApplicationContext(),this);
         presenter.setFragmentMain(this);
         getActivity().setTitle("Taste Bakery");
         initCarruselConf();
@@ -56,7 +56,7 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
         adapter = new CarruselAdapter(mainBean.getData(),getActivity().getApplicationContext(),presenter);
         infiniteAdapter = InfiniteScrollAdapter.wrap(adapter);
         buildScrollView();
-        presenter.retrieveData();
+        presenter.retrieveSlides();
     }
 
     private void buildScrollView(){
