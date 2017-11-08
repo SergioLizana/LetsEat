@@ -9,6 +9,7 @@
         <item name="android:windowActionBarOverlay">false</item>
         <item name="windowActionBarOverlay">false</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:spinnerStyle">@style/ThemeSpinner</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -28,6 +29,18 @@
         <item name="colorPrimary">@color/transparent</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ThemeSpinner">
+        <!-- Color when pressed -->
+        <item name="android:colorAccent">@color/soft_orange</item>
+        <!-- Default color for the dropdown arrow and line -->
+        <item name="android:colorControlNormal">@color/soft_orange</item>
+        <item name="colorAccent">@color/soft_orange</item>
+        <!-- Default color for the dropdown arrow and line -->
+        <item name="colorControlNormal">@color/soft_orange</item>
+        <item name="android:colorActivatedHighlight">@color/soft_orange</item>
+        <item name="android:color">@color/soft_orange</item>
     </style>
 
     <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">

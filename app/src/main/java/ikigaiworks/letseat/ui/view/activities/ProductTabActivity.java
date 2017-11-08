@@ -54,9 +54,14 @@ public class ProductTabActivity extends BaseActivity {
         setHeaderImage();
     }
 
-    public void showDialogProductos(Producto p){
+    public void showDialogProductos(Producto p) {
         android.app.FragmentManager fm = getFragmentManager();
         MyDialogFragment dialogFragment = MyDialogFragment_.builder().mProduct(p).build();
+        dialogFragment.setAllowEnterTransitionOverlap(true);
+        dialogFragment.setAllowReturnTransitionOverlap(true);
+        if (dialogFragment.getDialog() != null){
+            dialogFragment.getDialog().setCanceledOnTouchOutside(true);
+        }
         dialogFragment.show(fm, "Sample Fragment");
     }
 

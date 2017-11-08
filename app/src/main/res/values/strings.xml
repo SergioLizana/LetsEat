@@ -30,6 +30,6 @@
     <string name="desc_pedidos">Revisa el estado de tus pedidos o ¡pide de nuevo aquel plato que\n tanto te gustó!</string>
     <string name="desc_menu">"Descrubre toda nuestra carta. Desayunos, deliciosos dulces,\n pastas y muchos más!"</string>
     <string name="desc_promos">"¿Tienes cupones de descuento? ¡Consulta todas nuestras promos\n y pide más por menos!"</string>
-
+    <string name="extra">Extras: </string>
 
 </resources>

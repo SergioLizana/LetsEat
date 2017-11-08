@@ -1,10 +1,8 @@
 package ikigaiworks.letseat.utils;
 
 import android.app.Application;
+import android.content.Context;
 
-/**
- * Created by yarolegovich on 08.03.2017.
- */
 
 public class App extends Application {
 
@@ -14,10 +12,17 @@ public class App extends Application {
         return instance;
     }
 
+    private static Context context;
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
         DiscreteScrollViewOptions.init(this);
+        App.context = getApplicationContext();
     }
+
+    public static Context getAppContext() {
+        return App.context;
+    }
+
 }

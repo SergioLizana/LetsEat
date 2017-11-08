@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 def AAVersion = '4.3.1'
-def supportVersion = '26.0.2'
+def supportVersion = '26.1.0'
 def butterKnifeVersion = '8.7.0'
 def glideVersion = '3.7.0'
 def constraintVersion = '1.0.2'
@@ -9,6 +9,8 @@ def firebaseVersion = '10.2.6'
 def databindingVersion = '2.3.0'
 def jUnitVersion = '4.12'
 def discreteScrollVersion = '1.2.0'
+def gsonVersion = '2.8.2'
+def materialSpinnerVersion = '1.1.0'
 
 buildscript {
     repositories {
@@ -62,9 +64,12 @@ dependencies {
     compile "com.google.firebase:firebase-core:$firebaseVersion"
     compile "com.google.firebase:firebase-database:$firebaseVersion"
     compile "com.google.firebase:firebase-storage:$firebaseVersion"
+    compile "com.weiwangcn.betterspinner:library-material:$materialSpinnerVersion"
     testCompile "junit:junit:$jUnitVersion"
+    compile "com.google.code.gson:gson:$gsonVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
     annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
     annotationProcessor "com.android.databinding:compiler:$databindingVersion"
+
 }
 apply plugin: 'com.google.gms.google-services'
