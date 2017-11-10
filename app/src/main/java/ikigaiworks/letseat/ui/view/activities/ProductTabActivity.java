@@ -1,17 +1,21 @@
 package ikigaiworks.letseat.ui.view.activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
@@ -25,13 +29,14 @@ import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.model.beans.ProductsBean;
+import ikigaiworks.letseat.ui.view.customview.CartFloatingButton;
 import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment;
 import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment_;
 import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList;
 import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList_;
 
 @EActivity(R.layout.activity_product_tab)
-public class ProductTabActivity extends BaseActivity {
+public class ProductTabActivity extends BaseActivity implements DialogInterface.OnDismissListener  {
 
     @ViewById(R.id.tabs)
     protected TabLayout tabLayout;
@@ -39,6 +44,8 @@ public class ProductTabActivity extends BaseActivity {
     protected ViewPager viewPager;
     @ViewById(R.id.image_header)
     protected ImageView mHeaderImage;
+    @ViewById(R.id.cart_button)
+    protected CartFloatingButton mCartFloatingButton;
 
 
     @Bean
@@ -86,6 +93,16 @@ public class ProductTabActivity extends BaseActivity {
 
         }
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialogInterface) {
+        mCartFloatingButton.refreshCartCount();
+    }
+
+    @Click(R.id.cart_button)
+    void onClick(){
+        Toast.makeText(this,"clicked",Toast.LENGTH_LONG).show();
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

@@ -97,7 +97,7 @@
         <Spinner
             android:id="@+id/spinner_extras"
             style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:layout_width="220dp"
+            android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="28dp"
             android:backgroundTint="@color/soft_orange"

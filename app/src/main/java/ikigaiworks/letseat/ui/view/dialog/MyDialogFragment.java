@@ -1,5 +1,6 @@
 package ikigaiworks.letseat.ui.view.dialog;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -136,6 +137,15 @@ public class MyDialogFragment extends DialogFragment{
         mExtras.setAdapter(adapter);
     }
 
+    @Override
+    public void onDismiss(final DialogInterface dialog) {
+        super.onDismiss(dialog);
+        final Activity activity = getActivity();
+        if (activity instanceof DialogInterface.OnDismissListener) {
+            ((DialogInterface.OnDismissListener) activity).onDismiss(dialog);
+        }
+    }
+
     @Click(R.id.addToCart)
     void addToCart(){
         if (mExtras.getVisibility() == View.GONE){
@@ -143,8 +153,6 @@ public class MyDialogFragment extends DialogFragment{
         }else{
             CommonUtils.addToCart(CommonUtils.parseProductToCart(mProduct,mExtras.getSelectedItem().toString()));
         }
-        ArrayList<ProductToCart> arrayList = CommonUtils.getCart();
-        Log.d("ads","sdfa");
     }
 
 

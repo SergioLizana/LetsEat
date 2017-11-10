@@ -26,6 +26,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class CommonUtils {
 
+    ArrayList<ProductToCart> cartList;
+
     public static ArrayList<String> getExtraAsString(Map<String,Extra> extras) {
         ArrayList<Extra> ext = new ArrayList<Extra>(extras.values());
         ArrayList _return = new ArrayList<String>();
@@ -57,9 +59,10 @@ public class CommonUtils {
         SharedPreferences prefs = App.getAppContext().getSharedPreferences("cart",Context.MODE_PRIVATE);
         Type listType = new TypeToken<ArrayList<ProductToCart>>(){}.getType();
 
-        ArrayList<ProductToCart> yourClassList = new Gson().fromJson(prefs.getString("listCart",""), listType);
+        ArrayList<ProductToCart> cartList = new Gson().fromJson(prefs.getString("listCart",""), listType);
 
-        return yourClassList;
+
+        return cartList!=null?cartList:new ArrayList<ProductToCart>();
     }
 
     public static ProductToCart parseProductToCart(Producto p,String extra){

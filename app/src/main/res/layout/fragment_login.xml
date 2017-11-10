@@ -74,7 +74,6 @@
                     android:shadowColor="@color/soft_orange"
                     android:textColor="@android:color/white"
                     android:theme="@style/Autocomplete"
-                    android:imeActionId="@+id/fragmentLogin"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
