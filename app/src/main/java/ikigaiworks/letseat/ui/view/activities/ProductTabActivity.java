@@ -1,13 +1,13 @@
 package ikigaiworks.letseat.ui.view.activities;
 
 import android.content.DialogInterface;
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,15 +25,16 @@ import java.util.Map;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.app.BaseActivity;
-//import ikigaiworks.letseat.databinding.ActivityProductTabBinding;
 import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.model.beans.ProductsBean;
 import ikigaiworks.letseat.ui.view.customview.CartFloatingButton;
 import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment;
 import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment_;
-import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList;
 import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList_;
+import ikigaiworks.letseat.utils.CommonUtils;
+
+//import ikigaiworks.letseat.databinding.ActivityProductTabBinding;
 
 @EActivity(R.layout.activity_product_tab)
 public class ProductTabActivity extends BaseActivity implements DialogInterface.OnDismissListener  {
@@ -59,6 +60,7 @@ public class ProductTabActivity extends BaseActivity implements DialogInterface.
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
         setHeaderImage();
+        mCartFloatingButton.refreshCartCount();
     }
 
     public void showDialogProductos(Producto p) {
@@ -100,9 +102,12 @@ public class ProductTabActivity extends BaseActivity implements DialogInterface.
         mCartFloatingButton.refreshCartCount();
     }
 
+
     @Click(R.id.cart_button)
     void onClick(){
-        Toast.makeText(this,"clicked",Toast.LENGTH_LONG).show();
+        Intent intent = CartActivity_.intent(this).get();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

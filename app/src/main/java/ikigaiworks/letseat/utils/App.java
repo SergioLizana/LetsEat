@@ -13,12 +13,26 @@ public class App extends Application {
     }
 
     private static Context context;
+
+    public static boolean appInit = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
         DiscreteScrollViewOptions.init(this);
         App.context = getApplicationContext();
+        appInit = true;
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
     }
 
     public static Context getAppContext() {

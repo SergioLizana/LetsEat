@@ -1,7 +1,6 @@
 package ikigaiworks.letseat.ui.presenters;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Producto;

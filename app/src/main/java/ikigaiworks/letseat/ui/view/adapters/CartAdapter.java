@@ -4,71 +4,81 @@ import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.databinding.generated.callback.OnClickListener;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
-
-import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 
 import ikigaiworks.letseat.BR;
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.databinding.CartListContentBinding;
 import ikigaiworks.letseat.databinding.ProductListContentBinding;
-import ikigaiworks.letseat.model.Producto;
+import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.ui.presenters.menu.ProductListFragmentPresenterImpl;
+import ikigaiworks.letseat.ui.view.fragments.cart.FragmentCartList;
+import ikigaiworks.letseat.utils.CommonUtils;
 
 /**
  * Created by sergiolizanamontero on 12/10/17.
  */
 
-public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHolder> {
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
-    private ArrayList<Producto> data;
+    private ArrayList<ProductToCart> data;
     private Context context;
-    private ProductListFragmentPresenterImpl presenter;
     private LayoutInflater inflater;
-    private ProductListContentBinding binding;
+    private CartListContentBinding binding;
+    private int position;
+    private FragmentCartList fragmentCartList;
 
-    public MenuListAdapter(ArrayList<Producto> data , Context context, ProductListFragmentPresenterImpl presenter){
+    public CartAdapter(ArrayList<ProductToCart> data , Context context,FragmentCartList fragmentCartList){
         this.data = data;
         this.context = context;
-        this.presenter = presenter;
         inflater = LayoutInflater.from(context);
+        this.fragmentCartList = fragmentCartList;
     }
-    public MenuListAdapter(ArrayList<Producto> data){
+    public CartAdapter(ArrayList<ProductToCart> data){
         this.data = data;
     }
 
 
     @Override
-    public MenuListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.product_list_content,parent,false);
-        return new MenuListAdapter.ViewHolder(binding);
+    public CartAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.cart_list_content,parent,false);
+        return new CartAdapter.ViewHolder(binding);
 
     }
 
     @Override
-    public void onBindViewHolder(MenuListAdapter.ViewHolder holder, int position) {
-        final Producto producto = data.get(position);
-        holder.bind(producto,presenter);
+    public void onBindViewHolder(CartAdapter.ViewHolder holder, int position) {
+        this.position = position;
+        final ProductToCart producto = data.get(position);
+        holder.bind(producto,fragmentCartList);
 
     }
 
-    public void addItem(int position , Producto item){
+    public void addItem(int position , ProductToCart item){
         data.add(position,item);
     }
 
-    public void updateItem(ArrayList<Producto> data){
+    public void updateItem(ArrayList<ProductToCart> data){
         this.data = data;
         notifyDataSetChanged();
     }
 
-    public Producto getItem(int adapterPosition){
+    public void removeItem(int position){
+        CommonUtils.removeFromCartPosition(position);
+        data.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public ProductToCart getItem(int adapterPosition){
         return data.get(adapterPosition);
     }
 
@@ -78,6 +88,8 @@ public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHo
                 .load(url)
                 .into(view);
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -96,9 +108,9 @@ public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHo
 
         }
 
-        public void bind (Producto item, ProductListFragmentPresenterImpl p){
+        public void bind (ProductToCart item, FragmentCartList fragmentCartList){
             binding.setVariable(BR.producto, item);
-            binding.setVariable(BR.presenter,p);
+            binding.setVariable(BR.fragment,fragmentCartList);
             binding.executePendingBindings();
         }
 

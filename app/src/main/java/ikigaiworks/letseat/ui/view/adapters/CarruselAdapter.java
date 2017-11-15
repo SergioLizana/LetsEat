@@ -10,9 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -20,7 +17,6 @@ import ikigaiworks.letseat.BR;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.databinding.CarruselSlideBinding;
 import ikigaiworks.letseat.model.CarruselSlide;
-import ikigaiworks.letseat.ui.presenters.Presenter;
 import ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenter;
 
 

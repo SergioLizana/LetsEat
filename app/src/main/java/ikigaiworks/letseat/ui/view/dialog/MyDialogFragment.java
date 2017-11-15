@@ -5,14 +5,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,7 +21,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -33,10 +29,8 @@ import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.view.customview.PriceTextView;
 import ikigaiworks.letseat.utils.CommonUtils;
@@ -70,11 +64,11 @@ public class MyDialogFragment extends DialogFragment{
     View line2;
     @ViewById(R.id.extraText)
     TextView extraText;
-
+    AlertDialog.Builder builder;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder = new AlertDialog.Builder(getActivity());
         final LayoutInflater inflater = getActivity().getLayoutInflater();
         view = inflater.inflate(R.layout.product_detail, null);
         builder.setView(view);
@@ -123,8 +117,11 @@ public class MyDialogFragment extends DialogFragment{
 
                     @Override
                     public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                        loader.setVisibility(View.INVISIBLE);
-                        mProductImage.setVisibility(View.VISIBLE);
+                        if (loader != null) {
+                            loader.setVisibility(View.INVISIBLE);
+                            mProductImage.setVisibility(View.VISIBLE);
+
+                        }
                         return false;
                     }
                 })
@@ -153,6 +150,7 @@ public class MyDialogFragment extends DialogFragment{
         }else{
             CommonUtils.addToCart(CommonUtils.parseProductToCart(mProduct,mExtras.getSelectedItem().toString()));
         }
+        dismiss();
     }
 
 

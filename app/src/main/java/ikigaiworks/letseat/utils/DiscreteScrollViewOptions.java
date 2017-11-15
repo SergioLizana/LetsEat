@@ -3,7 +3,6 @@ package ikigaiworks.letseat.utils;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;

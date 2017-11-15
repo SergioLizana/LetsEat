@@ -1,13 +1,11 @@
 package ikigaiworks.letseat.ui.presenters.menu;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import ikigaiworks.letseat.manager.FirebaseManagerImpl;
 import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.Presenter;
-import ikigaiworks.letseat.ui.view.fragments.menu.FragmentCategory;
 import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList;
 
 /**

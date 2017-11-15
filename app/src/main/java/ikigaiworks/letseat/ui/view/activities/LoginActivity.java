@@ -12,7 +12,6 @@ import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.ui.view.fragments.login.FragmentLogin_;
 import ikigaiworks.letseat.ui.view.fragments.login.FragmentRegistro_;
-import ikigaiworks.letseat.utils.LoginUtils;
 import ikigaiworks.letseat.utils.SwitchTrackTextDrawable;
 
 @EActivity(R.layout.activity_login)

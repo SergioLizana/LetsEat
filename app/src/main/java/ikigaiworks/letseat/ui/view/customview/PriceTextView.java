@@ -26,4 +26,9 @@ public class PriceTextView extends android.support.v7.widget.AppCompatTextView {
         CharSequence finalText = text + " €";
         super.setText(finalText, type);
     }
+
+    public void setNumber(double number){
+        CharSequence text = String.valueOf(number);
+        super.setText(text);
+    }
 }

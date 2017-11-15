@@ -7,7 +7,6 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by sergiolizanamontero on 25/8/17.

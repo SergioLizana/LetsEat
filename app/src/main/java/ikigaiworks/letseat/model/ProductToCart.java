@@ -14,16 +14,28 @@ public class ProductToCart implements Parcelable {
     private String reference;
     private String extra;
     private int id;
+    private String image;
 
     public ProductToCart() {
     }
 
-    public ProductToCart(String name, double price, double discount, String reference, String extra) {
+    public ProductToCart(int id, String name, double price, double discount, String reference, String extra,String image) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.discount = discount;
         this.reference = reference;
         this.extra = extra;
+        this.image = image;
+    }
+
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getName() {

@@ -1,8 +1,6 @@
 package ikigaiworks.letseat.utils;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 
 import java.util.Arrays;
 import java.util.List;

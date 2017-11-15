@@ -1,14 +1,10 @@
 package ikigaiworks.letseat.ui.presenters.main;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-
-import org.androidannotations.annotations.EBean;
 
 import ikigaiworks.letseat.model.Carrusel;
 import ikigaiworks.letseat.model.CarruselSlide;
-import ikigaiworks.letseat.ui.presenters.Presenter;
 import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
 
 /**

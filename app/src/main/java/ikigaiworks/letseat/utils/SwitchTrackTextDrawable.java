@@ -13,7 +13,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
-import android.test.suitebuilder.TestMethod;
 
 import ikigaiworks.letseat.R;
 

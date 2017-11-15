@@ -3,6 +3,7 @@ package ikigaiworks.letseat.model;
 import android.content.Context;
 
 import java.util.ArrayList;
+
 import ikigaiworks.letseat.R;
 /**
  * Created by sergiolizanamontero on 13/9/17.

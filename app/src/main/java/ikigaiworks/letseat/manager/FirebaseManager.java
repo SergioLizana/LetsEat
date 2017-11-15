@@ -1,9 +1,6 @@
 package ikigaiworks.letseat.manager;
 
-import java.util.List;
-
 import ikigaiworks.letseat.model.Category;
-import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.Presenter;
 
 /**

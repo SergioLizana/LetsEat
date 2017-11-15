@@ -2,11 +2,9 @@ package ikigaiworks.letseat.ui.view.fragments.main.bean;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
-import org.androidannotations.annotations.InstanceState;
 
 import java.util.ArrayList;
 
-import ikigaiworks.letseat.model.Carrusel;
 import ikigaiworks.letseat.model.CarruselSlide;
 
 /**
