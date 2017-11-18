@@ -25,18 +25,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/cart_button_float"-->
-            <!--android:layout_width="60dp"-->
-            <!--android:layout_height="60dp"-->
-            <!--android:elevation="0dp"-->
-            <!--android:src="@drawable/new_order"-->
-            <!--android:textColor="@android:color/white"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent" />-->
-
         <TextView
             android:id="@+id/item_number"
             android:layout_width="15dp"

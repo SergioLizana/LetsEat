@@ -145,7 +145,7 @@ public class MyDialogFragment extends DialogFragment{
 
     @Click(R.id.addToCart)
     void addToCart(){
-        if (mExtras.getVisibility() == View.GONE){
+        if (mExtras.getVisibility() == View.INVISIBLE){
             CommonUtils.addToCart(CommonUtils.parseProductToCart(mProduct,""));
         }else{
             CommonUtils.addToCart(CommonUtils.parseProductToCart(mProduct,mExtras.getSelectedItem().toString()));

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -88,7 +89,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 .load(url)
                 .into(view);
     }
-
+    @BindingAdapter({"android:visibility"})
+    public static void setVisibilityToExtra(TextView toExtra ,ProductToCart productToCart){
+        toExtra.setVisibility(productToCart.isExtraVisibility());
+    }
 
 
     @Override
@@ -110,7 +114,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
         public void bind (ProductToCart item, FragmentCartList fragmentCartList){
             binding.setVariable(BR.producto, item);
-            binding.setVariable(BR.fragment,fragmentCartList);
+            binding.setVariable(BR.fragment_cart,fragmentCartList);
             binding.executePendingBindings();
         }
 

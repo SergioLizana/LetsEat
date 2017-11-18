@@ -2,6 +2,7 @@ package ikigaiworks.letseat.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.view.View;
 
 /**
  * Created by sergiolizanamontero on 1/11/17.
@@ -13,22 +14,58 @@ public class ProductToCart implements Parcelable {
     private double discount;
     private String reference;
     private String extra;
-    private int id;
+    private int cartId;
+    private String productId;
     private String image;
+    private int extraVisibility;
+    private int quantity = 1;
 
     public ProductToCart() {
     }
 
-    public ProductToCart(int id, String name, double price, double discount, String reference, String extra,String image) {
-        this.id = id;
+    public ProductToCart(String productId , int cartId, String name, double price, double discount, String reference, String extra,String image) {
+        this.cartId = cartId;
+        this.productId = productId;
         this.name = name;
         this.price = price;
         this.discount = discount;
         this.reference = reference;
         this.extra = extra;
         this.image = image;
+        this.extraVisibility = extra==null||extra.isEmpty()? View.INVISIBLE: View.VISIBLE;
     }
 
+    public int getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int isExtraVisibility() {
+        return extraVisibility;
+    }
+
+    public void setExtraVisibility(int extraVisibility) {
+        this.extraVisibility = extraVisibility;
+    }
 
     public String getImage() {
         return image;
@@ -78,12 +115,17 @@ public class ProductToCart implements Parcelable {
         this.extra = extra;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof ProductToCart){
+            if(this.getReference().equals(((ProductToCart)obj).getReference())&& this.extra.equals(((ProductToCart)obj).getExtra())) {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
     @Override

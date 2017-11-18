@@ -3,6 +3,8 @@ package ikigaiworks.letseat.ui.view.customview;
 import android.content.Context;
 import android.util.AttributeSet;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by sergiolizanamontero on 22/10/17.
  */
@@ -23,12 +25,17 @@ public class PriceTextView extends android.support.v7.widget.AppCompatTextView {
 
     @Override
     public void setText(CharSequence text, BufferType type) {
-        CharSequence finalText = text + " €";
+        DecimalFormat df = new DecimalFormat("####,##.00€");
+        CharSequence finalText;
+        if(text!=null && !text.equals("")) {
+            finalText = df.format(Double.parseDouble(text.toString()));
+        }else{
+            finalText = text;
+        }
         super.setText(finalText, type);
     }
 
     public void setNumber(double number){
-        CharSequence text = String.valueOf(number);
-        super.setText(text);
+        super.setText(String.valueOf(number));
     }
 }

@@ -39,8 +39,7 @@ public class FragmentCartList extends Fragment  {
     void init(){
         productToCarts = CommonUtils.getCart();
         configureRecyclerView();
-        totalPrice.setNumber(CommonUtils.getCartPrice());
-        totalAmountProducts.setText(String.valueOf(CommonUtils.getCart().size()));
+        refreshCartFooter();
     }
 
     void configureRecyclerView(){
@@ -54,6 +53,12 @@ public class FragmentCartList extends Fragment  {
     int position = CommonUtils.getCartItemPosition(productToCart);
         if(position>=0) {
             ((CartAdapter) mRecyclerView.getAdapter()).removeItem(position);
+            refreshCartFooter();
         }
     }
+    public void refreshCartFooter(){
+        totalPrice.setNumber(CommonUtils.getCartPrice());
+        totalAmountProducts.setText(String.valueOf(CommonUtils.getCart().size()));
+    }
+
 }

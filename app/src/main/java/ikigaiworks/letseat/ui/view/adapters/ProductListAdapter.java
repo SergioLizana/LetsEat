@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -74,6 +75,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         Glide.with(view.getContext())
                 .load(url)
                 .into(view);
+    }
+
+    @BindingAdapter("bind:text")
+    public static void setExtraText(TextView view, String extra) {
+        view.setText("Extra: "+extra);
     }
 
     @Override

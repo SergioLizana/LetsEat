@@ -33,11 +33,21 @@ public class CommonUtils {
     }
 
     public static void addToCart(ProductToCart p){
+        boolean productAdded = false;
         SharedPreferences mPrefs = App.getAppContext().getSharedPreferences("cart",Context.MODE_PRIVATE);
-        ArrayList<ProductToCart> productos = new ArrayList<ProductToCart>(getCart());
-        productos.add(p);
+        ArrayList<ProductToCart> productsInCart = new ArrayList<ProductToCart>(getCart());
+        for(ProductToCart productInCart : productsInCart){
+            if (productInCart.equals(p)){
+                productInCart.setQuantity(productInCart.getQuantity()+1);
+                productAdded = true;
+                break;
+            }
+        }
+        if (!productAdded) {
+            productsInCart.add(p);
+        }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(productos);
+        String json = gson.toJson(productsInCart);
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString("listCart",json);
         editor.commit();
@@ -88,7 +98,7 @@ public class CommonUtils {
         double price = 0.0;
         if (cart!=null && cart.size()>0){
             for(ProductToCart productToCart : cart){
-                price = price + productToCart.getPrice();
+                price = price +(productToCart.getPrice()*productToCart.getQuantity());
             }
             return price;
         }else{
@@ -98,12 +108,12 @@ public class CommonUtils {
 
     public static int getCartItemPosition(ProductToCart productToCart){
         ArrayList<ProductToCart> cart = getCart();
-       return cart.size()>0?getIndexByProperty(productToCart.getId()):-1;
+       return cart.size()>0?getIndexByProperty(productToCart.getCartId()):-1;
     }
 
     private static int getIndexByProperty(int id) {
         for (int i = 0; i < getCart().size(); i++) {
-            if ( getCart().get(i).getId() == id) {
+            if ( getCart().get(i).getCartId() == id) {
                 return i;
             }
         }
@@ -117,8 +127,8 @@ public class CommonUtils {
             return lastId;
         }else{
             for(int i=0; i<cart.size(); i++){
-                if(cart.get(i).getId()>lastId){ //
-                    lastId = cart.get(i).getId();
+                if(cart.get(i).getCartId()>lastId){ //
+                    lastId = cart.get(i).getCartId();
                 }
             }
             return lastId+1;
@@ -126,7 +136,7 @@ public class CommonUtils {
     }
 
     public static ProductToCart parseProductToCart(Producto p,String extra){
-        return new ProductToCart(getLastId(),p.getName(),p.getPrice(),p.getDiscount(),p.getReference(),extra,p.getImage());
+        return new ProductToCart(p.getReference(),getLastId(),p.getName(),p.getPrice(),p.getDiscount(),p.getReference(),extra,p.getImage());
     }
 
 
