@@ -59,26 +59,26 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="0dp"
+            android:layout_marginTop="4dp"
             android:autoSizeTextType="uniform"
-            bind:text="@{producto.extra}"
-            android:visibility="@{producto}"
             android:textSize="12sp"
+            android:visibility="@{producto}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/product_name"
             app:layout_constraintTop_toBottomOf="@+id/product_name"
+            bind:text="@{producto.extra}"
             tools:text="Extras: Café expresso y huevos fritos" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:layout_marginStart="120dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
             android:autoSizeTextType="uniform"
             android:text="Price: "
-            android:textSize="17sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Price:" />
@@ -87,11 +87,11 @@
             android:id="@+id/product_prize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginStart="8dp"
             android:text="@{String.valueOf(safeUnbox(producto.price))}"
             android:textColor="@color/colorPrimary"
-            android:textSize="19sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -126,62 +126,50 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="92dp"
-            android:text="@{String.valueOf(safeUnbox(producto.quantity))}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.096" />
-
-        <android.support.design.widget.FloatingActionButton
+        <Button
             android:id="@+id/AddProductAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginTop="8dp"
-            android:clickable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/removeProductAmount"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.744"
-            app:srcCompat="@drawable/ic_add_white_24dp" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/removeProductAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
-            android:clickable="true"
+            android:background="@drawable/circle_image_add"
+            android:onClick="@{() -> fragment_cart.addToQuantity(producto)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.744"
-            app:srcCompat="@drawable/ic_remove_white_24dp" />
+            app:layout_constraintVertical_bias="0.914" />
+
+        <Button
+            android:id="@+id/removeProductAmount"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/circle_image_remove"
+            android:onClick="@{() -> fragment_cart.removeFromQuantity(producto)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/AddProductAmount"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.914" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="80dp"
+            android:id="@+id/quantity"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/circle"
             android:elevation="6dp"
-            android:paddingTop="1dp"
-            android:text="1"
+            android:paddingTop="3dp"
+            android:text="@{String.valueOf(safeUnbox(producto.quantity))}"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="4pt"
+            android:textSize="6pt"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1" />
 
     </android.support.constraint.ConstraintLayout>
 

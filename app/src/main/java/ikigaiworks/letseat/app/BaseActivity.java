@@ -53,6 +53,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         return drawer;
     }
 
+    public void replaceToArrow(){
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
     public void setToolbarTitle(String title){
         toolbar.setTitle(title);
     }

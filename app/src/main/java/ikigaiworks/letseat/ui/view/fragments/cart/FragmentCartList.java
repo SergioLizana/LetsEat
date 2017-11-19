@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.ProductToCart;
+import ikigaiworks.letseat.ui.view.activities.CartActivity;
 import ikigaiworks.letseat.ui.view.adapters.CartAdapter;
 import ikigaiworks.letseat.ui.view.adapters.ProductListAdapter;
 import ikigaiworks.letseat.ui.view.customview.PriceTextView;
@@ -56,6 +57,20 @@ public class FragmentCartList extends Fragment  {
             refreshCartFooter();
         }
     }
+
+    public void addToQuantity(ProductToCart productToCart){
+        CommonUtils.addToQuantity(productToCart);
+        adapter.updateItems(CommonUtils.getCart());
+        refreshCartFooter();
+    }
+
+    public void removeFromQuantity(ProductToCart productToCart){
+        CommonUtils.removeFromQuantity(productToCart);
+        adapter.updateItems(CommonUtils.getCart());
+        refreshCartFooter();
+    }
+
+
     public void refreshCartFooter(){
         totalPrice.setNumber(CommonUtils.getCartPrice());
         totalAmountProducts.setText(String.valueOf(CommonUtils.getCart().size()));

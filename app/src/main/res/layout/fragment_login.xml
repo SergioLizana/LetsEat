@@ -91,7 +91,7 @@
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:text="GO!"
-        android:background="@drawable/gradient"
+        android:background="@drawable/gradient_circle"
         android:textStyle="bold"
         android:textColor="#FFF"
         android:textSize="20dp"

@@ -111,6 +111,30 @@ public class CommonUtils {
        return cart.size()>0?getIndexByProperty(productToCart.getCartId()):-1;
     }
 
+    public static void addToQuantity(ProductToCart productToCart){
+        ArrayList<ProductToCart> cart = getCart();
+        for(ProductToCart product: cart){
+            if (product.equals(productToCart)){
+                product.setQuantity(product.getQuantity()+1);
+                break;
+            }
+        }
+        updateCart(cart);
+    }
+
+    public static void removeFromQuantity(ProductToCart productToCart){
+        ArrayList<ProductToCart> cart = getCart();
+        for(ProductToCart product: cart){
+            if (product.equals(productToCart)){
+                if (product.getQuantity()>1) {
+                    product.setQuantity(product.getQuantity() -1);
+                }
+                break;
+            }
+        }
+        updateCart(cart);
+    }
+
     private static int getIndexByProperty(int id) {
         for (int i = 0; i < getCart().size(); i++) {
             if ( getCart().get(i).getCartId() == id) {

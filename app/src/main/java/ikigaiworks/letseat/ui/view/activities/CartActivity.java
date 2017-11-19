@@ -20,7 +20,7 @@ public class CartActivity  extends BaseActivity {
 
     @AfterViews
     void init(){
-        addNavigationDrawer();
+        addToolbar();
         setToolbarTitle("Cart");
         setToolbarBackgroundColor(R.color.colorPrimary);
         if (findViewById(R.id.content_activity_cart) != null) {

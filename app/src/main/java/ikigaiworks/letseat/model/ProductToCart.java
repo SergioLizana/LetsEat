@@ -118,7 +118,10 @@ public class ProductToCart implements Parcelable {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof ProductToCart){
-            if(this.getReference().equals(((ProductToCart)obj).getReference())&& this.extra.equals(((ProductToCart)obj).getExtra())) {
+
+            if(this.getCartId() == ((ProductToCart)obj).getCartId() ||
+                    this.getReference().equals(((ProductToCart)obj).getReference())&&
+                            this.extra.equals(((ProductToCart)obj).getExtra())) {
                 return true;
             }else{
                 return false;

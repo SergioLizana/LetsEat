@@ -68,7 +68,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         data.add(position,item);
     }
 
-    public void updateItem(ArrayList<ProductToCart> data){
+    public void updateItems(ArrayList<ProductToCart> data){
         this.data = data;
         notifyDataSetChanged();
     }
