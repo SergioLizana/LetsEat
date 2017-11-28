@@ -1,6 +1,8 @@
 package ikigaiworks.letseat.ui.view.activities;
 
+import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 
 import org.androidannotations.annotations.AfterViews;
@@ -19,6 +21,12 @@ public class LoginActivity extends BaseActivity {
 
     @ViewById(R.id.mySwitch)
     Switch switchButton;
+    @ViewById(R.id.progressbar)
+    protected ProgressBar loader;
+    @ViewById(R.id.login_constraint_container)
+    protected View container;
+    @ViewById(R.id.login_image_background)
+    protected View background;
 
 
     @AfterViews
@@ -28,6 +36,10 @@ public class LoginActivity extends BaseActivity {
 
     @CheckedChange(R.id.mySwitch)
     void checkedChange(CompoundButton button, boolean isChecked) {
+        swapFragment(isChecked);
+    }
+
+    private void swapFragment(boolean isChecked){
         if (!isChecked){
             replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,"LOGINFRAGMENT",false,true);
         }else{
@@ -35,9 +47,35 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+    public void swapToLogin(){
+        if(switchButton.isChecked()) {
+            switchButton.setChecked(false);
+            swapFragment(false);
+        }
+    }
+
+    public void swapToSignUp(){
+        if(!switchButton.isChecked()) {
+            switchButton.setChecked(true);
+            swapFragment(true);
+        }
+    }
+
     private void initComponents(){
         switchButton.setTrackDrawable(new SwitchTrackTextDrawable(this,R.string.login,R.string.registro));
         replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,"LOGINFRAGMENT",false,false);
+    }
+
+    public void showLoader(){
+        background.setVisibility(View.INVISIBLE);
+        container.setVisibility(View.INVISIBLE);
+        loader.setVisibility(View.VISIBLE);
+    }
+
+    public void hideLoader(){
+        background.setVisibility(View.VISIBLE);
+        container.setVisibility(View.VISIBLE);
+        loader.setVisibility(View.GONE);
     }
 
 }

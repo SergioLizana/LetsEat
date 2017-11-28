@@ -126,28 +126,38 @@
 
         </LinearLayout>
 
-        <Button
+        <android.support.design.widget.FloatingActionButton
+            android:theme="@style/AppTheme"
             android:id="@+id/AddProductAmount"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/circle_image_add"
+            app:fabSize="mini"
+            android:src="@drawable/ic_add_white_24dp"
+            android:scaleType="center"
+            app:rippleColor="@color/colorPrimary"
+            android:clickable="true"
             android:onClick="@{() -> fragment_cart.addToQuantity(producto)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.914" />
 
-        <Button
+        <android.support.design.widget.FloatingActionButton
+            android:theme="@style/AppTheme"
             android:id="@+id/removeProductAmount"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="12dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/circle_image_remove"
+            android:scaleType="center"
+            app:rippleColor="@color/colorPrimary"
+            android:clickable="true"
+            android:src="@drawable/ic_remove_white_24dp"
             android:onClick="@{() -> fragment_cart.removeFromQuantity(producto)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/AddProductAmount"
@@ -159,7 +169,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="72dp"
             android:background="@drawable/circle"
             android:elevation="6dp"
             android:paddingTop="3dp"

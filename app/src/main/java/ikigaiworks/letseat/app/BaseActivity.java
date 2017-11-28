@@ -1,5 +1,6 @@
 package ikigaiworks.letseat.app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
@@ -46,11 +51,57 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     public DrawerLayout addNavigationDrawer(){
         addToolbar();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                super.onDrawerStateChanged(newState);
+                manageMenuOptions();
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
         drawer.addDrawerListener(toggle);
+        manageMenuOptions();
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         return drawer;
+    }
+
+
+
+    public void manageMenuOptions(){
+        if (FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
+            disableLogin();
+            enableLogout();
+        }else{
+            enableLogin();
+            disableLogout();
+        }
+    }
+
+
+    public void enableLogin(){
+        navigationView.getMenu().getItem(0).setCheckable(false).setVisible(true);
+    }
+
+    public void disableLogin(){
+        navigationView.getMenu().getItem(0).setCheckable(false).setVisible(false);
+    }
+
+    public void enableLogout(){
+        navigationView.getMenu().getItem(navigationView.getMenu().size()-1).setCheckable(false).setVisible(true);
+    }
+
+    public void disableLogout(){
+        navigationView.getMenu().getItem(navigationView.getMenu().size()-1).setCheckable(false).setVisible(false);
     }
 
     public void replaceToArrow(){
@@ -89,8 +140,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.login) {
-            Intent intent = LoginActivity_.intent(this).get();
-            startActivity(intent);
+            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null){
+                Toast.makeText(this,"Estás autenticado ya en Lets Eat !",Toast.LENGTH_LONG).show();
+            }else{
+                Intent intent = LoginActivity_.intent(this).get();
+                startActivity(intent);
+            }
         } else if (id == R.id.carta) {
             Intent intent = MenuActivity_.intent(this).get();
             startActivity(intent);
@@ -106,13 +161,19 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.config) {
 
         } else if (id == R.id.exit) {
-
+            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
+                FirebaseCommon.getFirebaseAuth().signOut();
+            }else{
+                Toast.makeText(this,"No estás autenticado en Lets Eat",Toast.LENGTH_LONG).show();
+            }
         }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
 
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -122,8 +183,21 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             } else {
                 super.onBackPressed();
             }
+            manageMenuOptions();
         }else{
             super.onBackPressed();
         }
     }
+
+    public void hideKeyboard(){
+        InputMethodManager inputManager =
+                (InputMethodManager) this.
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(
+                this.getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+
+
 }

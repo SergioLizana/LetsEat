@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.view.customview.PriceTextView;
-import ikigaiworks.letseat.utils.CommonUtils;
+import ikigaiworks.letseat.utils.CartUtils;
 
 /**
  * Created by sergiolizanamontero on 24/10/17.
@@ -129,7 +129,7 @@ public class MyDialogFragment extends DialogFragment{
     }
 
     private void loadSpinner(){
-        ArrayList<String> extras = CommonUtils.getExtraAsString(mProduct.getExtra());
+        ArrayList<String> extras = CartUtils.getExtraAsString(mProduct.getExtra());
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,extras);
         mExtras.setAdapter(adapter);
     }
@@ -146,9 +146,9 @@ public class MyDialogFragment extends DialogFragment{
     @Click(R.id.addToCart)
     void addToCart(){
         if (mExtras.getVisibility() == View.INVISIBLE){
-            CommonUtils.addToCart(CommonUtils.parseProductToCart(mProduct,""));
+            CartUtils.addToCart(CartUtils.parseProductToCart(mProduct,""));
         }else{
-            CommonUtils.addToCart(CommonUtils.parseProductToCart(mProduct,mExtras.getSelectedItem().toString()));
+            CartUtils.addToCart(CartUtils.parseProductToCart(mProduct,mExtras.getSelectedItem().toString()));
         }
         dismiss();
     }

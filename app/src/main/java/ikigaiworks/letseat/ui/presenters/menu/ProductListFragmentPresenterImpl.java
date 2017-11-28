@@ -21,7 +21,7 @@ public class ProductListFragmentPresenterImpl implements Presenter,Presenter.Ope
 
     public ProductListFragmentPresenterImpl(Category categorySelected){
         this.categorySelected = categorySelected;
-        firebaseManager = new FirebaseManagerImpl();
+        firebaseManager = new FirebaseManagerImpl().getInstance();
     }
 
     public ArrayList<Producto> getProducts() {

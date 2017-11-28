@@ -9,12 +9,12 @@ import android.view.View;
  */
 
 public class ProductToCart implements Parcelable {
+    private int cartId;
     private String name;
     private double price;
     private double discount;
     private String reference;
     private String extra;
-    private int cartId;
     private String productId;
     private String image;
     private int extraVisibility;

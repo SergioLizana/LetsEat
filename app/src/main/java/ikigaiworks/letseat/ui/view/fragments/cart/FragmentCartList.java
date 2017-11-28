@@ -3,21 +3,26 @@ package ikigaiworks.letseat.ui.view.fragments.cart;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.manager.FirebaseManager;
+import ikigaiworks.letseat.manager.FirebaseManagerImpl;
 import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.ui.view.activities.CartActivity;
 import ikigaiworks.letseat.ui.view.adapters.CartAdapter;
-import ikigaiworks.letseat.ui.view.adapters.ProductListAdapter;
 import ikigaiworks.letseat.ui.view.customview.PriceTextView;
-import ikigaiworks.letseat.utils.CommonUtils;
+import ikigaiworks.letseat.ui.view.fragments.payment.FragmentPayment;
+import ikigaiworks.letseat.ui.view.fragments.payment.FragmentPayment_;
+import ikigaiworks.letseat.utils.CartUtils;
 
 /**
  * Created by sergiolizanamontero on 12/11/17.
@@ -34,11 +39,13 @@ public class FragmentCartList extends Fragment  {
     PriceTextView totalPrice;
     @ViewById(R.id.amount_products)
     TextView totalAmountProducts;
+    @ViewById
+    Button pay;
 
 
     @AfterViews
     void init(){
-        productToCarts = CommonUtils.getCart();
+        productToCarts = CartUtils.getCart();
         configureRecyclerView();
         refreshCartFooter();
     }
@@ -51,29 +58,35 @@ public class FragmentCartList extends Fragment  {
     }
 
     public void removeItem(ProductToCart productToCart){
-    int position = CommonUtils.getCartItemPosition(productToCart);
+    int position = CartUtils.getCartItemPosition(productToCart);
         if(position>=0) {
             ((CartAdapter) mRecyclerView.getAdapter()).removeItem(position);
             refreshCartFooter();
         }
     }
 
+    @Click(R.id.pay)
+    void paid(){
+            FragmentPayment payment = FragmentPayment_.builder().productToCart(productToCarts).build();
+            ((CartActivity)getActivity()).replaceFragment(payment,R.id.content_activity_cart,"payment",false,true);
+    }
+
     public void addToQuantity(ProductToCart productToCart){
-        CommonUtils.addToQuantity(productToCart);
-        adapter.updateItems(CommonUtils.getCart());
+        CartUtils.addToQuantity(productToCart);
+        adapter.updateItems(CartUtils.getCart());
         refreshCartFooter();
     }
 
     public void removeFromQuantity(ProductToCart productToCart){
-        CommonUtils.removeFromQuantity(productToCart);
-        adapter.updateItems(CommonUtils.getCart());
+        CartUtils.removeFromQuantity(productToCart);
+        adapter.updateItems(CartUtils.getCart());
         refreshCartFooter();
     }
 
 
     public void refreshCartFooter(){
-        totalPrice.setNumber(CommonUtils.getCartPrice());
-        totalAmountProducts.setText(String.valueOf(CommonUtils.getCart().size()));
+        totalPrice.setNumber(CartUtils.getCartPrice());
+        totalAmountProducts.setText(String.valueOf(CartUtils.getCartSize()));
     }
 
 }

@@ -7,9 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -32,7 +30,6 @@ import ikigaiworks.letseat.ui.view.customview.CartFloatingButton;
 import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment;
 import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment_;
 import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList_;
-import ikigaiworks.letseat.utils.CommonUtils;
 
 //import ikigaiworks.letseat.databinding.ActivityProductTabBinding;
 

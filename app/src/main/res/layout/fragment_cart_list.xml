@@ -82,7 +82,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView4" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/pay"
             style="?android:textAppearanceSmall"
             android:layout_width="130dp"
             android:layout_height="wrap_content"

@@ -18,7 +18,7 @@ public class CategoryFragmentPresenterImpl implements Presenter,Presenter.Operat
     private FragmentCategory fragmentCategory;
 
    public CategoryFragmentPresenterImpl(){
-        firebaseManager = new FirebaseManagerImpl();
+        firebaseManager = new FirebaseManagerImpl().getInstance();
     }
 
     public FragmentCategory getFragmentCategory(){

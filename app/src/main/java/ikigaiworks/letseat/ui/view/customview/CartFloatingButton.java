@@ -10,7 +10,7 @@ import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.utils.CommonUtils;
+import ikigaiworks.letseat.utils.CartUtils;
 
 /**
  * Created by sergiolizanamontero on 9/11/17.
@@ -40,9 +40,9 @@ public class CartFloatingButton extends RelativeLayout {
     }
 
     public void refreshCartCount() {
-        if(CommonUtils.getCart().size()>0) {
+        if(CartUtils.getCart().size()>0) {
             setVisibility(VISIBLE);
-            itemNumber.setText(String.valueOf(CommonUtils.getCart().size()));
+            itemNumber.setText(String.valueOf(CartUtils.getCart().size()));
         }else{
             setVisibility(GONE);
         }

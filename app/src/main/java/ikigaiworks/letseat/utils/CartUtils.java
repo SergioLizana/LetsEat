@@ -19,7 +19,7 @@ import ikigaiworks.letseat.model.Producto;
  * Created by sergiolizanamontero on 1/11/17.
  */
 
-public class CommonUtils {
+public class CartUtils {
 
     ArrayList<ProductToCart> cartList;
 
@@ -30,6 +30,26 @@ public class CommonUtils {
             _return.add(extra.getName());
         }
         return _return;
+    }
+
+    public static int getCartSize(){
+        ArrayList<ProductToCart> cart = getCart();
+        int size = 0;
+        for(ProductToCart productToCart: cart){
+            size = size + productToCart.getQuantity();
+        }
+        return size;
+
+    }
+
+    public static ArrayList<Producto> getProductByMap(Map<String,Producto> map){
+
+        ArrayList<Producto> productos = new ArrayList<>();
+        for (Producto p : map.values()) {
+            productos.add(p);
+        }
+
+        return productos;
     }
 
     public static void addToCart(ProductToCart p){
@@ -95,6 +115,18 @@ public class CommonUtils {
 
     public static double getCartPrice(){
         ArrayList<ProductToCart> cart = getCart();
+        double price = 0.0;
+        if (cart!=null && cart.size()>0){
+            for(ProductToCart productToCart : cart){
+                price = price +(productToCart.getPrice()*productToCart.getQuantity());
+            }
+            return price;
+        }else{
+            return price;
+        }
+    }
+
+    public static double getCartPrice(ArrayList<ProductToCart> cart){
         double price = 0.0;
         if (cart!=null && cart.size()>0){
             for(ProductToCart productToCart : cart){

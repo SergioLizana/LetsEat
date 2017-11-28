@@ -13,7 +13,7 @@
     <!-- Strings related to fragmentLogin -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in">Sign UP</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -24,12 +24,49 @@
     </string>
 
     <string name="login">LOG IN</string>
-    <string name="registro">SIGN IN</string>
+    <string name="registro">SIGN UP</string>
 
 
     <string name="desc_pedidos">Revisa el estado de tus pedidos o ¡pide de nuevo aquel plato que\n tanto te gustó!</string>
     <string name="desc_menu">"Descrubre toda nuestra carta. Desayunos, deliciosos dulces,\n pastas y muchos más!"</string>
     <string name="desc_promos">"¿Tienes cupones de descuento? ¡Consulta todas nuestras promos\n y pide más por menos!"</string>
     <string name="extra">Extras: </string>
+
+    <string name="confirm_text_payment">Confirma tus datos de pago</string>
+    <string name="edittext_name_payment">Nombre en la tarjeta</string>
+    <string name="edittext_card_payment">Nº de Tarjeta</string>
+    <string name="expiration_date_payment">Fecha Expiración</string>
+    <string name="cvv_payment">CVV</string>
+    <string name="confirm_pay">CONFIRMAR Y PAGAR</string>
+    
+
+    <string name="login_error_invalid_credentials_invalid">El usuario o la password no coinciden. Intentelo de nuevo.</string>
+    <string name="login_error_unexpected">Ha ocurrido un error en la aplicación. Intentalo de nuevo más tarde.</string>
+    <string name="login_error_format_mail">El formato del correo no es correcto, Intentalo de nuevo.</string>
+
+    <string name="signup_fields_error">Tienes que rellenar todos los campos para poder registrarte como usuario de LetsEat!</string>
+    <string name="signup_diferent_password_error">Las contraseñas no coinciden</string>
+    <string name="signup_weak_password_error">La contraseña debe de ser mayor a 4 caracteres.</string>
+    <string name="signup_user_exist_error">El usuario ya existe en la base de datos.</string>
+    <string name="signup_invalid_email_error">El correo no es valido, revisalo e intentalo de nuevo.</string>
+
+    <string name="pay_completed">¡Su pago se ha realizado correctamente!</string>
+    <string name="ticket_sended">Le hemos enviado una copia de su\n factura a su correo electronico</string>
+    <string name="n_pedido">Nº Pedido: 2098</string>
+    <string name="ticket_detail">Detalle de la factura:</string>
+    <string name="hide">Ocultar</string>
+    <string name="show">Mostrar</string>
+    <string name="restaurant_name">RESTAURANTE TASTE BAKERY</string>
+    <string name="company_name">The Bakery S.L.</string>
+    <string name="cif">CIF: A235789071</string>
+    <string name="factura_simplificada">Factura Simplificada N.123</string>
+    <string name="fecha">Fecha: </string>
+    <string name="total">Total: </string>
+    <string name="iva">10% IVA incluido.</string>
+    <string name="mostrador">Acércate al mostrador y \nmuestra esta pantalla para\n recoger tu pedido</string>
+
+
+
+
 
 </resources>
