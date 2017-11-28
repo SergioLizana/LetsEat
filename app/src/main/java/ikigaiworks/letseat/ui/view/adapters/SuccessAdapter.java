@@ -54,7 +54,6 @@ public class SuccessAdapter extends RecyclerView.Adapter<SuccessAdapter.ViewHold
         this.position = position;
         final ProductToCart producto = data.get(position);
         holder.bind(producto);
-
     }
 
     public void addItem(int position , ProductToCart item){

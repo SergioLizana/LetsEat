@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -19,11 +20,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import ikigaiworks.letseat.app.FirebaseCommon;
 import ikigaiworks.letseat.app.LetsEatConstants;
 import ikigaiworks.letseat.model.Category;
+import ikigaiworks.letseat.model.LastOrder;
+import ikigaiworks.letseat.model.LastOrders;
 import ikigaiworks.letseat.model.Menu;
+import ikigaiworks.letseat.model.OrderModel;
 import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.Presenter;
@@ -114,9 +121,36 @@ public class FirebaseManagerImpl implements FirebaseManager {
 
     @Override
     public void addFavorite(ProductToCart productToCart) {
-        DatabaseReference menu =  FirebaseCommon.getFirebaseDatabase().getReference("FAVORITES");
+
+        /*DatabaseReference lastOrders =  FirebaseCommon.getFirebaseDatabase().getReference("FAVORITES").child("orders").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         ProductToCart productToCart1 = new ProductToCart("1",1,"TEST",20.0,15.0,"092190","COLACAO","NFJSNDJNS");
-        menu.setValue(productToCart1);
+        HashMap<String,ProductToCart> productInCart = new HashMap<>();
+        productInCart.put("0",productToCart1);
+        productInCart.put("1",productToCart1);
+        productInCart.put("2",productToCart1);
+        productInCart.put("3",productToCart1);
+
+        LastOrder order1 = new LastOrder(new Date(),productInCart);
+        HashMap<String,LastOrder> lastOrders2 = new HashMap<String,LastOrder>();
+        lastOrders2.put("2",order1);
+
+        LastOrders orders = new LastOrders();
+        orders.setOrders(lastOrders2);
+
+        OrderModel model = new OrderModel();
+        HashMap<String,LastOrders> orderModel = new HashMap<String,LastOrders>();
+        orderModel.put(FirebaseCommon.getFirebaseAuth().getCurrentUser().getUid(),orders);
+        model.setOrders(orderModel);
+        Map<String, Object> updates = new HashMap<String, Object>();
+        updates.put("orders",orders);
+        lastOrders.updateChildren(updates, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
+            }
+        });
+
+        lastOrders.setValue(model);*/
     }
 
     @Override

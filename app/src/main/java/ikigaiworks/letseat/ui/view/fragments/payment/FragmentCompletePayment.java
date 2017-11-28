@@ -16,6 +16,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.manager.FirebaseManagerImpl;
 import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.ui.view.adapters.CartAdapter;
 import ikigaiworks.letseat.ui.view.adapters.SuccessAdapter;
