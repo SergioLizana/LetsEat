@@ -12,11 +12,11 @@
             android:title="Inicio" />
         <item
             android:id="@+id/carta"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_receipt_black_24dp"
             android:title="Carta" />
         <item
             android:id="@+id/promos"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_assignment_black_24dp"
             android:title="Promociones" />
         <item
             android:id="@+id/pedido"
@@ -35,7 +35,7 @@
                 android:title="Configuracion" />
             <item
                 android:id="@+id/aboutme"
-                android:icon="@drawable/ic_settings_black_24dp"
+                android:icon="@drawable/ic_people_black_24dp"
                 android:title="Nosotros" />
             <item
                 android:id="@+id/exit"
