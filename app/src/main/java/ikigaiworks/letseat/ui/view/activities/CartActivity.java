@@ -1,5 +1,8 @@
 package ikigaiworks.letseat.ui.view.activities;
 
+import android.app.FragmentManager;
+import android.util.Log;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 
@@ -28,7 +31,6 @@ public class CartActivity  extends BaseActivity {
             replaceFragment(fragment,R.id.content_activity_cart,"main",false,true);
         }
     }
-
 
     @Override
     protected void onDestroy() {

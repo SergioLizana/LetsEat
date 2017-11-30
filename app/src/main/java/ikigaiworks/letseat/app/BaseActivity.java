@@ -110,6 +110,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Estás autenticado ya en Lets Eat !", Toast.LENGTH_LONG).show();
             } else {
                 Intent intent = LoginActivity_.intent(this).get();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         } else if (id == R.id.init){
@@ -133,6 +134,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.mis_pedidos) {
             if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null){
                 Intent intent = LastOrderActivity_.intent(this).get();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }else{
                 Toast.makeText(this,"Tienes que autenticarte en Lets Eat para poder acceder a tus pedidos",Toast.LENGTH_LONG).show();
