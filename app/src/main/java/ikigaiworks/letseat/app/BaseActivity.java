@@ -14,7 +14,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -25,6 +24,7 @@ import org.androidannotations.annotations.ViewById;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.ui.view.activities.LastOrderActivity_;
 import ikigaiworks.letseat.ui.view.activities.LoginActivity_;
+import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 import ikigaiworks.letseat.ui.view.activities.MenuActivity_;
 
 /**
@@ -40,18 +40,45 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     protected DrawerLayout drawer;
     @ViewById(R.id.nav_view)
     protected NavigationView navigationView;
+    ActionBarDrawerToggle toggle;
 
     public Toolbar addToolbar() {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
         }
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = MainActivity_.intent(getApplicationContext()).get();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
         return toolbar;
     }
 
+    public void changeToArrow(){
+        if (toggle!=null) {
+            toggle.setDrawerIndicatorEnabled(false);
+            toggle.setToolbarNavigationClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    onBackPressed();
+                }
+            });
+        }
+    }
+
+
     public DrawerLayout addNavigationDrawer(){
         addToolbar();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
             @Override
             public void onDrawerStateChanged(int newState) {
@@ -214,7 +241,5 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 this.getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
     }
-
-
 
 }

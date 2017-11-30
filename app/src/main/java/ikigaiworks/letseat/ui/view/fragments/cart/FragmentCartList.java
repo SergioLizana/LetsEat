@@ -5,6 +5,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -14,8 +17,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.manager.FirebaseManager;
-import ikigaiworks.letseat.manager.FirebaseManagerImpl;
+import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.ui.view.activities.CartActivity;
 import ikigaiworks.letseat.ui.view.adapters.CartAdapter;
@@ -67,8 +69,13 @@ public class FragmentCartList extends Fragment  {
 
     @Click(R.id.pay)
     void paid(){
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             FragmentPayment payment = FragmentPayment_.builder().productToCart(CartUtils.getCart()).build();
-            ((CartActivity)getActivity()).replaceFragment(payment,R.id.content_activity_cart,"payment",false,true);
+            ((CartActivity) getActivity()).replaceFragment(payment, R.id.content_activity_cart, "payment", false, true);
+        }else{
+            Toast.makeText(getActivity().getApplicationContext(),"Es necesario Autenticarse en Lets Eat! para realizar un pedido",Toast.LENGTH_LONG).show();
+            ((BaseActivity)getActivity()).manageIntents(R.id.login);
+        }
     }
 
     public void addToQuantity(ProductToCart productToCart){

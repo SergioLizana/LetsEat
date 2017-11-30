@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".utils.App"
@@ -26,20 +27,25 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.view.activities.LoginActivity_"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.view.activities.MenuActivity_"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ui.view.activities.ProductTabActivity_"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
         <activity android:name=".ui.view.activities.CartActivity_"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
         <activity android:name=".ui.view.activities.LastOrderActivity_"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
 

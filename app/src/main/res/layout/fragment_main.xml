@@ -37,7 +37,7 @@
 
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/init_pedido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/new_order"

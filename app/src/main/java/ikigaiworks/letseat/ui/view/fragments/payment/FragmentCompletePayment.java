@@ -3,6 +3,7 @@ package ikigaiworks.letseat.ui.view.fragments.payment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,9 +17,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.manager.FirebaseManagerImpl;
 import ikigaiworks.letseat.model.ProductToCart;
-import ikigaiworks.letseat.ui.view.adapters.CartAdapter;
 import ikigaiworks.letseat.ui.view.adapters.SuccessAdapter;
 import ikigaiworks.letseat.ui.view.customview.PriceTextView;
 import ikigaiworks.letseat.utils.CartUtils;
@@ -68,5 +67,8 @@ public class FragmentCompletePayment extends Fragment {
         mRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -12,6 +12,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.menu.ProductListFragmentPresenterImpl;
@@ -39,6 +40,7 @@ public class FragmentProductList extends Fragment {
 
     @AfterViews
     void init(){
+        ((BaseActivity)getActivity()).changeToArrow();
         data = new ArrayList<>();
         presenter = new ProductListFragmentPresenterImpl(category);
         presenter.setFragmentProductList(this);

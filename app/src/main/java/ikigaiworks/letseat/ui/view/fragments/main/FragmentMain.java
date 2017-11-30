@@ -12,6 +12,7 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
@@ -70,6 +71,11 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
 
     }
 
+    @Click(R.id.init_pedido)
+    void initPedido(){
+        ((BaseActivity)getActivity()).manageIntents(R.id.carta);
+    }
+
     public void printCarrusel(Carrusel carrusel){
         mainBean.setData(carrusel.getSlides());
         adapter.updateCarrusel(mainBean.getData());
@@ -109,6 +115,4 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
         int positionInDataSet = infiniteAdapter.getRealPosition(adapterPosition);
         onItemChanged(mainBean.getData().get(positionInDataSet));
     }
-
-
 }
