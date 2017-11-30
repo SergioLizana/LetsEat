@@ -1,38 +1,81 @@
 package ikigaiworks.letseat.model;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.Map;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by sergiolizanamontero on 28/11/17.
  */
 
-public class LastOrder implements Serializable {
-    private Date date;
-    private Map<String,ProductToCart> cartProducts;
+public class LastOrder implements Parcelable {
+
+    private String fecha;
+    private String name;
+    private ArrayList<ProductToCart> productToCart;
 
     public LastOrder(){
+
+    }
+    public LastOrder(String fecha, String name, ArrayList<ProductToCart> productToCart) {
+        this.fecha = fecha;
+        this.name = name;
+        this.productToCart = productToCart;
     }
 
-    public LastOrder(Date date, Map<String, ProductToCart> cartProducts) {
-        this.date = date;
-        this.cartProducts = cartProducts;
+    public String getFecha() {
+        return fecha;
     }
 
-    public Date getDate() {
-        return date;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public String getName() {
+        return name;
     }
 
-    public Map<String, ProductToCart> getCartProducts() {
-        return cartProducts;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCartProducts(Map<String, ProductToCart> cartProducts) {
-        this.cartProducts = cartProducts;
+    public ArrayList<ProductToCart> getProductToCart() {
+        return productToCart;
     }
+
+    public void setProductToCart(ArrayList<ProductToCart> productToCart) {
+        this.productToCart = productToCart;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.fecha);
+        dest.writeString(this.name);
+        dest.writeTypedList(this.productToCart);
+    }
+
+    protected LastOrder(Parcel in) {
+        this.fecha = in.readString();
+        this.name = in.readString();
+        this.productToCart = in.createTypedArrayList(ProductToCart.CREATOR);
+    }
+
+    public static final Parcelable.Creator<LastOrder> CREATOR = new Parcelable.Creator<LastOrder>() {
+        @Override
+        public LastOrder createFromParcel(Parcel source) {
+            return new LastOrder(source);
+        }
+
+        @Override
+        public LastOrder[] newArray(int size) {
+            return new LastOrder[size];
+        }
+    };
 }

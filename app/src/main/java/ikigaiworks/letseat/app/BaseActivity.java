@@ -23,6 +23,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.ui.view.activities.LastOrderActivity_;
 import ikigaiworks.letseat.ui.view.activities.LoginActivity_;
 import ikigaiworks.letseat.ui.view.activities.MenuActivity_;
 
@@ -75,6 +76,51 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         return drawer;
     }
 
+    public void manageIntents(int id){
+
+        if (id == R.id.login) {
+            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null){
+                Toast.makeText(this,"Estás autenticado ya en Lets Eat !",Toast.LENGTH_LONG).show();
+            }else{
+                Intent intent = LoginActivity_.intent(this).get();
+                startActivity(intent);
+            }
+        } else if (id == R.id.carta) {
+            Intent intent = MenuActivity_.intent(this).get();
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+        } else if (id == R.id.pedido) {
+            Intent intent = MenuActivity_.intent(this).get();
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+        } else if (id == R.id.mis_pedidos) {
+            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null){
+                Intent intent = LastOrderActivity_.intent(this).get();
+                startActivity(intent);
+            }else{
+                Toast.makeText(this,"Tienes que autenticarte en Lets Eat para poder acceder a tus pedidos",Toast.LENGTH_LONG).show();
+            }
+
+        } else if (id == R.id.promos) {
+            Toast.makeText(this,"Muy Pronto más novedades en Lets Eat!",Toast.LENGTH_LONG).show();
+
+        } else if (id == R.id.aboutme) {
+            Toast.makeText(this,"Muy Pronto más novedades en Lets Eat!",Toast.LENGTH_LONG).show();
+
+        } else if (id == R.id.config) {
+            Toast.makeText(this,"Muy Pronto más novedades en Lets Eat!",Toast.LENGTH_LONG).show();
+
+        } else if (id == R.id.exit) {
+            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
+                FirebaseCommon.getFirebaseAuth().signOut();
+                Toast.makeText(this,"Vuelve Pronto!",Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(this,"No estás autenticado en Lets Eat",Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
 
     public void manageMenuOptions(){
@@ -138,36 +184,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.login) {
-            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null){
-                Toast.makeText(this,"Estás autenticado ya en Lets Eat !",Toast.LENGTH_LONG).show();
-            }else{
-                Intent intent = LoginActivity_.intent(this).get();
-                startActivity(intent);
-            }
-        } else if (id == R.id.carta) {
-            Intent intent = MenuActivity_.intent(this).get();
-            startActivity(intent);
-
-        } else if (id == R.id.pedido) {
-
-        } else if (id == R.id.mis_pedidos) {
-
-        } else if (id == R.id.promos) {
-
-        } else if (id == R.id.aboutme) {
-
-        } else if (id == R.id.config) {
-
-        } else if (id == R.id.exit) {
-            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
-                FirebaseCommon.getFirebaseAuth().signOut();
-            }else{
-                Toast.makeText(this,"No estás autenticado en Lets Eat",Toast.LENGTH_LONG).show();
-            }
-        }
-
+        manageIntents(id);
         drawer.closeDrawer(GravityCompat.START);
         return true;
 
@@ -189,7 +206,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void hideKeyboard(){
+    public void hideKeyboard() {
         InputMethodManager inputManager =
                 (InputMethodManager) this.
                         getSystemService(Context.INPUT_METHOD_SERVICE);

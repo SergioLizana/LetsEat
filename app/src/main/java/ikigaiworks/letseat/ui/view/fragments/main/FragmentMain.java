@@ -16,6 +16,7 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.model.Carrusel;
 import ikigaiworks.letseat.model.CarruselSlide;
 import ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenterImpl;
@@ -79,71 +80,12 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
         title.setText(item.getTitle());
     }
 
-/*    public void getCategories(){
-
+    public void onClickEvent(CarruselSlide c) {
+        ((BaseActivity)getActivity()).manageIntents(c.getId());
 
     }
 
-    public void getMenuByCategory (final Category category){
-        DatabaseReference menu =  database.getReference("MENU");
-        menu.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Log.d("Firebase Category",category.getName());
-                if (category.getsubtype() != null) {
-                    for (String key : category.getsubtype().keySet()) {
-                        Menu menu = dataSnapshot.child(key).getValue(Menu.class);
-                        for (String keyProd: menu.getProducts().keySet()){
-                            getProductById(keyProd);
-                        }
-
-                    }
-
-                }else{
-                    Menu menu1 = dataSnapshot.child(category.getReference()).getValue(Menu.class);
-                    for (String keyProd: menu1.getProducts().keySet()){
-                        getProductById(keyProd);
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-
-    public void getProductById (final String key){
-        DatabaseReference menu =  database.getReference("PRODUCTS");
-
-        menu.child(key).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Producto p = dataSnapshot.getValue(Producto.class);
-                Log.d("firebase producto",p.getName());
-                if (p.getItems()!= null) {
-                    for (Map<String, Boolean> items : p.getItems().values()) {
-                        for (String key : items.keySet()) {
-                            getProductById(key);
-                        }
-                    }
-                }
-                Log.d("SEPARACION" , "-------------------- /n");
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
 
 
     @Override

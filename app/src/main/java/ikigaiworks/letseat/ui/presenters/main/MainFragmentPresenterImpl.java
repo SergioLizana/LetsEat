@@ -40,7 +40,7 @@ public class MainFragmentPresenterImpl  implements MainFragmentPresenter  {
     }
 
     public void onClickEvent(CarruselSlide c){
-        Log.d("Onclick","Onclick");
+       fragmentMain.onClickEvent(c);
     }
 
     @Override

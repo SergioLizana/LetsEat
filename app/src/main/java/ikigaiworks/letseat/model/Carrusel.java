@@ -29,9 +29,9 @@ public class Carrusel {
     }
 
     void init(){
-        menu = new CarruselSlide("Menu",1,c.getString(R.string.desc_menu), R.drawable.menu);
-        promos = new CarruselSlide("Orders",2,c.getString(R.string.desc_pedidos),R.drawable.orders);
-        orders = new CarruselSlide("Promos",3,c.getString(R.string.desc_promos),R.drawable.promos);
+        menu = new CarruselSlide("Menu",R.id.carta,c.getString(R.string.desc_menu), R.drawable.menu);
+        promos = new CarruselSlide("Últimos Pedidos",R.id.mis_pedidos,c.getString(R.string.desc_pedidos),R.drawable.orders);
+        orders = new CarruselSlide("Promociones",R.id.promos,c.getString(R.string.desc_promos),R.drawable.promos);
         slides.add(menu);
         slides.add(orders);
         slides.add(promos);

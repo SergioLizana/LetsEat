@@ -25,7 +25,7 @@ public class PriceTextView extends android.support.v7.widget.AppCompatTextView {
 
     @Override
     public void setText(CharSequence text, BufferType type) {
-        DecimalFormat df = new DecimalFormat("####,##.00€");
+        DecimalFormat df = new DecimalFormat("#,##0.00€");
         CharSequence finalText;
         if(text!=null && !text.equals("")) {
             finalText = df.format(Double.parseDouble(text.toString()));

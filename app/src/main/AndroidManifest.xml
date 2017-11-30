@@ -39,6 +39,9 @@
         <activity android:name=".ui.view.activities.CartActivity_"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
+        <activity android:name=".ui.view.activities.LastOrderActivity_"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
 
     </application>
 

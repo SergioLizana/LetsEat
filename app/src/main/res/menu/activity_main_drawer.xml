@@ -24,8 +24,7 @@
             android:title="Mis Pedidos" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
+    <group android:checkableBehavior="single" android:title="Communicate">
             <item
                 android:id="@+id/config"
                 android:icon="@drawable/ic_settings_black_24dp"
@@ -38,7 +37,6 @@
                 android:id="@+id/exit"
                 android:icon="@drawable/ic_power_settings_new_black_24dp"
                 android:title="Salir" />
-        </menu>
-    </item>
+  </group>
 
 </menu>

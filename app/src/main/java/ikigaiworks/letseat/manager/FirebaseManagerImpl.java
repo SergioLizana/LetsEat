@@ -8,7 +8,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -20,17 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import ikigaiworks.letseat.app.FirebaseCommon;
 import ikigaiworks.letseat.app.LetsEatConstants;
 import ikigaiworks.letseat.model.Category;
-import ikigaiworks.letseat.model.LastOrder;
-import ikigaiworks.letseat.model.LastOrders;
 import ikigaiworks.letseat.model.Menu;
-import ikigaiworks.letseat.model.OrderModel;
 import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.Presenter;
