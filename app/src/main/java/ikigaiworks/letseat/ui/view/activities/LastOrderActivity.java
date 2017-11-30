@@ -23,7 +23,7 @@ public class LastOrderActivity extends BaseActivity {
         setToolbarTitle("Últimos Pedidos");
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
         lastOrderFragment = FragmentLastOrder_.builder().build();
-        replaceFragment(lastOrderFragment,R.id.content_menu,"menu",false,false);
+        replaceFragment(lastOrderFragment,R.id.content_menu,"menu",false,true);
     }
 
 }

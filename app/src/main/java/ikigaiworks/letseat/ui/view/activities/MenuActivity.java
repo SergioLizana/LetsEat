@@ -20,7 +20,7 @@ public class MenuActivity extends BaseActivity{
         setToolbarTitle("Menu");
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
         menu = FragmentCategory_.builder().build();
-        replaceFragment(menu,R.id.content_menu,"menu",false,false);
+        replaceFragment(menu,R.id.content_menu,"menu",false,true);
     }
 
 }

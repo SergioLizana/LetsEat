@@ -7,6 +7,10 @@
             android:icon="@drawable/ic_lock_outline_black_24dp"
             android:title="Login" />
         <item
+            android:id="@+id/init"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Inicio" />
+        <item
             android:id="@+id/carta"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Carta" />

@@ -106,12 +106,20 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     public void manageIntents(int id){
 
         if (id == R.id.login) {
-            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null){
-                Toast.makeText(this,"Estás autenticado ya en Lets Eat !",Toast.LENGTH_LONG).show();
-            }else{
+            if (FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
+                Toast.makeText(this, "Estás autenticado ya en Lets Eat !", Toast.LENGTH_LONG).show();
+            } else {
                 Intent intent = LoginActivity_.intent(this).get();
                 startActivity(intent);
             }
+        } else if (id == R.id.init){
+            if(this instanceof MainActivity_){
+            }else{
+                Intent intent = MainActivity_.intent(this).get();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+
         } else if (id == R.id.carta) {
             Intent intent = MenuActivity_.intent(this).get();
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
