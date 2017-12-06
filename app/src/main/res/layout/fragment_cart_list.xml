@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:layout_marginEnd="16dp"
-            android:text="Pay"
+            android:text="PAGAR"
             android:background="@drawable/gradient_rectangle"
             android:textColor="#FFF"
             android:textSize="16dp"
