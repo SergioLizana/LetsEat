@@ -11,6 +11,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Map;
 
+import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.Extra;
 import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.model.Producto;
@@ -54,7 +55,8 @@ public class CartUtils {
 
     public static void addToCart(ProductToCart p){
         boolean productAdded = false;
-        SharedPreferences mPrefs = App.getAppContext().getSharedPreferences("cart",Context.MODE_PRIVATE);
+        SharedPreferences mPrefs = App.getAppContext().getSharedPreferences(App.getAppContext().getString(R.string.shared_name_cart)
+                ,Context.MODE_PRIVATE);
         ArrayList<ProductToCart> productsInCart = new ArrayList<ProductToCart>(getCart());
         for(ProductToCart productInCart : productsInCart){
             if (productInCart.equals(p)){
@@ -69,17 +71,17 @@ public class CartUtils {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(productsInCart);
         SharedPreferences.Editor editor = mPrefs.edit();
-        editor.putString("listCart",json);
+        editor.putString(App.getAppContext().getString(R.string.shared_name_list),json);
         editor.commit();
 
     }
     public static void updateCart(ArrayList<ProductToCart> productToCarts){
         deleteCart();
-        SharedPreferences mPrefs = App.getAppContext().getSharedPreferences("cart",Context.MODE_PRIVATE);
+        SharedPreferences mPrefs = App.getAppContext().getSharedPreferences(App.getAppContext().getString(R.string.shared_name_cart),Context.MODE_PRIVATE);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(productToCarts);
         SharedPreferences.Editor editor = mPrefs.edit();
-        editor.putString("listCart",json);
+        editor.putString(App.getAppContext().getString(R.string.shared_name_list),json);
         editor.commit();
 
     }
@@ -97,17 +99,17 @@ public class CartUtils {
     }
 
     public static void deleteCart(){
-        SharedPreferences prefs = App.getAppContext().getSharedPreferences("cart",Context.MODE_PRIVATE);
+        SharedPreferences prefs = App.getAppContext().getSharedPreferences(App.getAppContext().getString(R.string.shared_name_cart),Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.clear();
         editor.commit();
     }
 
     public static ArrayList<ProductToCart> getCart(){
-        SharedPreferences prefs = App.getAppContext().getSharedPreferences("cart",Context.MODE_PRIVATE);
+        SharedPreferences prefs = App.getAppContext().getSharedPreferences(App.getAppContext().getString(R.string.shared_name_cart),Context.MODE_PRIVATE);
         Type listType = new TypeToken<ArrayList<ProductToCart>>(){}.getType();
 
-        ArrayList<ProductToCart> cartList = new Gson().fromJson(prefs.getString("listCart",""), listType);
+        ArrayList<ProductToCart> cartList = new Gson().fromJson(prefs.getString(App.getAppContext().getString(R.string.shared_name_list),""), listType);
 
 
         return cartList!=null?cartList:new ArrayList<ProductToCart>();

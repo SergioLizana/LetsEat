@@ -49,7 +49,7 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
     protected void init(){
         presenter = new MainFragmentPresenterImpl(getActivity().getApplicationContext(),this);
         presenter.setFragmentMain(this);
-        getActivity().setTitle("Taste Bakery");
+        getActivity().setTitle(getString(R.string.title_main));
         initCarruselConf();
     }
 

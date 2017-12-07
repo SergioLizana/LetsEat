@@ -41,9 +41,11 @@ public class LoginActivity extends BaseActivity {
 
     private void swapFragment(boolean isChecked){
         if (!isChecked){
-            replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,"LOGINFRAGMENT",false,true);
+            replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,getString(R.string.tag_name_login)
+                    ,false,true);
         }else{
-            replaceFragment(FragmentRegistro_.builder().build(),R.id.content_login,"REGISTROFRAGMENT",false,true);
+            replaceFragment(FragmentRegistro_.builder().build(),R.id.content_login,getString(R.string.tag_name_signup)
+                    ,false,true);
         }
     }
 
@@ -63,7 +65,8 @@ public class LoginActivity extends BaseActivity {
 
     private void initComponents(){
         switchButton.setTrackDrawable(new SwitchTrackTextDrawable(this,R.string.login,R.string.registro));
-        replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,"LOGINFRAGMENT",false,false);
+        replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,getString(R.string.tag_name_login)
+                ,false,false);
     }
 
     public void showLoader(){

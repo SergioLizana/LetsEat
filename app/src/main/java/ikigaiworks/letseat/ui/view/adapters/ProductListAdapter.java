@@ -19,6 +19,7 @@ import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.databinding.ProductListContentBinding;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.menu.ProductListFragmentPresenterImpl;
+import ikigaiworks.letseat.utils.App;
 
 /**
  * Created by sergiolizanamontero on 12/10/17.
@@ -79,7 +80,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     @BindingAdapter("bind:text")
     public static void setExtraText(TextView view, String extra) {
-        view.setText("Extra: "+extra);
+        view.setText(App.getAppContext().getString(R.string.extra)+extra);
     }
 
     @Override

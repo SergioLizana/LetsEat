@@ -17,10 +17,10 @@ public class MainActivity extends BaseActivity {
     @AfterViews
     void init(){
         addNavigationDrawer();
-        setToolbarTitle("Taste Bakery");
+        setToolbarTitle(getString(R.string.title_main));
         if (findViewById(R.id.content_main) != null) {
             fragment = FragmentMain_.builder().build();
-            replaceFragment(fragment,R.id.content_main,"main",false,false);
+            replaceFragment(fragment,R.id.content_main,getString(R.string.tag_name_main),false,false);
         }
     }
 

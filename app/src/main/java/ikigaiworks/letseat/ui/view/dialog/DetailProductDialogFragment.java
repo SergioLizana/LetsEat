@@ -40,7 +40,8 @@ import ikigaiworks.letseat.utils.CartUtils;
  */
 
 @EFragment(R.layout.product_detail)
-public class MyDialogFragment extends DialogFragment{
+public class DetailProductDialogFragment extends DialogFragment{
+
     private View view;
     @FragmentArg
     Producto mProduct;

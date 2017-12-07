@@ -30,7 +30,7 @@
     <string name="desc_pedidos">Revisa el estado de tus pedidos o ¡pide de nuevo aquel plato que\n tanto te gustó!</string>
     <string name="desc_menu">"Descrubre toda nuestra carta. Desayunos, deliciosos dulces,\n pastas y muchos más!"</string>
     <string name="desc_promos">"¿Tienes cupones de descuento? ¡Consulta todas nuestras promos\n y pide más por menos!"</string>
-    <string name="extra">Extras: </string>
+    <string name="extra">Extra:  </string>
 
     <string name="confirm_text_payment">Confirma tus datos de pago</string>
     <string name="edittext_name_payment">Nombre en la tarjeta</string>
@@ -64,6 +64,38 @@
     <string name="total">Total: </string>
     <string name="iva">10% IVA incluido.</string>
     <string name="mostrador">Acércate al mostrador y \nmuestra esta pantalla para\n recoger tu pedido</string>
+
+    <string name="auth_requiered">Es necesario Autenticarse en Lets Eat! para realizar un pedido</string>
+    <string name="welcome">Bienvenido a LetsEat</string>
+    <string name="auth_complete">Se ha registrado un usuario correctamente</string>
+
+    <string name="shared_name_cart">cart</string>
+    <string name="shared_name_list">listCart</string>
+
+    <string name="tag_name_payment">payment</string>
+    <string name="tag_name_payment_complete">paymentComplete</string>
+    <string name="tag_name_main">main</string>
+    <string name="tag_name_menu">menu</string>
+    <string name="tag_name_login">login</string>
+    <string name="tag_name_signup">signup</string>
+
+
+
+
+
+
+    <string name="title_main">Taste Bakery</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_last_orders">Últimos Pedidos</string>
+    <string name="title_menu">Menú</string>
+    <string name="title_main">Taste Bakery</string>
+
+
+
+
+
+
+
 
 
 

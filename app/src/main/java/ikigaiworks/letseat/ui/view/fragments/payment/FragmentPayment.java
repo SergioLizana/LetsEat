@@ -36,7 +36,7 @@ public class FragmentPayment extends Fragment {
     @Click
     void pay(){
         FragmentCompletePayment payment = FragmentCompletePayment_.builder().products(productToCart).build();
-        ((CartActivity)getActivity()).replaceFragment(payment,R.id.content_activity_cart,"paymentComplete",false,true);
+        ((CartActivity)getActivity()).replaceFragment(payment,R.id.content_activity_cart,getString(R.string.tag_name_payment_complete),false,true);
     }
 
 }

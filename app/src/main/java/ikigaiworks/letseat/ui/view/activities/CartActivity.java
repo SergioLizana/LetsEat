@@ -24,11 +24,11 @@ public class CartActivity  extends BaseActivity {
     @AfterViews
     void init(){
         addToolbar();
-        setToolbarTitle("Cart");
+        setToolbarTitle(getString(R.string.title_cart));
         setToolbarBackgroundColor(R.color.colorPrimary);
         if (findViewById(R.id.content_activity_cart) != null) {
             fragment = FragmentCartList_.builder().build();
-            replaceFragment(fragment,R.id.content_activity_cart,"main",false,true);
+            replaceFragment(fragment,R.id.content_activity_cart,getString(R.string.tag_name_main),false,true);
         }
     }
 

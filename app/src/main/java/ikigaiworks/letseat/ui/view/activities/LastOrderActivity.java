@@ -20,10 +20,10 @@ public class LastOrderActivity extends BaseActivity {
     @AfterViews
     void init(){
         addNavigationDrawer();
-        setToolbarTitle("Últimos Pedidos");
+        setToolbarTitle(getString(R.string.title_last_orders));
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
         lastOrderFragment = FragmentLastOrder_.builder().build();
-        replaceFragment(lastOrderFragment,R.id.content_menu,"menu",false,true);
+        replaceFragment(lastOrderFragment,R.id.content_menu,getString(R.string.tag_name_menu),false,true);
     }
 
 }

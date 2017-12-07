@@ -17,10 +17,10 @@ public class MenuActivity extends BaseActivity{
     @AfterViews
     void init(){
         addNavigationDrawer();
-        setToolbarTitle("Menu");
+        setToolbarTitle(getString(R.string.title_menu));
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
         menu = FragmentCategory_.builder().build();
-        replaceFragment(menu,R.id.content_menu,"menu",false,true);
+        replaceFragment(menu,R.id.content_menu,getString(R.string.tag_name_menu),false,true);
     }
 
 }

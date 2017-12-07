@@ -27,8 +27,8 @@ import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.model.beans.ProductsBean;
 import ikigaiworks.letseat.ui.view.customview.CartFloatingButton;
-import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment;
-import ikigaiworks.letseat.ui.view.dialog.MyDialogFragment_;
+import ikigaiworks.letseat.ui.view.dialog.DetailProductDialogFragment;
+import ikigaiworks.letseat.ui.view.dialog.DetailProductDialogFragment_;
 import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList_;
 
 //import ikigaiworks.letseat.databinding.ActivityProductTabBinding;
@@ -62,7 +62,7 @@ public class ProductTabActivity extends BaseActivity implements DialogInterface.
 
     public void showDialogProductos(Producto p) {
         android.app.FragmentManager fm = getFragmentManager();
-        MyDialogFragment dialogFragment = MyDialogFragment_.builder().mProduct(p).build();
+        DetailProductDialogFragment dialogFragment = DetailProductDialogFragment_.builder().mProduct(p).build();
         dialogFragment.setAllowEnterTransitionOverlap(true);
         dialogFragment.setAllowReturnTransitionOverlap(true);
         if (dialogFragment.getDialog() != null){

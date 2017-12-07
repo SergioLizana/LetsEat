@@ -15,6 +15,7 @@ public class LetsEatConstants {
     public static final int SIGNIN_ERROR_WEAK_PASSWORD_CODE = 5;
     public static final int SIGNIN_ERROR_INVALID_EMAIL_CODE = 6;
     public static final int SIGNIN_ERROR_USER_EXIST_CODE = 7;
+    public static final String AMOUNT_FORMATTER = "#,##0.00€";
 
 
 

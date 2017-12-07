@@ -22,6 +22,7 @@ import org.androidannotations.annotations.EditorAction;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.app.FirebaseCommon;
 import ikigaiworks.letseat.app.LetsEatConstants;
 import ikigaiworks.letseat.ui.presenters.login.LoginPresenterImpl;
@@ -72,24 +73,20 @@ public class FragmentLogin extends Fragment implements LoginView{
             ((LoginActivity) getActivity()).showLoader();
             loginPresenter.doLogin(mEmailView.getText().toString(), mPasswordView.getText().toString());
         }else{
-            Toast.makeText(getActivity().getApplicationContext(), getString(R.string.login_error_format_mail),
-                    Toast.LENGTH_LONG).show();
+            ((BaseActivity)getActivity()).showToast(getString(R.string.login_error_format_mail),Toast.LENGTH_LONG);
         }
     }
 
     @Override
     public void operationOK() {
-        Toast.makeText(getActivity().getApplicationContext(),
-                "Bienvenido a Lets Eats "+ FirebaseCommon.getFirebaseAuth().getCurrentUser().getEmail(),
-                Toast.LENGTH_LONG).show();
+        ((BaseActivity)getActivity()).showToast(getString(R.string.welcome),Toast.LENGTH_LONG);
         getActivity().finish();
     }
 
     @Override
     public void operationFailure(int code) {
         ((LoginActivity)getActivity()).hideLoader();
-        Toast.makeText(getActivity().getApplicationContext(), LoginUtils.parseCodeToStringError(code),
-                Toast.LENGTH_LONG).show();
+        ((BaseActivity)getActivity()).showToast(LoginUtils.parseCodeToStringError(code),Toast.LENGTH_LONG);
     }
 }
 

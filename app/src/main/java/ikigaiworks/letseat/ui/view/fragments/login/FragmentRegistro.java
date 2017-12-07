@@ -1,23 +1,11 @@
 package ikigaiworks.letseat.ui.view.fragments.login;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -26,9 +14,8 @@ import org.androidannotations.annotations.EditorAction;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.app.FirebaseCommon;
+import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.app.LetsEatConstants;
-import ikigaiworks.letseat.ui.presenters.login.LoginPresenter;
 import ikigaiworks.letseat.ui.presenters.login.SignInPresenterImpl;
 import ikigaiworks.letseat.ui.view.activities.LoginActivity;
 import ikigaiworks.letseat.ui.view.view.LoginView;
@@ -66,18 +53,16 @@ public class FragmentRegistro extends Fragment implements LoginView{
 
     @Override
     public void operationOK() {
-        Toast.makeText(getActivity(),"Se ha registrado un usuario correctamente", Toast.LENGTH_SHORT).show();
-        Toast.makeText(getActivity().getApplicationContext(),
-                "Bienvenido a Lets Eats "+ FirebaseCommon.getFirebaseAuth().getCurrentUser().getEmail(),
-                Toast.LENGTH_LONG).show();
+        ((BaseActivity)getActivity()).showToast(getString(R.string.auth_complete),Toast.LENGTH_SHORT);
+        ((BaseActivity)getActivity()).showToast(getString(R.string.welcome),Toast.LENGTH_LONG);
         getActivity().finish();
     }
 
 
     @Override
     public void operationFailure(int code) {
+        ((BaseActivity)getActivity()).showToast(LoginUtils.parseCodeToStringError(code),Toast.LENGTH_LONG);
         ((LoginActivity) getActivity()).hideLoader();
-        Toast.makeText(getActivity(),LoginUtils.parseCodeToStringError(code), Toast.LENGTH_LONG).show();
     }
 
     @EditorAction(R.id.repeat_password)
@@ -92,24 +77,24 @@ public class FragmentRegistro extends Fragment implements LoginView{
         if (mEmailView == null
                 || mPasswordView == null
                 || mPasswordViewRepeat == null){
-            Toast.makeText(getActivity(),getString(R.string.login_error_unexpected),Toast.LENGTH_LONG).show();
+            ((BaseActivity)getActivity()).showToast(getString(R.string.login_error_unexpected),Toast.LENGTH_LONG);
             return false;
         }else{
             if (mEmailView.getText().toString().isEmpty()
                     || mPasswordView.getText().toString().isEmpty()
                     || mPasswordViewRepeat.getText().toString().isEmpty()){
-                Toast.makeText(getActivity(),getString(R.string.signup_fields_error),Toast.LENGTH_LONG).show();
+                ((BaseActivity)getActivity()).showToast(getString(R.string.signup_fields_error),Toast.LENGTH_LONG);
                 return false;
             }else{
                 if (LoginUtils.isEmailValid(mEmailView.getText().toString())){
                     if (mPasswordView.getText().toString().equals(mPasswordViewRepeat.getText().toString())){
                         return true;
                     }else{
-                        Toast.makeText(getActivity(),getString(R.string.signup_diferent_password_error),Toast.LENGTH_LONG).show();
+                        ((BaseActivity)getActivity()).showToast(getString(R.string.signup_diferent_password_error),Toast.LENGTH_LONG);
                         return false;
                     }
                 }else{
-                    Toast.makeText(getActivity(),getString(R.string.login_error_format_mail),Toast.LENGTH_LONG).show();
+                    ((BaseActivity)getActivity()).showToast(getString(R.string.login_error_format_mail),Toast.LENGTH_LONG);
                     return false;
                 }
 

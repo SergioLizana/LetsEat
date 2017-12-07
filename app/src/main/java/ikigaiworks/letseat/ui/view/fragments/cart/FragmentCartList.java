@@ -71,9 +71,9 @@ public class FragmentCartList extends Fragment  {
     void paid(){
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             FragmentPayment payment = FragmentPayment_.builder().productToCart(CartUtils.getCart()).build();
-            ((CartActivity) getActivity()).replaceFragment(payment, R.id.content_activity_cart, "payment", false, true);
+            ((CartActivity) getActivity()).replaceFragment(payment, R.id.content_activity_cart, getString(R.string.tag_name_payment), false, true);
         }else{
-            Toast.makeText(getActivity().getApplicationContext(),"Es necesario Autenticarse en Lets Eat! para realizar un pedido",Toast.LENGTH_LONG).show();
+            ((BaseActivity)getActivity()).showToast(getString(R.string.auth_requiered),Toast.LENGTH_LONG);
             ((BaseActivity)getActivity()).manageIntents(R.id.login);
         }
     }
