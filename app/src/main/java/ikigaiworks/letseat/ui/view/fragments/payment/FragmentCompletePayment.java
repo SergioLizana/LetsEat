@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.ui.view.adapters.SuccessAdapter;
+import ikigaiworks.letseat.ui.view.animation.LikeButtonView;
 import ikigaiworks.letseat.ui.view.customview.PriceTextView;
 import ikigaiworks.letseat.utils.CartUtils;
 
@@ -42,6 +43,8 @@ public class FragmentCompletePayment extends Fragment {
     @FragmentArg
     ArrayList<ProductToCart> products;
     SuccessAdapter adapter;
+    @ViewById(R.id.fav_button)
+    LikeButtonView likeButtonView;
 
     @Click(R.id.ocultar)
     void onClickOcultar(){
