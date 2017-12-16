@@ -49,7 +49,7 @@ public class FirebaseManagerImpl implements FirebaseManager {
 
     @Override
     public void getCategories(final Presenter.OperationCategories listener) {
-        final ArrayList<Category> categoryList = new ArrayList<Category>();
+        final ArrayList<Category> categoryList = new ArrayList<>();
         DatabaseReference myRef = FirebaseCommon.getFirebaseDatabase().getReference("CATEGORIES");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override

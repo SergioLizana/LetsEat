@@ -161,7 +161,7 @@ public class Producto implements Parcelable {
         this.price = (Double) in.readValue(Double.class.getClassLoader());
         this.reference = in.readString();
         int extraSize = in.readInt();
-        this.extra = new HashMap<String, Extra>(extraSize);
+        this.extra = new HashMap<>(extraSize);
         for (int i = 0; i < extraSize; i++) {
             String key = in.readString();
             Extra value = in.readParcelable(Extra.class.getClassLoader());

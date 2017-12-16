@@ -1,7 +1,5 @@
 package ikigaiworks.letseat.model;
 
-import java.util.ArrayList;
-
 /**
  * Created by sergiolizanamontero on 23/11/17.
  */

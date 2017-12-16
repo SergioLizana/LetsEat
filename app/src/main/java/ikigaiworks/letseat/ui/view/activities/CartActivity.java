@@ -1,17 +1,13 @@
 package ikigaiworks.letseat.ui.view.activities;
 
-import android.app.FragmentManager;
-import android.util.Log;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.ui.view.fragments.cart.FragmentCartList;
 import ikigaiworks.letseat.ui.view.fragments.cart.FragmentCartList_;
-import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
-import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain_;
 
 /**
  * Created by sergiolizanamontero on 12/11/17.
@@ -20,6 +16,8 @@ import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain_;
 public class CartActivity  extends BaseActivity {
 
     FragmentCartList fragment;
+    @Extra
+    boolean isFav;
 
     @AfterViews
     void init(){
@@ -27,7 +25,7 @@ public class CartActivity  extends BaseActivity {
         setToolbarTitle(getString(R.string.title_cart));
         setToolbarBackgroundColor(R.color.colorPrimary);
         if (findViewById(R.id.content_activity_cart) != null) {
-            fragment = FragmentCartList_.builder().build();
+            fragment = FragmentCartList_.builder().isFav(isFav).build();
             replaceFragment(fragment,R.id.content_activity_cart,getString(R.string.tag_name_main),false,true);
         }
     }

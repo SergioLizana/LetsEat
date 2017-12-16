@@ -19,6 +19,11 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="login_error_invalid_credentials_invalid">El usuario o la password no coinciden. Intentelo de nuevo.</string>
+    <string name="login_error_unexpected">Ha ocurrido un error en la aplicación. Intentalo de nuevo más tarde.</string>
+    <string name="login_error_format_mail">El formato del correo no es correcto, Intentalo de nuevo.</string>
+    <string name="error_validation_fav_name">El campo del nombre no puede estar vacio</string>
+    <string name="error_validation_is_fav">El pedido ya está añadido a favoritos</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -38,11 +43,6 @@
     <string name="expiration_date_payment">Fecha Expiración</string>
     <string name="cvv_payment">CVV</string>
     <string name="confirm_pay">CONFIRMAR Y PAGAR</string>
-    
-
-    <string name="login_error_invalid_credentials_invalid">El usuario o la password no coinciden. Intentelo de nuevo.</string>
-    <string name="login_error_unexpected">Ha ocurrido un error en la aplicación. Intentalo de nuevo más tarde.</string>
-    <string name="login_error_format_mail">El formato del correo no es correcto, Intentalo de nuevo.</string>
 
     <string name="signup_fields_error">Tienes que rellenar todos los campos para poder registrarte como usuario de LetsEat!</string>
     <string name="signup_diferent_password_error">Las contraseñas no coinciden</string>
@@ -83,8 +83,17 @@
 
     <string name="title_main">Taste Bakery</string>
     <string name="title_cart">Cart</string>
-    <string name="title_last_orders">Últimos Pedidos</string>
+    <string name="title_last_orders">Pedidos Favoritos</string>
     <string name="title_menu">Menú</string>
+
+    <string name="fav_added">Se ha añadido este pedidos a favoritos</string>
+
+
+    <string name="my_product_error">Tienes que autenticarte en Lets Eat para poder acceder a tus pedidos</string>
+    <string name="news">¡Muy Pronto más novedades en Lets Eat!</string>
+    <string name="goodbye">¡Vuelve Pronto!</string>
+    <string name="authenticated">¡ Estás autenticado ya en Lets Eat !</string>
+
 
 
 

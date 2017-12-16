@@ -1,13 +1,11 @@
 package ikigaiworks.letseat.ui.presenters.lastorder;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
+import ikigaiworks.letseat.model.FavOrder;
 import ikigaiworks.letseat.model.LastOrder;
 import ikigaiworks.letseat.model.ProductToCart;
-import ikigaiworks.letseat.ui.view.fragments.lastorder.FragmentLastOrder;
+import ikigaiworks.letseat.ui.view.fragments.lastorder.FragmentFavOrderList;
 
 /**
  * Created by sergiolizanamontero on 30/11/17.
@@ -15,9 +13,9 @@ import ikigaiworks.letseat.ui.view.fragments.lastorder.FragmentLastOrder;
 
 public class LastOrderPresenterImpl {
 
-    FragmentLastOrder frag;
+    FragmentFavOrderList frag;
 
-    public LastOrderPresenterImpl(FragmentLastOrder frag){
+    public LastOrderPresenterImpl(FragmentFavOrderList frag){
         this.frag = frag;
     }
 
@@ -211,7 +209,7 @@ public class LastOrderPresenterImpl {
         return lastOrders;
     }
 
-    public void onClickEvent(LastOrder lastOrder){
-       frag.goToCart(lastOrder);
+    public void onClickEvent(FavOrder favOrder){
+       frag.goToCart(favOrder);
     }
 }

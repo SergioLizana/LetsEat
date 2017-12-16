@@ -1,7 +1,5 @@
 package ikigaiworks.letseat.utils;
 
-import android.widget.Switch;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,7 +13,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -24,8 +22,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.ui.view.activities.LastOrderActivity_;
+import ikigaiworks.letseat.ui.view.activities.FavOrderActivity_;
 import ikigaiworks.letseat.ui.view.activities.LoginActivity_;
+import ikigaiworks.letseat.ui.view.activities.MainActivity;
 import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 import ikigaiworks.letseat.ui.view.activities.MenuActivity_;
 
@@ -109,7 +108,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.login) {
             if (FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
-                Toast.makeText(this, "Estás autenticado ya en Lets Eat !", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.authenticated), Toast.LENGTH_LONG).show();
             } else {
                 Intent intent = LoginActivity_.intent(this).get();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -117,6 +116,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             }
         } else if (id == R.id.init){
             if(this instanceof MainActivity_){
+                //DO NOTHING
             }else{
                 Intent intent = MainActivity_.intent(this).get();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -135,28 +135,28 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.mis_pedidos) {
             if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null){
-                Intent intent = LastOrderActivity_.intent(this).get();
+                Intent intent = FavOrderActivity_.intent(this).get();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }else{
-                Toast.makeText(this,"Tienes que autenticarte en Lets Eat para poder acceder a tus pedidos",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,getString(R.string.my_product_error),Toast.LENGTH_LONG).show();
             }
 
         } else if (id == R.id.promos) {
-            Toast.makeText(this,"Muy Pronto más novedades en Lets Eat!",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.news),Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.aboutme) {
-            Toast.makeText(this,"Muy Pronto más novedades en Lets Eat!",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.news),Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.config) {
-            Toast.makeText(this,"Muy Pronto más novedades en Lets Eat!",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.news),Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.exit) {
             if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
                 FirebaseCommon.getFirebaseAuth().signOut();
-                Toast.makeText(this,"Vuelve Pronto!",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,getString(R.string.goodbye),Toast.LENGTH_LONG).show();
             }else{
-                Toast.makeText(this,"No estás autenticado en Lets Eat",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,getString(R.string.news),Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -256,6 +256,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     public void showToast(String msg,int duration){
         Toast.makeText(getApplicationContext(),msg,duration).show();
+    }
+
+
+    public void goToMainScreen(){
+        Intent intent = MainActivity_.intent(this).get();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }

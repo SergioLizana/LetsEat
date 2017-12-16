@@ -1,11 +1,8 @@
 package ikigaiworks.letseat.ui.presenters.login;
 
 import android.content.Context;
-import android.widget.TextView;
 
-import ikigaiworks.letseat.manager.FirebaseManager;
 import ikigaiworks.letseat.manager.FirebaseManagerImpl;
-import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
 import ikigaiworks.letseat.ui.view.view.LoginView;
 
 /**

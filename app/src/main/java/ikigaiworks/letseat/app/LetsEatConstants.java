@@ -16,6 +16,9 @@ public class LetsEatConstants {
     public static final int SIGNIN_ERROR_INVALID_EMAIL_CODE = 6;
     public static final int SIGNIN_ERROR_USER_EXIST_CODE = 7;
     public static final String AMOUNT_FORMATTER = "#,##0.00€";
+    public static final String TAG_SAVE_FAV = "save_fav";
+    public static final String SHARED_PREFERENCES_FAV_LIST = "preferences_fav_list";
+
 
 
 

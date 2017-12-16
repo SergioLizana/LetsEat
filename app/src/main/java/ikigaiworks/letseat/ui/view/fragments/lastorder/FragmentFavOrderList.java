@@ -4,35 +4,32 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ProgressBar;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.model.Category;
+import ikigaiworks.letseat.model.FavOrder;
 import ikigaiworks.letseat.model.LastOrder;
-import ikigaiworks.letseat.model.beans.ProductsBean;
 import ikigaiworks.letseat.ui.presenters.lastorder.LastOrderPresenterImpl;
-import ikigaiworks.letseat.ui.presenters.menu.CategoryFragmentPresenterImpl;
 import ikigaiworks.letseat.ui.view.activities.CartActivity_;
-import ikigaiworks.letseat.ui.view.activities.ProductTabActivity_;
 import ikigaiworks.letseat.ui.view.adapters.LastOrderAdapter;
-import ikigaiworks.letseat.ui.view.adapters.MenuAdapter;
 import ikigaiworks.letseat.utils.CartUtils;
+import ikigaiworks.letseat.utils.FavoriteUtils;
 
 /**
  * Created by sergiolizanamontero on 30/11/17.
  */
 
 @EFragment(R.layout.fragment_menu_categorias)
-public class FragmentLastOrder extends Fragment {
-    ArrayList<LastOrder> data;
+public class FragmentFavOrderList extends Fragment {
+    LinkedHashMap<String,FavOrder> data;
     LastOrderAdapter adapter;
 
     @ViewById(R.id.recyler_menu_categorias)
@@ -45,9 +42,8 @@ public class FragmentLastOrder extends Fragment {
 
     @AfterViews
     void init() {
-        data = new ArrayList<>();
         presenter = new LastOrderPresenterImpl(this);
-        data = presenter.getOrders();
+        data = FavoriteUtils.getFavList();
         configureRecyclerView();
 
     }
@@ -59,12 +55,10 @@ public class FragmentLastOrder extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    public void goToCart(LastOrder order){
-
-
+    public void goToCart(FavOrder order){
         CartUtils.deleteCart();
-        CartUtils.updateCart(order.getProductToCart());
-        Intent intent = CartActivity_.intent(this).get();
+        CartUtils.updateCart(order.getProducts());
+        Intent intent = CartActivity_.intent(this).isFav(true).get();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

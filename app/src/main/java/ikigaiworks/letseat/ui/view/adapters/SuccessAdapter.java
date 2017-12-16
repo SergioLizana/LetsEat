@@ -1,16 +1,11 @@
 package ikigaiworks.letseat.ui.view.adapters;
 
 import android.content.Context;
-import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -18,7 +13,6 @@ import ikigaiworks.letseat.BR;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.databinding.LinearContentPaySuccessBinding;
 import ikigaiworks.letseat.model.ProductToCart;
-import ikigaiworks.letseat.ui.view.fragments.cart.FragmentCartList;
 import ikigaiworks.letseat.utils.CartUtils;
 
 /**

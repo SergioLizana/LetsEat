@@ -56,6 +56,7 @@ public class SwitchTrackTextDrawable extends Drawable {
     }
 
     @Override
+    @NonNull
     public void draw(Canvas canvas) {
         final Rect textBounds = new Rect();
         mTextPaint.getTextBounds(mRightText, 0, mRightText.length(), textBounds);

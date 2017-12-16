@@ -1,6 +1,5 @@
 package ikigaiworks.letseat.ui.view.fragments.payment;
 import android.support.v4.app.Fragment;
-import android.widget.TextView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -25,6 +24,8 @@ public class FragmentPayment extends Fragment {
 
     @FragmentArg
     ArrayList<ProductToCart> productToCart;
+    @FragmentArg
+    boolean isFav;
     @ViewById(R.id.total_prize_payment)
     PriceTextView total;
 
@@ -35,7 +36,7 @@ public class FragmentPayment extends Fragment {
 
     @Click
     void pay(){
-        FragmentCompletePayment payment = FragmentCompletePayment_.builder().products(productToCart).build();
+        FragmentCompletePayment payment = FragmentCompletePayment_.builder().isFav(isFav).products(productToCart).build();
         ((CartActivity)getActivity()).replaceFragment(payment,R.id.content_activity_cart,getString(R.string.tag_name_payment_complete),false,true);
     }
 

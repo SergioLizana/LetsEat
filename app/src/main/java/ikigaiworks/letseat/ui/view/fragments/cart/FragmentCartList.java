@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
@@ -43,6 +44,8 @@ public class FragmentCartList extends Fragment  {
     TextView totalAmountProducts;
     @ViewById
     Button pay;
+    @FragmentArg
+    boolean isFav;
 
 
     @AfterViews
@@ -70,7 +73,7 @@ public class FragmentCartList extends Fragment  {
     @Click(R.id.pay)
     void paid(){
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            FragmentPayment payment = FragmentPayment_.builder().productToCart(CartUtils.getCart()).build();
+            FragmentPayment payment = FragmentPayment_.builder().isFav(isFav).productToCart(CartUtils.getCart()).build();
             ((CartActivity) getActivity()).replaceFragment(payment, R.id.content_activity_cart, getString(R.string.tag_name_payment), false, true);
         }else{
             ((BaseActivity)getActivity()).showToast(getString(R.string.auth_requiered),Toast.LENGTH_LONG);

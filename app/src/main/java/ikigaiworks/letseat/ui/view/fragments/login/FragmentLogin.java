@@ -1,17 +1,9 @@
 package ikigaiworks.letseat.ui.view.fragments.login;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +15,6 @@ import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.app.BaseActivity;
-import ikigaiworks.letseat.app.FirebaseCommon;
 import ikigaiworks.letseat.app.LetsEatConstants;
 import ikigaiworks.letseat.ui.presenters.login.LoginPresenterImpl;
 import ikigaiworks.letseat.ui.view.activities.LoginActivity;

@@ -102,7 +102,7 @@ public class ProductTabActivity extends BaseActivity implements DialogInterface.
 
     @Click(R.id.cart_button)
     void onClick(){
-        Intent intent = CartActivity_.intent(this).get();
+        Intent intent = CartActivity_.intent(this).isFav(false).get();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

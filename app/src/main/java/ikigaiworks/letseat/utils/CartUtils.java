@@ -22,10 +22,8 @@ import ikigaiworks.letseat.model.Producto;
 
 public class CartUtils {
 
-    ArrayList<ProductToCart> cartList;
-
     public static ArrayList<String> getExtraAsString(Map<String,Extra> extras) {
-        ArrayList<Extra> ext = new ArrayList<Extra>(extras.values());
+        ArrayList<Extra> ext = new ArrayList<>(extras.values());
         ArrayList _return = new ArrayList<String>();
         for (Extra extra: ext){
             _return.add(extra.getName());
@@ -46,9 +44,7 @@ public class CartUtils {
     public static ArrayList<Producto> getProductByMap(Map<String,Producto> map){
 
         ArrayList<Producto> productos = new ArrayList<>();
-        for (Producto p : map.values()) {
-            productos.add(p);
-        }
+        productos.addAll(map.values());
 
         return productos;
     }
@@ -57,7 +53,7 @@ public class CartUtils {
         boolean productAdded = false;
         SharedPreferences mPrefs = App.getAppContext().getSharedPreferences(App.getAppContext().getString(R.string.shared_name_cart)
                 ,Context.MODE_PRIVATE);
-        ArrayList<ProductToCart> productsInCart = new ArrayList<ProductToCart>(getCart());
+        ArrayList<ProductToCart> productsInCart = new ArrayList<>(getCart());
         for(ProductToCart productInCart : productsInCart){
             if (productInCart.equals(p)){
                 productInCart.setQuantity(productInCart.getQuantity()+1);
@@ -106,10 +102,12 @@ public class CartUtils {
     }
 
     public static ArrayList<ProductToCart> getCart(){
-        SharedPreferences prefs = App.getAppContext().getSharedPreferences(App.getAppContext().getString(R.string.shared_name_cart),Context.MODE_PRIVATE);
+        SharedPreferences prefs = App.getAppContext()
+                .getSharedPreferences(App.getAppContext().getString(R.string.shared_name_cart),Context.MODE_PRIVATE);
         Type listType = new TypeToken<ArrayList<ProductToCart>>(){}.getType();
 
-        ArrayList<ProductToCart> cartList = new Gson().fromJson(prefs.getString(App.getAppContext().getString(R.string.shared_name_list),""), listType);
+        ArrayList<ProductToCart> cartList =
+                new Gson().fromJson(prefs.getString(App.getAppContext().getString(R.string.shared_name_list),""), listType);
 
 
         return cartList!=null?cartList:new ArrayList<ProductToCart>();
@@ -194,7 +192,8 @@ public class CartUtils {
     }
 
     public static ProductToCart parseProductToCart(Producto p,String extra){
-        return new ProductToCart(p.getReference(),getLastId(),p.getName(),p.getPrice(),p.getDiscount(),p.getReference(),extra,p.getImage());
+        return new ProductToCart(p.getReference(),getLastId()
+                ,p.getName(),p.getPrice(),p.getDiscount(),p.getReference(),extra,p.getImage());
     }
 
 

@@ -8,7 +8,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -16,14 +15,10 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.ui.view.animation.CircleView;
 import ikigaiworks.letseat.ui.view.animation.DotsView;
@@ -86,65 +81,69 @@ public class LikeButtonView extends FrameLayout implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
+
+    }
+
+    public void showAnimation(){
         ivStar.setImageResource(R.drawable.ic_star_rate_on);
 
         if (animatorSet != null) {
             animatorSet.cancel();
         }
 
-            ivStar.animate().cancel();
-            ivStar.setScaleX(0);
-            ivStar.setScaleY(0);
-            vCircle.setInnerCircleRadiusProgress(0);
-            vCircle.setOuterCircleRadiusProgress(0);
-            vDotsView.setCurrentProgress(0);
+        ivStar.animate().cancel();
+        ivStar.setScaleX(0);
+        ivStar.setScaleY(0);
+        vCircle.setInnerCircleRadiusProgress(0);
+        vCircle.setOuterCircleRadiusProgress(0);
+        vDotsView.setCurrentProgress(0);
 
-            animatorSet = new AnimatorSet();
+        animatorSet = new AnimatorSet();
 
-            ObjectAnimator outerCircleAnimator = ObjectAnimator.ofFloat(vCircle, CircleView.OUTER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
-            outerCircleAnimator.setDuration(250);
-            outerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
+        ObjectAnimator outerCircleAnimator = ObjectAnimator.ofFloat(vCircle, CircleView.OUTER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
+        outerCircleAnimator.setDuration(250);
+        outerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
 
-            ObjectAnimator innerCircleAnimator = ObjectAnimator.ofFloat(vCircle, CircleView.INNER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
-            innerCircleAnimator.setDuration(200);
-            innerCircleAnimator.setStartDelay(200);
-            innerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
+        ObjectAnimator innerCircleAnimator = ObjectAnimator.ofFloat(vCircle, CircleView.INNER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
+        innerCircleAnimator.setDuration(200);
+        innerCircleAnimator.setStartDelay(200);
+        innerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
 
-            ObjectAnimator starScaleYAnimator = ObjectAnimator.ofFloat(ivStar, ImageView.SCALE_Y, 0.2f, 1f);
-            starScaleYAnimator.setDuration(350);
-            starScaleYAnimator.setStartDelay(250);
-            starScaleYAnimator.setInterpolator(OVERSHOOT_INTERPOLATOR);
+        ObjectAnimator starScaleYAnimator = ObjectAnimator.ofFloat(ivStar, ImageView.SCALE_Y, 0.2f, 1f);
+        starScaleYAnimator.setDuration(350);
+        starScaleYAnimator.setStartDelay(250);
+        starScaleYAnimator.setInterpolator(OVERSHOOT_INTERPOLATOR);
 
-            ObjectAnimator starScaleXAnimator = ObjectAnimator.ofFloat(ivStar, ImageView.SCALE_X, 0.2f, 1f);
-            starScaleXAnimator.setDuration(350);
-            starScaleXAnimator.setStartDelay(250);
-            starScaleXAnimator.setInterpolator(OVERSHOOT_INTERPOLATOR);
+        ObjectAnimator starScaleXAnimator = ObjectAnimator.ofFloat(ivStar, ImageView.SCALE_X, 0.2f, 1f);
+        starScaleXAnimator.setDuration(350);
+        starScaleXAnimator.setStartDelay(250);
+        starScaleXAnimator.setInterpolator(OVERSHOOT_INTERPOLATOR);
 
-            ObjectAnimator dotsAnimator = ObjectAnimator.ofFloat(vDotsView, DotsView.DOTS_PROGRESS, 0, 1f);
-            dotsAnimator.setDuration(900);
-            dotsAnimator.setStartDelay(50);
-            dotsAnimator.setInterpolator(ACCELERATE_DECELERATE_INTERPOLATOR);
+        ObjectAnimator dotsAnimator = ObjectAnimator.ofFloat(vDotsView, DotsView.DOTS_PROGRESS, 0, 1f);
+        dotsAnimator.setDuration(900);
+        dotsAnimator.setStartDelay(50);
+        dotsAnimator.setInterpolator(ACCELERATE_DECELERATE_INTERPOLATOR);
 
-            animatorSet.playTogether(
-                    outerCircleAnimator,
-                    innerCircleAnimator,
-                    starScaleYAnimator,
-                    starScaleXAnimator,
-                    dotsAnimator
-            );
+        animatorSet.playTogether(
+                outerCircleAnimator,
+                innerCircleAnimator,
+                starScaleYAnimator,
+                starScaleXAnimator,
+                dotsAnimator
+        );
 
-            animatorSet.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationCancel(Animator animation) {
-                    vCircle.setInnerCircleRadiusProgress(0);
-                    vCircle.setOuterCircleRadiusProgress(0);
-                    vDotsView.setCurrentProgress(0);
-                    ivStar.setScaleX(1);
-                    ivStar.setScaleY(1);
-                }
-            });
+        animatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                vCircle.setInnerCircleRadiusProgress(0);
+                vCircle.setOuterCircleRadiusProgress(0);
+                vDotsView.setCurrentProgress(0);
+                ivStar.setScaleX(1);
+                ivStar.setScaleY(1);
+            }
+        });
 
-            animatorSet.start();
+        animatorSet.start();
 
     }
 

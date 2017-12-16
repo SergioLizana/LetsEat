@@ -1,7 +1,6 @@
 package ikigaiworks.letseat.ui.presenters.main;
 
 import android.content.Context;
-import android.util.Log;
 
 import ikigaiworks.letseat.model.Carrusel;
 import ikigaiworks.letseat.model.CarruselSlide;

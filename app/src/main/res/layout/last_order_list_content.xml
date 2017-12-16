@@ -6,8 +6,8 @@
     <data>
         <import type="java.lang.String"/>
         <variable
-            name="order"
-            type="ikigaiworks.letseat.model.LastOrder" />
+            name="fav"
+            type="ikigaiworks.letseat.model.FavOrder" />
 
         <variable
             name="presenter"
@@ -18,7 +18,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> presenter.onClickEvent(order)}">
+        android:onClick="@{() -> presenter.onClickEvent(fav)}">
 
         <TextView
             android:id="@+id/last_order_name"
@@ -29,7 +29,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginLeft="25dp"
             android:layout_marginBottom="15dp"
-            android:text="@{order.name}"
+            android:text="@{fav.name}"
             tools:text="Americano Extra" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_marginBottom="25dp"
             android:layout_below="@id/last_order_name"
             tools:text="Realizado: 17/10/2017"
-            android:text="@{order.fecha}"/>
+            android:text="Realizado: 17/10/2017"/>
 
         <ImageView
             android:id="@+id/product_image"

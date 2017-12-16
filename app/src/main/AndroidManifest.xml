@@ -46,7 +46,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
-        <activity android:name=".ui.view.activities.LastOrderActivity_"
+        <activity android:name=".ui.view.activities.FavOrderActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>

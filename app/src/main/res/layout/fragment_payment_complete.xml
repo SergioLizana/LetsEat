@@ -63,6 +63,12 @@
                 android:text="@string/n_pedido"
                 android:textSize="20dp" />
 
+            <ikigaiworks.letseat.ui.view.animation.LikeButtonView_
+                android:id="@+id/fav_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
 
         </RelativeLayout>
 
@@ -83,8 +89,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
-            android:textColor="@color/colorPrimary"
             android:text="@string/hide"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.74"
             app:layout_constraintStart_toEndOf="@+id/textView13"
@@ -106,10 +112,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:textStyle="bold"
-                android:textSize="15sp"
                 android:layout_marginTop="20dp"
-                android:text="@string/restaurant_name" />
+                android:text="@string/restaurant_name"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/company_name"
@@ -119,6 +125,7 @@
                 android:layout_below="@+id/name_restaurant"
                 android:layout_marginTop="15dp"
                 android:text="@string/company_name" />
+
             <TextView
                 android:id="@+id/cif"
                 android:layout_width="wrap_content"
@@ -127,6 +134,7 @@
                 android:layout_below="@+id/company_name"
                 android:layout_marginTop="2dp"
                 android:text="@string/cif" />
+
             <TextView
                 android:id="@+id/factura_simplificada"
                 android:layout_width="wrap_content"
@@ -144,24 +152,24 @@
                 android:layout_below="@+id/factura_simplificada"
                 android:layout_marginTop="10dp"
                 android:text="@string/fecha" />
+
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/date_str"
                 android:layout_below="@+id/factura_simplificada"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/date_str"
                 tools:text="18/11/2017" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/ticket_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_alignStart="@+id/name_restaurant"
-                android:layout_below="@id/date">
-            </android.support.v7.widget.RecyclerView>
+                android:layout_below="@id/date"
+                android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/totalstr"
@@ -170,29 +178,30 @@
                 android:layout_alignStart="@+id/cif"
                 android:layout_below="@+id/ticket_cart"
                 android:layout_marginTop="20dp"
-                android:textStyle="bold"
-                android:text="@string/total" />
+                android:text="@string/total"
+                android:textStyle="bold" />
 
             <ikigaiworks.letseat.ui.view.customview.PriceTextView
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/totalstr"
                 android:layout_below="@+id/ticket_cart"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/totalstr"
                 android:textStyle="bold"
                 tools:text="8,75€" />
+
             <TextView
                 android:id="@+id/iva_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/total"
                 android:layout_below="@+id/ticket_cart"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"
-                android:textStyle="bold"
-                android:text="@string/iva" />
+                android:layout_toRightOf="@+id/total"
+                android:text="@string/iva"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -212,12 +221,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/items" />
 
-        <ikigaiworks.letseat.ui.view.animation.LikeButtonView_
-            android:id="@+id/fav_button"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginTop="265dp" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/goToHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15"
+            app:srcCompat="@drawable/ic_home_white_24dp" />
 
 
     </android.support.constraint.ConstraintLayout>

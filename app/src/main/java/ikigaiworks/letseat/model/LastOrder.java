@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by sergiolizanamontero on 28/11/17.
