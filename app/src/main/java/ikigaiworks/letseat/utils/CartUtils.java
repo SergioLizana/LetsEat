@@ -68,7 +68,7 @@ public class CartUtils {
         String json = gson.toJson(productsInCart);
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(App.getAppContext().getString(R.string.shared_name_list),json);
-        editor.commit();
+        editor.apply();
 
     }
     public static void updateCart(ArrayList<ProductToCart> productToCarts){
@@ -78,7 +78,7 @@ public class CartUtils {
         String json = gson.toJson(productToCarts);
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(App.getAppContext().getString(R.string.shared_name_list),json);
-        editor.commit();
+        editor.apply();
 
     }
 
@@ -98,7 +98,7 @@ public class CartUtils {
         SharedPreferences prefs = App.getAppContext().getSharedPreferences(App.getAppContext().getString(R.string.shared_name_cart),Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     public static ArrayList<ProductToCart> getCart(){

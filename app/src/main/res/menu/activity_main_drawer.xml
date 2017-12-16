@@ -5,42 +5,42 @@
         <item
             android:id="@+id/login"
             android:icon="@drawable/ic_lock_outline_black_24dp"
-            android:title="Login" />
+            android:title="@string/login" />
         <item
             android:id="@+id/init"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Inicio" />
+            android:title="@string/menu_inicio" />
         <item
             android:id="@+id/carta"
             android:icon="@drawable/ic_receipt_black_24dp"
-            android:title="Carta" />
+            android:title="@string/menu_carta" />
         <item
             android:id="@+id/promos"
             android:icon="@drawable/ic_assignment_black_24dp"
-            android:title="Promociones" />
+            android:title="@string/menu_promos" />
         <item
             android:id="@+id/pedido"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="¡Pide Ya!" />
+            android:title="@string/menu_go_now" />
         <item
             android:id="@+id/mis_pedidos"
             android:icon="@drawable/ic_bookmark_border_black_24dp"
-            android:title="Mis Pedidos" />
+            android:title="@string/menu_my_products" />
     </group>
 
     <group android:checkableBehavior="single" android:title="Communicate">
             <item
                 android:id="@+id/config"
                 android:icon="@drawable/ic_settings_black_24dp"
-                android:title="Configuracion" />
+                android:title="@string/menu_config" />
             <item
                 android:id="@+id/aboutme"
                 android:icon="@drawable/ic_people_black_24dp"
-                android:title="Nosotros" />
+                android:title="@string/menu_nosotros" />
             <item
                 android:id="@+id/exit"
                 android:icon="@drawable/ic_power_settings_new_black_24dp"
-                android:title="Salir" />
+                android:title="@string/menu_exit" />
   </group>
 
 </menu>

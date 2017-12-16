@@ -83,7 +83,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/gradient_circle"
-        android:text="GO!"
+        android:text="@string/go"
         android:textColor="#FFF"
         android:textSize="20dp"
         android:textStyle="bold"

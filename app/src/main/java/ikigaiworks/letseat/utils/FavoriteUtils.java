@@ -35,7 +35,7 @@ public class FavoriteUtils {
         String json = gson.toJson(favList);
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(SHARED_PREFERENCES_FAV_LIST,json);
-        editor.commit();
+        editor.apply();
     }
 
     public static LinkedHashMap<String,FavOrder> getFavList(){

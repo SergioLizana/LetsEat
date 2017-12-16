@@ -34,7 +34,6 @@
             android:background="@drawable/circle"
             android:elevation="6dp"
             android:paddingTop="1dp"
-            android:text="2"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="4pt"

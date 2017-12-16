@@ -64,7 +64,19 @@
     <string name="total">Total: </string>
     <string name="iva">10% IVA incluido.</string>
     <string name="mostrador">Acércate al mostrador y \nmuestra esta pantalla para\n recoger tu pedido</string>
-
+    <string name="price">Precio: </string>
+    <string name="delete">Borrar </string>
+    <string name="fav_name">FAVOURITE NAME</string>
+    <string name="amount_start">0</string>
+    <string name="products">productos</string>
+    <string name="total_2">Total</string>
+    <string name="pay">PAGAR</string>
+    <string name="go">GO!</string>
+    <string name="hardcoded_name">SERGIO LIZANA MONTERO</string>
+    <string name="hardcoded_account">1111-2222-333-444-5555</string>
+    <string name="hardcoded_date">10/1992</string>
+    <string name="hardcoded_number_card">123</string>
+    <string name="add_text">Añadir</string>
     <string name="auth_requiered">Es necesario Autenticarse en Lets Eat! para realizar un pedido</string>
     <string name="welcome">Bienvenido a LetsEat</string>
     <string name="auth_complete">Se ha registrado un usuario correctamente</string>
@@ -94,6 +106,17 @@
     <string name="goodbye">¡Vuelve Pronto!</string>
     <string name="authenticated">¡ Estás autenticado ya en Lets Eat !</string>
 
+
+    <string name="menu_login">Login</string>
+    <string name="menu_inicio">Inicio</string>
+    <string name="menu_carta">Carta</string>
+    <string name="menu_promos">Promociones</string>
+    <string name="menu_go_now">¡Pide Ya!</string>
+    <string name="menu_my_products">Mis pedidos</string>
+    <string name="menu_communicate">Communicate</string>
+    <string name="menu_config">Configuración</string>
+    <string name="menu_nosotros">Nosotros</string>
+    <string name="menu_exit">Salir</string>
 
 
 
