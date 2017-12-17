@@ -23,7 +23,7 @@ public class ProductToCart implements Parcelable {
     public ProductToCart() {
     }
 
-    public ProductToCart(String productId , int cartId, String name, double price, double discount, String reference, String extra,String image) {
+    public ProductToCart(String productId, int cartId, String name, double price, double discount, String reference, String extra, String image) {
         this.cartId = cartId;
         this.productId = productId;
         this.name = name;
@@ -32,7 +32,7 @@ public class ProductToCart implements Parcelable {
         this.reference = reference;
         this.extra = extra;
         this.image = image;
-        this.extraVisibility = extra==null||extra.isEmpty()? View.INVISIBLE: View.VISIBLE;
+        this.extraVisibility = extra == null || extra.isEmpty() ? View.INVISIBLE : View.VISIBLE;
     }
 
     public int getCartId() {
@@ -117,16 +117,16 @@ public class ProductToCart implements Parcelable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof ProductToCart){
+        if (obj instanceof ProductToCart) {
 
-            if(this.getCartId() == ((ProductToCart)obj).getCartId() ||
-                    this.getReference().equals(((ProductToCart)obj).getReference())&&
-                            this.extra.equals(((ProductToCart)obj).getExtra())) {
+            if (this.getCartId() == ((ProductToCart) obj).getCartId() ||
+                    this.getReference().equals(((ProductToCart) obj).getReference()) &&
+                            this.extra.equals(((ProductToCart) obj).getExtra())) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
     }

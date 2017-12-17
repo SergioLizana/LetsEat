@@ -10,17 +10,17 @@ import ikigaiworks.letseat.ui.view.fragments.menu.FragmentCategory_;
 
 
 @EActivity(R.layout.activity_menu)
-public class MenuActivity extends BaseActivity{
+public class MenuActivity extends BaseActivity {
 
     FragmentCategory menu;
 
     @AfterViews
-    void init(){
+    void init() {
         addNavigationDrawer();
         setToolbarTitle(getString(R.string.title_menu));
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
         menu = FragmentCategory_.builder().build();
-        replaceFragment(menu,R.id.content_menu,getString(R.string.tag_name_menu),false,true);
+        replaceFragment(menu, R.id.content_menu, getString(R.string.tag_name_menu), false, true);
     }
 
 }

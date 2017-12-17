@@ -40,10 +40,10 @@ public class CartFloatingButton extends RelativeLayout {
     }
 
     public void refreshCartCount() {
-        if(CartUtils.getCart().size()>0) {
+        if (CartUtils.getCart().size() > 0) {
             setVisibility(VISIBLE);
             itemNumber.setText(String.valueOf(CartUtils.getCart().size()));
-        }else{
+        } else {
             setVisibility(GONE);
         }
     }

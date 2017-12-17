@@ -18,12 +18,12 @@ public class FavOrderActivity extends BaseActivity {
     FragmentFavOrderList lastOrderFragment;
 
     @AfterViews
-    void init(){
+    void init() {
         addNavigationDrawer();
         setToolbarTitle(getString(R.string.title_last_orders));
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
         lastOrderFragment = FragmentFavOrderList_.builder().build();
-        replaceFragment(lastOrderFragment,R.id.content_menu,getString(R.string.tag_name_menu),false,true);
+        replaceFragment(lastOrderFragment, R.id.content_menu, getString(R.string.tag_name_menu), false, true);
     }
 
 }

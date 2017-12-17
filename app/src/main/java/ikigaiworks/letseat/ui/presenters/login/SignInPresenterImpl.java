@@ -15,15 +15,15 @@ public class SignInPresenterImpl implements LoginPresenter.SignIn {
     LoginView view;
     private FirebaseManagerImpl firebaseManager;
 
-    public SignInPresenterImpl(Context c, LoginView view){
+    public SignInPresenterImpl(Context c, LoginView view) {
         this.view = view;
         this.c = c;
         firebaseManager = new FirebaseManagerImpl().getInstance();
 
     }
 
-    public void signIn(String email,String password){
-        firebaseManager.signUp(email,password,this);
+    public void signIn(String email, String password) {
+        firebaseManager.signUp(email, password, this);
     }
 
     @Override

@@ -25,32 +25,33 @@ import static ikigaiworks.letseat.app.LetsEatConstants.SHARED_PREFERENCES_FAV_LI
 
 public class FavoriteUtils {
 
-    public static void addToFav(LinkedHashMap<String,FavOrder> favItem){
+    public static void addToFav(LinkedHashMap<String, FavOrder> favItem) {
         SharedPreferences mPrefs = App.getAppContext().getSharedPreferences(SHARED_PREFERENCES_FAV_LIST
                 , Context.MODE_PRIVATE);
 
-        LinkedHashMap<String,FavOrder> favList = new LinkedHashMap<>(getFavList());
+        LinkedHashMap<String, FavOrder> favList = new LinkedHashMap<>(getFavList());
         favList.putAll(favItem);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(favList);
         SharedPreferences.Editor editor = mPrefs.edit();
-        editor.putString(SHARED_PREFERENCES_FAV_LIST,json);
+        editor.putString(SHARED_PREFERENCES_FAV_LIST, json);
         editor.apply();
     }
 
-    public static LinkedHashMap<String,FavOrder> getFavList(){
-        SharedPreferences prefs = App.getAppContext().getSharedPreferences(SHARED_PREFERENCES_FAV_LIST,Context.MODE_PRIVATE);
-        Type hashType = new TypeToken<LinkedHashMap<String,FavOrder>>(){}.getType();
-        LinkedHashMap<String,FavOrder> favList =
-                new Gson().fromJson(prefs.getString(SHARED_PREFERENCES_FAV_LIST,""), hashType);
-        return favList!=null?favList:new  LinkedHashMap<String,FavOrder>();
+    public static LinkedHashMap<String, FavOrder> getFavList() {
+        SharedPreferences prefs = App.getAppContext().getSharedPreferences(SHARED_PREFERENCES_FAV_LIST, Context.MODE_PRIVATE);
+        Type hashType = new TypeToken<LinkedHashMap<String, FavOrder>>() {
+        }.getType();
+        LinkedHashMap<String, FavOrder> favList =
+                new Gson().fromJson(prefs.getString(SHARED_PREFERENCES_FAV_LIST, ""), hashType);
+        return favList != null ? favList : new LinkedHashMap<String, FavOrder>();
     }
 
-    public static ArrayList<ProductToCart> getFavByName(String name){
+    public static ArrayList<ProductToCart> getFavByName(String name) {
         return null;
     }
 
-    public static void deleteFavByName(String name){
+    public static void deleteFavByName(String name) {
 
     }
 

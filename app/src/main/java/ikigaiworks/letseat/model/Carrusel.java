@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import ikigaiworks.letseat.R;
+
 /**
  * Created by sergiolizanamontero on 13/9/17.
  */
@@ -18,20 +19,20 @@ public class Carrusel {
     CarruselSlide promos;
     Context c;
 
-    public static Carrusel newInstance(Context c){
+    public static Carrusel newInstance(Context c) {
         Carrusel carrusel = new Carrusel(c);
         return carrusel;
     }
 
-    public Carrusel(Context c){
+    public Carrusel(Context c) {
         this.c = c;
         init();
     }
 
-    void init(){
-        menu = new CarruselSlide("Menu",R.id.carta,c.getString(R.string.desc_menu), R.drawable.menu);
-        promos = new CarruselSlide("Pedidos Favoritos",R.id.mis_pedidos,c.getString(R.string.desc_pedidos),R.drawable.orders);
-        orders = new CarruselSlide("Promociones",R.id.promos,c.getString(R.string.desc_promos),R.drawable.promos);
+    void init() {
+        menu = new CarruselSlide("Menu", R.id.carta, c.getString(R.string.desc_menu), R.drawable.menu);
+        promos = new CarruselSlide("Pedidos Favoritos", R.id.mis_pedidos, c.getString(R.string.desc_pedidos), R.drawable.orders);
+        orders = new CarruselSlide("Promociones", R.id.promos, c.getString(R.string.desc_promos), R.drawable.promos);
         slides.add(menu);
         slides.add(orders);
         slides.add(promos);
@@ -69,7 +70,6 @@ public class Carrusel {
     public void setPromos(CarruselSlide promos) {
         this.promos = promos;
     }
-
 
 
 }

@@ -42,7 +42,7 @@ import ikigaiworks.letseat.utils.FavoriteUtils;
  */
 
 @EFragment(R.layout.fragment_payment_complete)
-public class FragmentCompletePayment extends Fragment{
+public class FragmentCompletePayment extends Fragment {
 
     @ViewById(R.id.date)
     TextView mDateText;
@@ -65,26 +65,26 @@ public class FragmentCompletePayment extends Fragment{
     public static final int DIALOG_FRAGMENT = 1;
 
     @Click(R.id.ocultar)
-    void onClickOcultar(){
-        if (mItemsToShow.getVisibility() == View.GONE){
+    void onClickOcultar() {
+        if (mItemsToShow.getVisibility() == View.GONE) {
             ocultar.setText(getString(R.string.hide));
             mItemsToShow.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             mItemsToShow.setVisibility(View.GONE);
             ocultar.setText(getString(R.string.show));
         }
     }
 
     @AfterViews
-    void init(){
+    void init() {
         configureRecyclerView();
         mPriceTextView.setNumber(CartUtils.getCartPrice(products));
-        if(isFav){
+        if (isFav) {
             likeButtonView.showAnimation();
         }
     }
 
-    void configureRecyclerView(){
+    void configureRecyclerView() {
         adapter = new SuccessAdapter(products, getActivity().getApplicationContext());
         mRecyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -92,17 +92,17 @@ public class FragmentCompletePayment extends Fragment{
     }
 
     @Click(R.id.fav_button)
-    void onClick(){
-        if(!isFav) {
+    void onClick() {
+        if (!isFav) {
             FragmentManager fm = getFragmentManager();
             FavoriteDialogFragment dialogFragment = FavoriteDialogFragment_.builder().build();
             dialogFragment.setAllowEnterTransitionOverlap(true);
             dialogFragment.setAllowReturnTransitionOverlap(true);
             dialogFragment.setTargetFragment(this, DIALOG_FRAGMENT);
             dialogFragment.show(fm, "Sample Fragment");
-        }else{
+        } else {
             likeButtonView.showAnimation();
-            Toast.makeText(getActivity().getApplicationContext(),getString(R.string.error_validation_is_fav),Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity().getApplicationContext(), getString(R.string.error_validation_is_fav), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -115,20 +115,20 @@ public class FragmentCompletePayment extends Fragment{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
+        switch (requestCode) {
             case DIALOG_FRAGMENT:
 
                 if (resultCode == Activity.RESULT_OK) {
                     String name = data.getStringExtra(LetsEatConstants.TAG_SAVE_FAV);
-                    LinkedHashMap<String,FavOrder> favOrder = new LinkedHashMap<>();
-                    favOrder.put(name,new FavOrder(new Date(),products,name));
+                    LinkedHashMap<String, FavOrder> favOrder = new LinkedHashMap<>();
+                    favOrder.put(name, new FavOrder(new Date(), products, name));
                     FavoriteUtils.addToFav(favOrder);
                     FavoriteUtils.getFavList();
                     likeButtonView.showAnimation();
                     isFav = true;
                     Toast.makeText(getActivity().getApplicationContext()
-                            ,getString(R.string.fav_added),Toast.LENGTH_LONG).show();
-                } else if (resultCode == Activity.RESULT_CANCELED){
+                            , getString(R.string.fav_added), Toast.LENGTH_LONG).show();
+                } else if (resultCode == Activity.RESULT_CANCELED) {
                     isFav = false;
                 }
 
@@ -137,7 +137,7 @@ public class FragmentCompletePayment extends Fragment{
     }
 
     @Click(R.id.goToHome)
-    void goToMainScreen(){
-        ((BaseActivity)getActivity()).goToMainScreen();
+    void goToMainScreen() {
+        ((BaseActivity) getActivity()).goToMainScreen();
     }
 }

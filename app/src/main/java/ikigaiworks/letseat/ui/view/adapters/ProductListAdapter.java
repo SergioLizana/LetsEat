@@ -33,20 +33,21 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     private LayoutInflater inflater;
     private ProductListContentBinding binding;
 
-    public ProductListAdapter(ArrayList<Producto> data , Context context, ProductListFragmentPresenterImpl presenter){
+    public ProductListAdapter(ArrayList<Producto> data, Context context, ProductListFragmentPresenterImpl presenter) {
         this.data = data;
         this.context = context;
         this.presenter = presenter;
         inflater = LayoutInflater.from(context);
     }
-    public ProductListAdapter(ArrayList<Producto> data){
+
+    public ProductListAdapter(ArrayList<Producto> data) {
         this.data = data;
     }
 
 
     @Override
     public ProductListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.product_list_content,parent,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.product_list_content, parent, false);
         return new ProductListAdapter.ViewHolder(binding);
 
     }
@@ -54,20 +55,20 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public void onBindViewHolder(ProductListAdapter.ViewHolder holder, int position) {
         final Producto producto = data.get(position);
-        holder.bind(producto,presenter);
+        holder.bind(producto, presenter);
 
     }
 
-    public void addItem(int position , Producto item){
-        data.add(position,item);
+    public void addItem(int position, Producto item) {
+        data.add(position, item);
     }
 
-    public void updateItem(ArrayList<Producto> data){
+    public void updateItem(ArrayList<Producto> data) {
         this.data = data;
         notifyDataSetChanged();
     }
 
-    public Producto getItem(int adapterPosition){
+    public Producto getItem(int adapterPosition) {
         return data.get(adapterPosition);
     }
 
@@ -80,7 +81,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     @BindingAdapter("bind:text")
     public static void setExtraText(TextView view, String extra) {
-        view.setText(App.getAppContext().getString(R.string.extra)+extra);
+        view.setText(App.getAppContext().getString(R.string.extra) + extra);
     }
 
     @Override
@@ -100,13 +101,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         }
 
-        public void bind (Producto item, ProductListFragmentPresenterImpl p){
+        public void bind(Producto item, ProductListFragmentPresenterImpl p) {
             binding.setVariable(BR.producto, item);
-            binding.setVariable(BR.presenter,p);
+            binding.setVariable(BR.presenter, p);
             binding.executePendingBindings();
         }
-
-
 
 
     }

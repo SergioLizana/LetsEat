@@ -26,19 +26,20 @@ public class SuccessAdapter extends RecyclerView.Adapter<SuccessAdapter.ViewHold
     private LinearContentPaySuccessBinding binding;
     private int position;
 
-    public SuccessAdapter(ArrayList<ProductToCart> data , Context context){
+    public SuccessAdapter(ArrayList<ProductToCart> data, Context context) {
         this.data = data;
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
-    public SuccessAdapter(ArrayList<ProductToCart> data){
+
+    public SuccessAdapter(ArrayList<ProductToCart> data) {
         this.data = data;
     }
 
 
     @Override
     public SuccessAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.linear_content_pay_success,parent,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.linear_content_pay_success, parent, false);
         return new SuccessAdapter.ViewHolder(binding);
 
     }
@@ -50,22 +51,22 @@ public class SuccessAdapter extends RecyclerView.Adapter<SuccessAdapter.ViewHold
         holder.bind(producto);
     }
 
-    public void addItem(int position , ProductToCart item){
-        data.add(position,item);
+    public void addItem(int position, ProductToCart item) {
+        data.add(position, item);
     }
 
-    public void updateItems(ArrayList<ProductToCart> data){
+    public void updateItems(ArrayList<ProductToCart> data) {
         this.data = data;
         notifyDataSetChanged();
     }
 
-    public void removeItem(int position){
+    public void removeItem(int position) {
         CartUtils.removeFromCartPosition(position);
         data.remove(position);
         notifyItemRemoved(position);
     }
 
-    public ProductToCart getItem(int adapterPosition){
+    public ProductToCart getItem(int adapterPosition) {
         return data.get(adapterPosition);
     }
 
@@ -86,12 +87,10 @@ public class SuccessAdapter extends RecyclerView.Adapter<SuccessAdapter.ViewHold
 
         }
 
-        public void bind (ProductToCart item){
+        public void bind(ProductToCart item) {
             binding.setVariable(BR.producto, item);
             binding.executePendingBindings();
         }
-
-
 
 
     }

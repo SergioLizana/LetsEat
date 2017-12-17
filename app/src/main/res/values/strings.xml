@@ -80,6 +80,7 @@
     <string name="auth_requiered">Es necesario Autenticarse en Lets Eat! para realizar un pedido</string>
     <string name="welcome">Bienvenido a LetsEat</string>
     <string name="auth_complete">Se ha registrado un usuario correctamente</string>
+    <string name="added">Realizado: </string>
 
     <string name="shared_name_cart">cart</string>
     <string name="shared_name_list">listCart</string>
@@ -91,15 +92,12 @@
     <string name="tag_name_login">login</string>
     <string name="tag_name_signup">signup</string>
 
-
-
     <string name="title_main">Taste Bakery</string>
     <string name="title_cart">Cart</string>
     <string name="title_last_orders">Pedidos Favoritos</string>
     <string name="title_menu">Menú</string>
 
     <string name="fav_added">Se ha añadido este pedidos a favoritos</string>
-
 
     <string name="my_product_error">Tienes que autenticarte en Lets Eat para poder acceder a tus pedidos</string>
     <string name="news">¡Muy Pronto más novedades en Lets Eat!</string>

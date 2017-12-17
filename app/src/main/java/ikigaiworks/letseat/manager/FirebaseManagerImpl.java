@@ -40,8 +40,7 @@ public class FirebaseManagerImpl implements FirebaseManager {
 
 
     public static FirebaseManagerImpl getInstance() {
-        if (firebaseManagerImpl == null)
-        {
+        if (firebaseManagerImpl == null) {
             firebaseManagerImpl = new FirebaseManagerImpl();
         }
         return firebaseManagerImpl;
@@ -54,7 +53,7 @@ public class FirebaseManagerImpl implements FirebaseManager {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Category category = postSnapshot.getValue(Category.class);
                     categoryList.add(category);
                 }
@@ -76,7 +75,7 @@ public class FirebaseManagerImpl implements FirebaseManager {
 
     @Override
     public void getProductos(Category category, final Presenter.OperationProducts listener) {
-        DatabaseReference menu =  FirebaseCommon.getFirebaseDatabase().getReference("MENU").child(category.getReference());
+        DatabaseReference menu = FirebaseCommon.getFirebaseDatabase().getReference("MENU").child(category.getReference());
         menu.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -86,14 +85,14 @@ public class FirebaseManagerImpl implements FirebaseManager {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("error",databaseError.toString());
+                Log.d("error", databaseError.toString());
             }
         });
     }
 
     @Override
     public void getProducto(String idProducto, final Presenter.OperationProduct listener) {
-        DatabaseReference menu =  FirebaseCommon.getFirebaseDatabase().getReference("PRODUCTS").child(idProducto);
+        DatabaseReference menu = FirebaseCommon.getFirebaseDatabase().getReference("PRODUCTS").child(idProducto);
         menu.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -103,7 +102,7 @@ public class FirebaseManagerImpl implements FirebaseManager {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("error",databaseError.toString());
+                Log.d("error", databaseError.toString());
             }
         });
     }
@@ -173,7 +172,7 @@ public class FirebaseManagerImpl implements FirebaseManager {
                             listener.signInKO(LetsEatConstants.LOGIN_ERROR_USER_CODE);
                         } catch (FirebaseNetworkException e) {
                             listener.signInKO(LetsEatConstants.ERROR_UNEXPECTED_CODE);
-                        } catch (FirebaseException e){
+                        } catch (FirebaseException e) {
                             listener.signInKO(LetsEatConstants.SIGNIN_ERROR_WEAK_PASSWORD_CODE);
                         } catch (Exception e) {
                             listener.signInKO(LetsEatConstants.ERROR_UNEXPECTED_CODE);
@@ -181,9 +180,9 @@ public class FirebaseManagerImpl implements FirebaseManager {
                     }
                 }
             });
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             listener.signInKO(LetsEatConstants.LOGIN_ERROR_PASSWORD_CODE);
-        } catch (Exception e){
+        } catch (Exception e) {
             listener.signInKO(LetsEatConstants.ERROR_UNEXPECTED_CODE);
         }
     }
@@ -222,7 +221,7 @@ public class FirebaseManagerImpl implements FirebaseManager {
                     });
         } catch (IllegalArgumentException e) {
             listener.loginKO(LetsEatConstants.LOGIN_ERROR_PASSWORD_CODE);
-        } catch (Exception e){
+        } catch (Exception e) {
             listener.loginKO(LetsEatConstants.ERROR_UNEXPECTED_CODE);
         }
     }

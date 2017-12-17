@@ -27,7 +27,7 @@ import ikigaiworks.letseat.utils.DiscreteScrollViewOptions;
 
 
 @EFragment(R.layout.fragment_main)
-public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemChangedListener{
+public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemChangedListener {
 
 
     @ViewById(R.id.picker)
@@ -46,21 +46,21 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
 
 
     @AfterViews
-    protected void init(){
-        presenter = new MainFragmentPresenterImpl(getActivity().getApplicationContext(),this);
+    protected void init() {
+        presenter = new MainFragmentPresenterImpl(getActivity().getApplicationContext(), this);
         presenter.setFragmentMain(this);
         getActivity().setTitle(getString(R.string.title_main));
         initCarruselConf();
     }
 
-    private void initCarruselConf(){
-        adapter = new CarruselAdapter(mainBean.getData(),getActivity().getApplicationContext(),presenter);
+    private void initCarruselConf() {
+        adapter = new CarruselAdapter(mainBean.getData(), getActivity().getApplicationContext(), presenter);
         infiniteAdapter = InfiniteScrollAdapter.wrap(adapter);
         buildScrollView();
         presenter.retrieveSlides();
     }
 
-    private void buildScrollView(){
+    private void buildScrollView() {
         scrollView.setOrientation(Orientation.HORIZONTAL);
         scrollView.addOnItemChangedListener(this);
         scrollView.setAdapter(infiniteAdapter);
@@ -72,11 +72,11 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
     }
 
     @Click(R.id.init_pedido)
-    void initPedido(){
-        ((BaseActivity)getActivity()).manageIntents(R.id.carta);
+    void initPedido() {
+        ((BaseActivity) getActivity()).manageIntents(R.id.carta);
     }
 
-    public void printCarrusel(Carrusel carrusel){
+    public void printCarrusel(Carrusel carrusel) {
         mainBean.setData(carrusel.getSlides());
         adapter.updateCarrusel(mainBean.getData());
         infiniteAdapter.notifyDataSetChanged();
@@ -87,11 +87,9 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
     }
 
     public void onClickEvent(CarruselSlide c) {
-        ((BaseActivity)getActivity()).manageIntents(c.getId());
+        ((BaseActivity) getActivity()).manageIntents(c.getId());
 
     }
-
-
 
 
     @Override

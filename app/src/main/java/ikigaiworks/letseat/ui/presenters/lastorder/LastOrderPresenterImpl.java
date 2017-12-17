@@ -15,13 +15,13 @@ public class LastOrderPresenterImpl {
 
     FragmentFavOrderList frag;
 
-    public LastOrderPresenterImpl(FragmentFavOrderList frag){
+    public LastOrderPresenterImpl(FragmentFavOrderList frag) {
         this.frag = frag;
     }
 
 
-    public ArrayList<LastOrder> getOrders(){
-        LastOrder order1  = new LastOrder();
+    public ArrayList<LastOrder> getOrders() {
+        LastOrder order1 = new LastOrder();
         order1.setName("Americano Completo");
         order1.setFecha("Realizado: 21/11/2017");
 
@@ -82,7 +82,7 @@ public class LastOrderPresenterImpl {
         order1.setProductToCart(ps1);
 
 
-        LastOrder order2  = new LastOrder();
+        LastOrder order2 = new LastOrder();
         order2.setName("Despues de Correr");
         order2.setFecha("Realizado: 17/10/2017");
 
@@ -142,7 +142,7 @@ public class LastOrderPresenterImpl {
 
         order2.setProductToCart(ps2);
 
-        LastOrder order3  = new LastOrder();
+        LastOrder order3 = new LastOrder();
         order3.setName("Merienda rica");
         order3.setFecha("Realizado: 20/11/2017");
 
@@ -209,7 +209,7 @@ public class LastOrderPresenterImpl {
         return lastOrders;
     }
 
-    public void onClickEvent(FavOrder favOrder){
-       frag.goToCart(favOrder);
+    public void onClickEvent(FavOrder favOrder) {
+        frag.goToCart(favOrder);
     }
 }

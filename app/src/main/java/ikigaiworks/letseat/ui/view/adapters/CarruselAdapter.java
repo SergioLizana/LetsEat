@@ -33,13 +33,14 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
     private CarruselSlideBinding binding;
 
 
-    public CarruselAdapter(ArrayList<CarruselSlide> data , Context context, MainFragmentPresenter presenter){
+    public CarruselAdapter(ArrayList<CarruselSlide> data, Context context, MainFragmentPresenter presenter) {
         this.data = data;
         this.context = context;
         this.presenter = presenter;
         inflater = LayoutInflater.from(context);
     }
-    public CarruselAdapter(ArrayList<CarruselSlide> data){
+
+    public CarruselAdapter(ArrayList<CarruselSlide> data) {
         this.data = data;
     }
 
@@ -53,21 +54,21 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        binding = DataBindingUtil.inflate(inflater,R.layout.carrusel_slide,parent,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.carrusel_slide, parent, false);
         return new CarruselAdapter.ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final CarruselSlide category = data.get(position);
-        holder.bind(category,presenter);
+        holder.bind(category, presenter);
     }
 
-    public void addItem(int position , CarruselSlide slide){
-        data.add(position,slide);
+    public void addItem(int position, CarruselSlide slide) {
+        data.add(position, slide);
     }
 
-    public void updateCarrusel(ArrayList<CarruselSlide> slideList){
+    public void updateCarrusel(ArrayList<CarruselSlide> slideList) {
         data = slideList;
         notifyDataSetChanged();
     }
@@ -77,7 +78,7 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
         view.setImageResource(id);
     }
 
-    public CarruselSlide getSlide(int adapterPosition){
+    public CarruselSlide getSlide(int adapterPosition) {
         return data.get(adapterPosition);
     }
 
@@ -99,10 +100,9 @@ public class CarruselAdapter extends RecyclerView.Adapter<CarruselAdapter.ViewHo
 
         public void bind(final CarruselSlide slide, MainFragmentPresenter presenter) {
             binding.setVariable(BR.slide, slide);
-            binding.setVariable(BR.presenter,presenter);
+            binding.setVariable(BR.presenter, presenter);
             binding.executePendingBindings();
         }
-
 
 
     }

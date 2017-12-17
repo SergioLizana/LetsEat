@@ -74,7 +74,7 @@ public class LikeButtonView extends FrameLayout implements View.OnClickListener 
         setOnClickListener(this);
     }
 
-    public void setChecked(boolean checked){
+    public void setChecked(boolean checked) {
         if (checked) ivStar.setImageDrawable(getContext().getDrawable(R.drawable.ic_star_rate_on));
 
     }
@@ -84,7 +84,7 @@ public class LikeButtonView extends FrameLayout implements View.OnClickListener 
 
     }
 
-    public void showAnimation(){
+    public void showAnimation() {
         ivStar.setImageResource(R.drawable.ic_star_rate_on);
 
         if (animatorSet != null) {

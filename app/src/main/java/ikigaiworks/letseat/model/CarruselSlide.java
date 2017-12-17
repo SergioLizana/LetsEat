@@ -14,7 +14,8 @@ public class CarruselSlide implements Parcelable {
     private String text;
     private int icon;
 
-    public CarruselSlide(){}
+    public CarruselSlide() {
+    }
 
     public CarruselSlide(String title, int id, String text, int icon) {
         this.title = title;

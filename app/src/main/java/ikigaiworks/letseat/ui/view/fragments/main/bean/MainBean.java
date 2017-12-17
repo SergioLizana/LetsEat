@@ -16,7 +16,7 @@ public class MainBean {
     private ArrayList<CarruselSlide> data;
 
     @AfterInject
-    void afterInject(){
+    void afterInject() {
         data = new ArrayList<>();
     }
 

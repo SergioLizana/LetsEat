@@ -6,5 +6,6 @@ package ikigaiworks.letseat.ui.view.view;
 
 public interface LoginView {
     void operationOK();
+
     void operationFailure(int code);
 }

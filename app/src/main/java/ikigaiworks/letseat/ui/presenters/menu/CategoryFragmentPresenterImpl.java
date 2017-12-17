@@ -11,24 +11,25 @@ import ikigaiworks.letseat.ui.view.fragments.menu.FragmentCategory;
  * Created by sergiolizanamontero on 21/9/17.
  */
 
-public class CategoryFragmentPresenterImpl implements Presenter,Presenter.OperationCategories {
+public class CategoryFragmentPresenterImpl implements Presenter, Presenter.OperationCategories {
 
     private FirebaseManagerImpl firebaseManager;
     private ArrayList<Category> categories;
     private FragmentCategory fragmentCategory;
 
-   public CategoryFragmentPresenterImpl(){
+    public CategoryFragmentPresenterImpl() {
         firebaseManager = new FirebaseManagerImpl().getInstance();
     }
 
-    public FragmentCategory getFragmentCategory(){
+    public FragmentCategory getFragmentCategory() {
         return fragmentCategory;
     }
-    public void setMenuFragment(FragmentCategory fragmentCategory){
+
+    public void setMenuFragment(FragmentCategory fragmentCategory) {
         this.fragmentCategory = fragmentCategory;
     }
 
-    public void onClickEvent(Category c){
+    public void onClickEvent(Category c) {
         fragmentCategory.launchDetail(c);
     }
 

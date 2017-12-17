@@ -15,9 +15,10 @@ public class LastOrder implements Parcelable {
     private String name;
     private ArrayList<ProductToCart> productToCart;
 
-    public LastOrder(){
+    public LastOrder() {
 
     }
+
     public LastOrder(String fecha, String name, ArrayList<ProductToCart> productToCart) {
         this.fecha = fecha;
         this.name = name;

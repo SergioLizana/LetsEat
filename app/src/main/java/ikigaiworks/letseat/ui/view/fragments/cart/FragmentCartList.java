@@ -32,7 +32,7 @@ import ikigaiworks.letseat.utils.CartUtils;
  */
 
 @EFragment(R.layout.fragment_cart_list)
-public class FragmentCartList extends Fragment  {
+public class FragmentCartList extends Fragment {
 
     CartAdapter adapter;
     ArrayList<ProductToCart> productToCarts;
@@ -49,52 +49,52 @@ public class FragmentCartList extends Fragment  {
 
 
     @AfterViews
-    void init(){
+    void init() {
         productToCarts = CartUtils.getCart();
         configureRecyclerView();
         refreshCartFooter();
     }
 
-    void configureRecyclerView(){
-        adapter = new CartAdapter(productToCarts, getActivity().getApplicationContext(),this);
+    void configureRecyclerView() {
+        adapter = new CartAdapter(productToCarts, getActivity().getApplicationContext(), this);
         mRecyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    public void removeItem(ProductToCart productToCart){
-    int position = CartUtils.getCartItemPosition(productToCart);
-        if(position>=0) {
+    public void removeItem(ProductToCart productToCart) {
+        int position = CartUtils.getCartItemPosition(productToCart);
+        if (position >= 0) {
             ((CartAdapter) mRecyclerView.getAdapter()).removeItem(position);
             refreshCartFooter();
         }
     }
 
     @Click(R.id.pay)
-    void paid(){
+    void paid() {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             FragmentPayment payment = FragmentPayment_.builder().isFav(isFav).productToCart(CartUtils.getCart()).build();
             ((CartActivity) getActivity()).replaceFragment(payment, R.id.content_activity_cart, getString(R.string.tag_name_payment), false, true);
-        }else{
-            ((BaseActivity)getActivity()).showToast(getString(R.string.auth_requiered),Toast.LENGTH_LONG);
-            ((BaseActivity)getActivity()).manageIntents(R.id.login);
+        } else {
+            ((BaseActivity) getActivity()).showToast(getString(R.string.auth_requiered), Toast.LENGTH_LONG);
+            ((BaseActivity) getActivity()).manageIntents(R.id.login);
         }
     }
 
-    public void addToQuantity(ProductToCart productToCart){
+    public void addToQuantity(ProductToCart productToCart) {
         CartUtils.addToQuantity(productToCart);
         adapter.updateItems(CartUtils.getCart());
         refreshCartFooter();
     }
 
-    public void removeFromQuantity(ProductToCart productToCart){
+    public void removeFromQuantity(ProductToCart productToCart) {
         CartUtils.removeFromQuantity(productToCart);
         adapter.updateItems(CartUtils.getCart());
         refreshCartFooter();
     }
 
 
-    public void refreshCartFooter(){
+    public void refreshCartFooter() {
         totalPrice.setNumber(CartUtils.getCartPrice());
         totalAmountProducts.setText(String.valueOf(CartUtils.getCartSize()));
     }

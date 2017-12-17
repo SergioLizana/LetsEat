@@ -9,11 +9,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FirebaseCommon {
 
-    public static FirebaseDatabase getFirebaseDatabase(){
+    public static FirebaseDatabase getFirebaseDatabase() {
         return FirebaseDatabase.getInstance();
     }
 
-    public static FirebaseAuth getFirebaseAuth(){
+    public static FirebaseAuth getFirebaseAuth() {
         return FirebaseAuth.getInstance();
     }
 

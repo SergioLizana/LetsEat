@@ -29,7 +29,7 @@ import ikigaiworks.letseat.utils.FavoriteUtils;
 
 @EFragment(R.layout.fragment_menu_categorias)
 public class FragmentFavOrderList extends Fragment {
-    LinkedHashMap<String,FavOrder> data;
+    LinkedHashMap<String, FavOrder> data;
     LastOrderAdapter adapter;
 
     @ViewById(R.id.recyler_menu_categorias)
@@ -37,7 +37,6 @@ public class FragmentFavOrderList extends Fragment {
     @ViewById(R.id.progressbar)
     protected ProgressBar progressBar;
     LastOrderPresenterImpl presenter;
-
 
 
     @AfterViews
@@ -48,14 +47,14 @@ public class FragmentFavOrderList extends Fragment {
 
     }
 
-    private void configureRecyclerView(){
-        adapter = new LastOrderAdapter(data,getActivity(),presenter);
+    private void configureRecyclerView() {
+        adapter = new LastOrderAdapter(data, getActivity(), presenter);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    public void goToCart(FavOrder order){
+    public void goToCart(FavOrder order) {
         CartUtils.deleteCart();
         CartUtils.updateCart(order.getProducts());
         Intent intent = CartActivity_.intent(this).isFav(true).get();

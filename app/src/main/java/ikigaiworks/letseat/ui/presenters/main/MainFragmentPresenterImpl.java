@@ -10,13 +10,13 @@ import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
  * Created by sergiolizanamontero on 21/9/17.
  */
 
-public class MainFragmentPresenterImpl  implements MainFragmentPresenter  {
+public class MainFragmentPresenterImpl implements MainFragmentPresenter {
 
     Carrusel carrusel;
     FragmentMain fragmentMain;
     Context c;
 
-    public MainFragmentPresenterImpl(Context c, FragmentMain fragmentMain){
+    public MainFragmentPresenterImpl(Context c, FragmentMain fragmentMain) {
         this.fragmentMain = fragmentMain;
         this.c = c;
 
@@ -38,15 +38,15 @@ public class MainFragmentPresenterImpl  implements MainFragmentPresenter  {
         this.fragmentMain = fragmentMain;
     }
 
-    public void onClickEvent(CarruselSlide c){
-       fragmentMain.onClickEvent(c);
+    public void onClickEvent(CarruselSlide c) {
+        fragmentMain.onClickEvent(c);
     }
 
     @Override
     public void retrieveSlides() {
-        if (carrusel != null){
+        if (carrusel != null) {
             printSlides(carrusel);
-        }else{
+        } else {
             carrusel = Carrusel.newInstance(fragmentMain.getContext());
             printSlides(carrusel);
         }

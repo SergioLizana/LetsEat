@@ -12,14 +12,14 @@ import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList;
  * Created by sergiolizanamontero on 6/10/17.
  */
 
-public class ProductListFragmentPresenterImpl implements Presenter,Presenter.OperationProducts,Presenter.OperationProduct {
+public class ProductListFragmentPresenterImpl implements Presenter, Presenter.OperationProducts, Presenter.OperationProduct {
 
     private FirebaseManagerImpl firebaseManager;
     private ArrayList<Producto> products;
     private FragmentProductList fragmentProductList;
     private Category categorySelected;
 
-    public ProductListFragmentPresenterImpl(Category categorySelected){
+    public ProductListFragmentPresenterImpl(Category categorySelected) {
         this.categorySelected = categorySelected;
         firebaseManager = new FirebaseManagerImpl().getInstance();
     }
@@ -40,7 +40,7 @@ public class ProductListFragmentPresenterImpl implements Presenter,Presenter.Ope
         this.fragmentProductList = fragmentProductList;
     }
 
-    public void onClickEvent(Producto producto){
+    public void onClickEvent(Producto producto) {
         getProducto(producto.getReference());
     }
 
@@ -51,11 +51,11 @@ public class ProductListFragmentPresenterImpl implements Presenter,Presenter.Ope
 
     @Override
     public void launchOperation() {
-        firebaseManager.getProductos(categorySelected,this);
+        firebaseManager.getProductos(categorySelected, this);
     }
 
-    public void getProducto(String idProducto){
-        firebaseManager.getProducto(idProducto,this);
+    public void getProducto(String idProducto) {
+        firebaseManager.getProducto(idProducto, this);
     }
 
     @Override

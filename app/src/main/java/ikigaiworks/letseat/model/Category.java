@@ -7,7 +7,7 @@ import java.util.Map;
  * Created by sergiolizanamontero on 25/8/17.
  */
 
-public class Category implements Serializable{
+public class Category implements Serializable {
 
     private Double discount;
     private String name;
@@ -35,7 +35,7 @@ public class Category implements Serializable{
         this.subtype = subtype;
     }
 
-    public Category(){
+    public Category() {
 
     }
 

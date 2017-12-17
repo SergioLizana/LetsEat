@@ -16,15 +16,15 @@ public class LoginPresenterImpl implements LoginPresenter.Login {
     LoginView view;
     private FirebaseManager firebaseManager;
 
-    public LoginPresenterImpl(Context c, LoginView view){
+    public LoginPresenterImpl(Context c, LoginView view) {
         this.view = view;
         this.c = c;
         firebaseManager = FirebaseManagerImpl.getInstance();
 
     }
 
-    public void doLogin(String email,String password){
-        firebaseManager.login(email,password,this);
+    public void doLogin(String email, String password) {
+        firebaseManager.login(email, password, this);
     }
 
     @Override

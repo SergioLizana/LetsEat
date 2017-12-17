@@ -48,7 +48,7 @@ public class FavoriteDialogFragment extends DialogFragment implements DialogInte
         builder.setView(view);
         builder.setTitle("Really?");
         builder.setMessage("Are you sure?");
-        Fragment f =  getTargetFragment();
+        Fragment f = getTargetFragment();
         //null should be your on click listener
         builder.setPositiveButton("OK", this);
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -94,9 +94,9 @@ public class FavoriteDialogFragment extends DialogFragment implements DialogInte
             intentData.putExtra(TAG_SAVE_FAV, mFavName.getText().toString());
             f.onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intentData);
             dialogInterface.dismiss();
-        }else{
+        } else {
             getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_CANCELED, getActivity().getIntent());
-            Toast.makeText(getActivity(),getString(R.string.error_validation_fav_name),Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), getString(R.string.error_validation_fav_name), Toast.LENGTH_LONG).show();
             dialogInterface.dismiss();
         }
     }

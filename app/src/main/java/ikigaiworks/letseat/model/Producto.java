@@ -22,9 +22,9 @@ public class Producto implements Parcelable {
     private String name;
     private Double price;
     private String reference;
-    private Map<String,Extra> extra;
+    private Map<String, Extra> extra;
 
-    public Producto(String description, Boolean disabled, Double discount, Boolean es_visible, String image, Map<String,Extra> extra, String name, Double price, String reference) {
+    public Producto(String description, Boolean disabled, Double discount, Boolean es_visible, String image, Map<String, Extra> extra, String name, Double price, String reference) {
         this.description = description;
         this.disabled = disabled;
         this.discount = discount;
@@ -37,8 +37,8 @@ public class Producto implements Parcelable {
     }
 
 
-
-    public Producto(){}
+    public Producto() {
+    }
 
     public Map<String, Extra> getExtra() {
         return extra;

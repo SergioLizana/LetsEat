@@ -20,8 +20,4 @@ public class LetsEatConstants {
     public static final String SHARED_PREFERENCES_FAV_LIST = "preferences_fav_list";
 
 
-
-
-
-
 }

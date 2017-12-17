@@ -26,7 +26,7 @@ import ikigaiworks.letseat.utils.LoginUtils;
  */
 
 @EFragment(R.layout.fragment_registro)
-public class FragmentRegistro extends Fragment implements LoginView{
+public class FragmentRegistro extends Fragment implements LoginView {
 
     @ViewById(R.id.email_registro)
     protected EditText mEmailView;
@@ -38,13 +38,14 @@ public class FragmentRegistro extends Fragment implements LoginView{
     protected Button email_register_button;
 
     private SignInPresenterImpl mPresenter;
+
     @AfterViews
-    void init(){
-        mPresenter = new SignInPresenterImpl(getActivity(),this);
+    void init() {
+        mPresenter = new SignInPresenterImpl(getActivity(), this);
     }
 
     @Click(R.id.email_registr_button)
-    public void signIn(){
+    public void signIn() {
         if (isSignUpValid()) {
             ((LoginActivity) getActivity()).showLoader();
             mPresenter.signIn(mEmailView.getText().toString(), mPasswordView.getText().toString());
@@ -53,48 +54,48 @@ public class FragmentRegistro extends Fragment implements LoginView{
 
     @Override
     public void operationOK() {
-        ((BaseActivity)getActivity()).showToast(getString(R.string.auth_complete),Toast.LENGTH_SHORT);
-        ((BaseActivity)getActivity()).showToast(getString(R.string.welcome),Toast.LENGTH_LONG);
+        ((BaseActivity) getActivity()).showToast(getString(R.string.auth_complete), Toast.LENGTH_SHORT);
+        ((BaseActivity) getActivity()).showToast(getString(R.string.welcome), Toast.LENGTH_LONG);
         getActivity().finish();
     }
 
 
     @Override
     public void operationFailure(int code) {
-        ((BaseActivity)getActivity()).showToast(LoginUtils.parseCodeToStringError(code),Toast.LENGTH_LONG);
+        ((BaseActivity) getActivity()).showToast(LoginUtils.parseCodeToStringError(code), Toast.LENGTH_LONG);
         ((LoginActivity) getActivity()).hideLoader();
     }
 
     @EditorAction(R.id.repeat_password)
     void onEditorAction(TextView hello, int actionId, KeyEvent keyEvent) {
-        if (actionId == LetsEatConstants.CONTINUE_EDITOR_ACTION_ID){
-            ((LoginActivity)getActivity()).hideKeyboard();
+        if (actionId == LetsEatConstants.CONTINUE_EDITOR_ACTION_ID) {
+            ((LoginActivity) getActivity()).hideKeyboard();
         }
     }
 
 
-    public boolean isSignUpValid(){
+    public boolean isSignUpValid() {
         if (mEmailView == null
                 || mPasswordView == null
-                || mPasswordViewRepeat == null){
-            ((BaseActivity)getActivity()).showToast(getString(R.string.login_error_unexpected),Toast.LENGTH_LONG);
+                || mPasswordViewRepeat == null) {
+            ((BaseActivity) getActivity()).showToast(getString(R.string.login_error_unexpected), Toast.LENGTH_LONG);
             return false;
-        }else{
+        } else {
             if (mEmailView.getText().toString().isEmpty()
                     || mPasswordView.getText().toString().isEmpty()
-                    || mPasswordViewRepeat.getText().toString().isEmpty()){
-                ((BaseActivity)getActivity()).showToast(getString(R.string.signup_fields_error),Toast.LENGTH_LONG);
+                    || mPasswordViewRepeat.getText().toString().isEmpty()) {
+                ((BaseActivity) getActivity()).showToast(getString(R.string.signup_fields_error), Toast.LENGTH_LONG);
                 return false;
-            }else{
-                if (LoginUtils.isEmailValid(mEmailView.getText().toString())){
-                    if (mPasswordView.getText().toString().equals(mPasswordViewRepeat.getText().toString())){
+            } else {
+                if (LoginUtils.isEmailValid(mEmailView.getText().toString())) {
+                    if (mPasswordView.getText().toString().equals(mPasswordViewRepeat.getText().toString())) {
                         return true;
-                    }else{
-                        ((BaseActivity)getActivity()).showToast(getString(R.string.signup_diferent_password_error),Toast.LENGTH_LONG);
+                    } else {
+                        ((BaseActivity) getActivity()).showToast(getString(R.string.signup_diferent_password_error), Toast.LENGTH_LONG);
                         return false;
                     }
-                }else{
-                    ((BaseActivity)getActivity()).showToast(getString(R.string.login_error_format_mail),Toast.LENGTH_LONG);
+                } else {
+                    ((BaseActivity) getActivity()).showToast(getString(R.string.login_error_format_mail), Toast.LENGTH_LONG);
                     return false;
                 }
 

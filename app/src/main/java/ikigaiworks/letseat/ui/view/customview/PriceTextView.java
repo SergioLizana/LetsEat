@@ -29,15 +29,15 @@ public class PriceTextView extends android.support.v7.widget.AppCompatTextView {
     public void setText(CharSequence text, BufferType type) {
         DecimalFormat df = new DecimalFormat(LetsEatConstants.AMOUNT_FORMATTER);
         CharSequence finalText;
-        if(text!=null && !text.equals("")) {
+        if (text != null && !text.equals("")) {
             finalText = df.format(Double.parseDouble(text.toString()));
-        }else{
+        } else {
             finalText = text;
         }
         super.setText(finalText, type);
     }
 
-    public void setNumber(double number){
+    public void setNumber(double number) {
         super.setText(String.valueOf(number));
     }
 }

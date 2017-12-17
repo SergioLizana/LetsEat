@@ -15,12 +15,12 @@ public class MainActivity extends BaseActivity {
     FragmentMain fragment;
 
     @AfterViews
-    void init(){
+    void init() {
         addNavigationDrawer();
         setToolbarTitle(getString(R.string.title_main));
         if (findViewById(R.id.content_main) != null) {
             fragment = FragmentMain_.builder().build();
-            replaceFragment(fragment,R.id.content_main,getString(R.string.tag_name_main),false,false);
+            replaceFragment(fragment, R.id.content_main, getString(R.string.tag_name_main), false, false);
         }
     }
 

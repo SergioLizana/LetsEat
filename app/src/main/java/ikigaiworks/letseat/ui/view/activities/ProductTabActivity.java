@@ -34,7 +34,7 @@ import ikigaiworks.letseat.ui.view.fragments.menu.FragmentProductList_;
 //import ikigaiworks.letseat.databinding.ActivityProductTabBinding;
 
 @EActivity(R.layout.activity_product_tab)
-public class ProductTabActivity extends BaseActivity implements DialogInterface.OnDismissListener  {
+public class ProductTabActivity extends BaseActivity implements DialogInterface.OnDismissListener {
 
     @ViewById(R.id.tabs)
     protected TabLayout tabLayout;
@@ -50,7 +50,7 @@ public class ProductTabActivity extends BaseActivity implements DialogInterface.
     protected ProductsBean pBean;
 
     @AfterViews
-    void init(){
+    void init() {
         addNavigationDrawer();
         setToolbarTitle("Product");
         setToolbarTextColor(R.color.toolbar_text_color);
@@ -65,14 +65,14 @@ public class ProductTabActivity extends BaseActivity implements DialogInterface.
         DetailProductDialogFragment dialogFragment = DetailProductDialogFragment_.builder().mProduct(p).build();
         dialogFragment.setAllowEnterTransitionOverlap(true);
         dialogFragment.setAllowReturnTransitionOverlap(true);
-        if (dialogFragment.getDialog() != null){
+        if (dialogFragment.getDialog() != null) {
             dialogFragment.getDialog().setCanceledOnTouchOutside(true);
         }
         dialogFragment.show(fm, "Sample Fragment");
     }
 
 
-    private void setHeaderImage(){
+    private void setHeaderImage() {
         Glide.with(getApplicationContext())
                 .load(pBean.getCategory().getHeader())
                 .into(mHeaderImage);
@@ -80,14 +80,14 @@ public class ProductTabActivity extends BaseActivity implements DialogInterface.
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        if(pBean.getCategory().getSubtype()== null){
+        if (pBean.getCategory().getSubtype() == null) {
             Fragment frag = FragmentProductList_.builder().category(pBean.getCategory()).build();
-            adapter.addFragment(frag,pBean.getCategory().getName());
-        }else{
-           Map<String,Category> subCat = pBean.getCategory().getSubtype();
-            for(Category cat: subCat.values()){
+            adapter.addFragment(frag, pBean.getCategory().getName());
+        } else {
+            Map<String, Category> subCat = pBean.getCategory().getSubtype();
+            for (Category cat : subCat.values()) {
                 Fragment frag = FragmentProductList_.builder().category(cat).build();
-                adapter.addFragment(frag,cat.getName());
+                adapter.addFragment(frag, cat.getName());
             }
 
         }
@@ -101,7 +101,7 @@ public class ProductTabActivity extends BaseActivity implements DialogInterface.
 
 
     @Click(R.id.cart_button)
-    void onClick(){
+    void onClick() {
         Intent intent = CartActivity_.intent(this).isFav(false).get();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

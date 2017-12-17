@@ -1,4 +1,5 @@
 package ikigaiworks.letseat.ui.view.fragments.payment;
+
 import android.support.v4.app.Fragment;
 
 import org.androidannotations.annotations.AfterViews;
@@ -30,14 +31,14 @@ public class FragmentPayment extends Fragment {
     PriceTextView total;
 
     @AfterViews
-    void init(){
+    void init() {
         total.setNumber(CartUtils.getCartPrice(productToCart));
     }
 
     @Click
-    void pay(){
+    void pay() {
         FragmentCompletePayment payment = FragmentCompletePayment_.builder().isFav(isFav).products(productToCart).build();
-        ((CartActivity)getActivity()).replaceFragment(payment,R.id.content_activity_cart,getString(R.string.tag_name_payment_complete),false,true);
+        ((CartActivity) getActivity()).replaceFragment(payment, R.id.content_activity_cart, getString(R.string.tag_name_payment_complete), false, true);
     }
 
 }

@@ -7,11 +7,13 @@ package ikigaiworks.letseat.ui.presenters.login;
 public interface LoginPresenter {
     interface SignIn {
         void signInOK();
+
         void signInKO(int code);
     }
 
     interface Login {
         void loginOK();
+
         void loginKO(int code);
     }
 

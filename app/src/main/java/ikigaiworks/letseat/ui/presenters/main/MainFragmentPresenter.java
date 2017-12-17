@@ -9,8 +9,8 @@ import ikigaiworks.letseat.model.Carrusel;
 public interface MainFragmentPresenter {
 
     void retrieveSlides();
-    void printSlides(Carrusel carrusel);
 
+    void printSlides(Carrusel carrusel);
 
 
 }

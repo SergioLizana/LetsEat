@@ -11,24 +11,31 @@ import ikigaiworks.letseat.model.Producto;
  */
 
 public interface Presenter {
-    interface OperationCategories{
+    interface OperationCategories {
         void onCategoriesReceived(ArrayList<Category> categories);
     }
-    interface OperationProducts{
+
+    interface OperationProducts {
         void onProductsReceived(ArrayList<Producto> products);
     }
-    interface OperationProduct{
+
+    interface OperationProduct {
         void onProductReceived(Producto producto);
     }
-    interface OperationFavorite{
+
+    interface OperationFavorite {
         void onFavoriteProductsReceived(ArrayList<ProductToCart> products);
     }
-    interface OperationFavoriteInsert{
+
+    interface OperationFavoriteInsert {
         void onFavoriteInsert();
+
         void onFavoriteInsertFail();
     }
-    interface OperationFavoriteDelete{
+
+    interface OperationFavoriteDelete {
         void onFavoriteDelete();
+
         void onFavoriteDeleteFail();
     }
 

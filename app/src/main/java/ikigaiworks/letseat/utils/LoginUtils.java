@@ -20,11 +20,11 @@ public class LoginUtils {
 
     }
 
-    public static String parseCodeToStringError (int code){
-        switch (code){
-            case LetsEatConstants.LOGIN_ERROR_INVALID_CREDENTIALS_CODE :
-            case LetsEatConstants.LOGIN_ERROR_PASSWORD_CODE :
-            case LetsEatConstants.LOGIN_ERROR_USER_CODE :
+    public static String parseCodeToStringError(int code) {
+        switch (code) {
+            case LetsEatConstants.LOGIN_ERROR_INVALID_CREDENTIALS_CODE:
+            case LetsEatConstants.LOGIN_ERROR_PASSWORD_CODE:
+            case LetsEatConstants.LOGIN_ERROR_USER_CODE:
                 return App.getAppContext().getString(R.string.login_error_invalid_credentials_invalid);
             case LetsEatConstants.SIGNIN_ERROR_INVALID_EMAIL_CODE:
                 return App.getAppContext().getString(R.string.signup_invalid_email_error);
@@ -36,9 +36,6 @@ public class LoginUtils {
                 return App.getAppContext().getString(R.string.login_error_unexpected);
         }
     }
-
-
-
 
 
 }

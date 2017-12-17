@@ -28,7 +28,7 @@
             android:title="@string/menu_my_products" />
     </group>
 
-    <group android:checkableBehavior="single" android:title="Communicate">
+    <group android:checkableBehavior="single" android:title="@string/menu_communicate">
             <item
                 android:id="@+id/config"
                 android:icon="@drawable/ic_settings_black_24dp"

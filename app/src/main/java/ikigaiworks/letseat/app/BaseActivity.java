@@ -33,8 +33,7 @@ import ikigaiworks.letseat.ui.view.activities.MenuActivity_;
  */
 
 @EActivity
-public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-{
+public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @ViewById(R.id.toolbar)
     protected Toolbar toolbar;
     @ViewById(R.id.drawer_layout)
@@ -63,10 +62,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         return toolbar;
     }
 
-    public void changeToArrow(){
-        if (toggle!=null) {
+    public void changeToArrow() {
+        if (toggle != null) {
             toggle.setDrawerIndicatorEnabled(false);
-            toggle.setToolbarNavigationClickListener(new View.OnClickListener(){
+            toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View view) {
@@ -77,10 +76,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    public DrawerLayout addNavigationDrawer(){
+    public DrawerLayout addNavigationDrawer() {
         addToolbar();
         toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerStateChanged(int newState) {
                 super.onDrawerStateChanged(newState);
@@ -104,7 +103,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         return drawer;
     }
 
-    public void manageIntents(int id){
+    public void manageIntents(int id) {
 
         if (id == R.id.login) {
             if (FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
@@ -114,10 +113,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
-        } else if (id == R.id.init){
-            if(this instanceof MainActivity_){
+        } else if (id == R.id.init) {
+            if (this instanceof MainActivity_) {
                 //DO NOTHING
-            }else{
+            } else {
                 Intent intent = MainActivity_.intent(this).get();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -134,70 +133,70 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
         } else if (id == R.id.mis_pedidos) {
-            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null){
+            if (FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
                 Intent intent = FavOrderActivity_.intent(this).get();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-            }else{
-                Toast.makeText(this,getString(R.string.my_product_error),Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, getString(R.string.my_product_error), Toast.LENGTH_LONG).show();
             }
 
         } else if (id == R.id.promos) {
-            Toast.makeText(this,getString(R.string.news),Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.news), Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.aboutme) {
-            Toast.makeText(this,getString(R.string.news),Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.news), Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.config) {
-            Toast.makeText(this,getString(R.string.news),Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.news), Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.exit) {
-            if(FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
+            if (FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
                 FirebaseCommon.getFirebaseAuth().signOut();
-                Toast.makeText(this,getString(R.string.goodbye),Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(this,getString(R.string.news),Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.goodbye), Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, getString(R.string.news), Toast.LENGTH_LONG).show();
             }
         }
     }
 
 
-    public void manageMenuOptions(){
+    public void manageMenuOptions() {
         if (FirebaseCommon.getFirebaseAuth().getCurrentUser() != null) {
             disableLogin();
             enableLogout();
-        }else{
+        } else {
             enableLogin();
             disableLogout();
         }
     }
 
 
-    public void enableLogin(){
+    public void enableLogin() {
         navigationView.getMenu().getItem(0).setCheckable(false).setVisible(true);
     }
 
-    public void disableLogin(){
+    public void disableLogin() {
         navigationView.getMenu().getItem(0).setCheckable(false).setVisible(false);
     }
 
-    public void enableLogout(){
-        navigationView.getMenu().getItem(navigationView.getMenu().size()-1).setCheckable(false).setVisible(true);
+    public void enableLogout() {
+        navigationView.getMenu().getItem(navigationView.getMenu().size() - 1).setCheckable(false).setVisible(true);
     }
 
-    public void disableLogout(){
-        navigationView.getMenu().getItem(navigationView.getMenu().size()-1).setCheckable(false).setVisible(false);
+    public void disableLogout() {
+        navigationView.getMenu().getItem(navigationView.getMenu().size() - 1).setCheckable(false).setVisible(false);
     }
 
-    public void replaceToArrow(){
+    public void replaceToArrow() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void setToolbarTitle(String title){
+    public void setToolbarTitle(String title) {
         toolbar.setTitle(title);
     }
 
-    public void setToolbarBackgroundColor(int color){
+    public void setToolbarBackgroundColor(int color) {
         toolbar.setBackgroundColor(ContextCompat.getColor(this, color));
     }
 
@@ -206,14 +205,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    public void replaceFragment(Fragment fragment,int resId,String tag,boolean addToBackStack , boolean addAnimation){
+    public void replaceFragment(Fragment fragment, int resId, String tag, boolean addToBackStack, boolean addAnimation) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        if(addToBackStack){
+        if (addToBackStack) {
             ft.addToBackStack(tag);
         }
-        if (addAnimation){
-            ft.setCustomAnimations(R.animator.slide_left_animation,R.animator.slide_right_animation);
+        if (addAnimation) {
+            ft.setCustomAnimations(R.animator.slide_left_animation, R.animator.slide_right_animation);
         }
         ft.replace(resId, fragment);
         ft.commit();
@@ -230,17 +229,16 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     @Override
     public void onBackPressed() {
-        if(drawer != null) {
+        if (drawer != null) {
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
             } else {
                 super.onBackPressed();
             }
             manageMenuOptions();
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -254,12 +252,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
-    public void showToast(String msg,int duration){
-        Toast.makeText(getApplicationContext(),msg,duration).show();
+    public void showToast(String msg, int duration) {
+        Toast.makeText(getApplicationContext(), msg, duration).show();
     }
 
 
-    public void goToMainScreen(){
+    public void goToMainScreen() {
         Intent intent = MainActivity_.intent(this).get();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

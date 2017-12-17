@@ -22,7 +22,6 @@ import ikigaiworks.letseat.ui.view.activities.ProductTabActivity_;
 import ikigaiworks.letseat.ui.view.adapters.MenuAdapter;
 
 
-
 @EFragment(R.layout.fragment_menu_categorias)
 public class FragmentCategory extends Fragment {
 
@@ -47,21 +46,21 @@ public class FragmentCategory extends Fragment {
         presenter.launchOperation();
     }
 
-    private void configureRecyclerView(){
+    private void configureRecyclerView() {
         adapter = new MenuAdapter(data, getActivity().getApplicationContext(), presenter);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    public void printData(ArrayList<Category> data){
+    public void printData(ArrayList<Category> data) {
         this.data = data;
         pBean.setData(data);
         adapter.updateItem(data);
         progressBar.setVisibility(View.GONE);
     }
 
-    public void launchDetail(Category category){
+    public void launchDetail(Category category) {
         pBean.setCategory(category);
         Intent intent = ProductTabActivity_.intent(this).get();
         startActivity(intent);

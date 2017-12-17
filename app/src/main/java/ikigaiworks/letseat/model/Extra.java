@@ -14,7 +14,8 @@ public class Extra implements Parcelable {
         this.name = name;
     }
 
-    public Extra(){}
+    public Extra() {
+    }
 
     private String name;
 

@@ -34,20 +34,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     private int position;
     private FragmentCartList fragmentCartList;
 
-    public CartAdapter(ArrayList<ProductToCart> data , Context context,FragmentCartList fragmentCartList){
+    public CartAdapter(ArrayList<ProductToCart> data, Context context, FragmentCartList fragmentCartList) {
         this.data = data;
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.fragmentCartList = fragmentCartList;
     }
-    public CartAdapter(ArrayList<ProductToCart> data){
+
+    public CartAdapter(ArrayList<ProductToCart> data) {
         this.data = data;
     }
 
 
     @Override
     public CartAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.cart_list_content,parent,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.cart_list_content, parent, false);
         return new CartAdapter.ViewHolder(binding);
 
     }
@@ -56,26 +57,26 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(CartAdapter.ViewHolder holder, int position) {
         this.position = position;
         final ProductToCart producto = data.get(position);
-        holder.bind(producto,fragmentCartList);
+        holder.bind(producto, fragmentCartList);
 
     }
 
-    public void addItem(int position , ProductToCart item){
-        data.add(position,item);
+    public void addItem(int position, ProductToCart item) {
+        data.add(position, item);
     }
 
-    public void updateItems(ArrayList<ProductToCart> data){
+    public void updateItems(ArrayList<ProductToCart> data) {
         this.data = data;
         notifyDataSetChanged();
     }
 
-    public void removeItem(int position){
+    public void removeItem(int position) {
         CartUtils.removeFromCartPosition(position);
         data.remove(position);
         notifyItemRemoved(position);
     }
 
-    public ProductToCart getItem(int adapterPosition){
+    public ProductToCart getItem(int adapterPosition) {
         return data.get(adapterPosition);
     }
 
@@ -85,8 +86,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 .load(url)
                 .into(view);
     }
+
     @BindingAdapter({"android:visibility"})
-    public static void setVisibilityToExtra(TextView toExtra ,ProductToCart productToCart){
+    public static void setVisibilityToExtra(TextView toExtra, ProductToCart productToCart) {
         toExtra.setVisibility(productToCart.isExtraVisibility());
     }
 
@@ -108,13 +110,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
         }
 
-        public void bind (ProductToCart item, FragmentCartList fragmentCartList){
+        public void bind(ProductToCart item, FragmentCartList fragmentCartList) {
             binding.setVariable(BR.producto, item);
-            binding.setVariable(BR.fragment_cart,fragmentCartList);
+            binding.setVariable(BR.fragment_cart, fragmentCartList);
             binding.executePendingBindings();
         }
-
-
 
 
     }

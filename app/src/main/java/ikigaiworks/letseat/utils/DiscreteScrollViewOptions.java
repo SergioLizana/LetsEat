@@ -84,7 +84,6 @@ public class DiscreteScrollViewOptions {
     }
 
 
-
     private static class TransitionTimeChangeListener implements SharedPreferences.OnSharedPreferenceChangeListener {
 
         private WeakReference<DiscreteScrollView> scrollView;

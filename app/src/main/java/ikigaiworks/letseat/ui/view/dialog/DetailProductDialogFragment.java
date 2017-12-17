@@ -40,7 +40,7 @@ import ikigaiworks.letseat.utils.CartUtils;
  */
 
 @EFragment(R.layout.product_detail)
-public class DetailProductDialogFragment extends DialogFragment{
+public class DetailProductDialogFragment extends DialogFragment {
 
     private View view;
     @FragmentArg
@@ -92,14 +92,14 @@ public class DetailProductDialogFragment extends DialogFragment{
         loadElements();
     }
 
-    private void loadElements(){
+    private void loadElements() {
         loadImage();
         mProductDesc.setText(mProduct.getDescription());
         mProductTitle.setText(mProduct.getName());
         mProductPrize.setText(String.valueOf(mProduct.getPrice()));
-        if (mProduct.getExtra()!=null) {
+        if (mProduct.getExtra() != null) {
             loadSpinner();
-        }else{
+        } else {
             line1.setVisibility(View.INVISIBLE);
             line2.setVisibility(View.INVISIBLE);
             extraText.setVisibility(View.INVISIBLE);
@@ -107,7 +107,7 @@ public class DetailProductDialogFragment extends DialogFragment{
         }
     }
 
-    private void loadImage(){
+    private void loadImage() {
         Glide.with(view.getContext())
                 .load(mProduct.getImage())
                 .listener(new RequestListener<String, GlideDrawable>() {
@@ -129,9 +129,9 @@ public class DetailProductDialogFragment extends DialogFragment{
                 .into(mProductImage);
     }
 
-    private void loadSpinner(){
+    private void loadSpinner() {
         ArrayList<String> extras = CartUtils.getExtraAsString(mProduct.getExtra());
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,extras);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, extras);
         mExtras.setAdapter(adapter);
     }
 
@@ -145,11 +145,11 @@ public class DetailProductDialogFragment extends DialogFragment{
     }
 
     @Click(R.id.addToCart)
-    void addToCart(){
-        if (mExtras.getVisibility() == View.INVISIBLE){
-            CartUtils.addToCart(CartUtils.parseProductToCart(mProduct,""));
-        }else{
-            CartUtils.addToCart(CartUtils.parseProductToCart(mProduct,mExtras.getSelectedItem().toString()));
+    void addToCart() {
+        if (mExtras.getVisibility() == View.INVISIBLE) {
+            CartUtils.addToCart(CartUtils.parseProductToCart(mProduct, ""));
+        } else {
+            CartUtils.addToCart(CartUtils.parseProductToCart(mProduct, mExtras.getSelectedItem().toString()));
         }
         dismiss();
     }

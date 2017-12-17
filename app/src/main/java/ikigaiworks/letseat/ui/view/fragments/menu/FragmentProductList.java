@@ -39,8 +39,8 @@ public class FragmentProductList extends Fragment {
     RecyclerView mRecyclerView;
 
     @AfterViews
-    void init(){
-        ((BaseActivity)getActivity()).changeToArrow();
+    void init() {
+        ((BaseActivity) getActivity()).changeToArrow();
         data = new ArrayList<>();
         presenter = new ProductListFragmentPresenterImpl(category);
         presenter.setFragmentProductList(this);
@@ -48,7 +48,7 @@ public class FragmentProductList extends Fragment {
         retrieveData();
     }
 
-    void configureRecyclerView(){
+    void configureRecyclerView() {
         adapter = new ProductListAdapter(data, getActivity().getApplicationContext(), presenter);
         mRecyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -56,18 +56,18 @@ public class FragmentProductList extends Fragment {
     }
 
 
-    public void showDialog(Producto producto){
+    public void showDialog(Producto producto) {
 
-        ((ProductTabActivity)getActivity()).showDialogProductos(producto);
+        ((ProductTabActivity) getActivity()).showDialogProductos(producto);
     }
 
-    public void printData(ArrayList<Producto> data){
+    public void printData(ArrayList<Producto> data) {
         this.data = data;
         adapter.updateItem(data);
     }
 
 
-    private void retrieveData(){
+    private void retrieveData() {
         presenter.launchOperation();
     }
 }

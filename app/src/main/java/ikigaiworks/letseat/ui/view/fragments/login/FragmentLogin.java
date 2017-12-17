@@ -25,7 +25,7 @@ import ikigaiworks.letseat.utils.LoginUtils;
  * A login screen that offers login via email/password.
  */
 @EFragment(R.layout.fragment_login)
-public class FragmentLogin extends Fragment implements LoginView{
+public class FragmentLogin extends Fragment implements LoginView {
 
 
     @ViewById(R.id.email)
@@ -40,44 +40,43 @@ public class FragmentLogin extends Fragment implements LoginView{
 
 
     @AfterViews
-    void init(){
-        loginPresenter = new LoginPresenterImpl(getActivity(),this);
+    void init() {
+        loginPresenter = new LoginPresenterImpl(getActivity(), this);
     }
 
 
-
-   @Click(R.id.email_sign_in_button)
-    void clickLogin(){
+    @Click(R.id.email_sign_in_button)
+    void clickLogin() {
         doLogin();
-   }
+    }
 
     @EditorAction(R.id.password)
     void onEditorAction(TextView hello, int actionId, KeyEvent keyEvent) {
-       if (actionId == LetsEatConstants.LOGIN_EDITOR_ACTION_ID){
-           ((LoginActivity)getActivity()).hideKeyboard();
-           doLogin();
-       }
+        if (actionId == LetsEatConstants.LOGIN_EDITOR_ACTION_ID) {
+            ((LoginActivity) getActivity()).hideKeyboard();
+            doLogin();
+        }
     }
 
-    private void doLogin(){
+    private void doLogin() {
         if (LoginUtils.isEmailValid(mEmailView.getText().toString())) {
             ((LoginActivity) getActivity()).showLoader();
             loginPresenter.doLogin(mEmailView.getText().toString(), mPasswordView.getText().toString());
-        }else{
-            ((BaseActivity)getActivity()).showToast(getString(R.string.login_error_format_mail),Toast.LENGTH_LONG);
+        } else {
+            ((BaseActivity) getActivity()).showToast(getString(R.string.login_error_format_mail), Toast.LENGTH_LONG);
         }
     }
 
     @Override
     public void operationOK() {
-        ((BaseActivity)getActivity()).showToast(getString(R.string.welcome),Toast.LENGTH_LONG);
+        ((BaseActivity) getActivity()).showToast(getString(R.string.welcome), Toast.LENGTH_LONG);
         getActivity().finish();
     }
 
     @Override
     public void operationFailure(int code) {
-        ((LoginActivity)getActivity()).hideLoader();
-        ((BaseActivity)getActivity()).showToast(LoginUtils.parseCodeToStringError(code),Toast.LENGTH_LONG);
+        ((LoginActivity) getActivity()).hideLoader();
+        ((BaseActivity) getActivity()).showToast(LoginUtils.parseCodeToStringError(code), Toast.LENGTH_LONG);
     }
 }
 

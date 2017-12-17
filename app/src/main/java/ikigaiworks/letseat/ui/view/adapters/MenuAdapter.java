@@ -24,7 +24,7 @@ import ikigaiworks.letseat.ui.presenters.menu.CategoryFragmentPresenterImpl;
  * Created by sergiolizanamontero on 26/9/17.
  */
 
-public class MenuAdapter  extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
+public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     private ArrayList<Category> data;
     private Context context;
@@ -32,20 +32,21 @@ public class MenuAdapter  extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     private LayoutInflater inflater;
     private MenuListContentBinding binding;
 
-    public MenuAdapter(ArrayList<Category> data , Context context, CategoryFragmentPresenterImpl presenter){
+    public MenuAdapter(ArrayList<Category> data, Context context, CategoryFragmentPresenterImpl presenter) {
         this.data = data;
         this.context = context;
         this.presenter = presenter;
         inflater = LayoutInflater.from(context);
     }
-    public MenuAdapter(ArrayList<Category> data){
+
+    public MenuAdapter(ArrayList<Category> data) {
         this.data = data;
     }
 
 
     @Override
     public MenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        binding = DataBindingUtil.inflate(inflater,R.layout.menu_list_content,parent,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.menu_list_content, parent, false);
         return new MenuAdapter.ViewHolder(binding);
 
     }
@@ -53,20 +54,20 @@ public class MenuAdapter  extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(MenuAdapter.ViewHolder holder, int position) {
         final Category category = data.get(position);
-        holder.bind(category,presenter);
+        holder.bind(category, presenter);
 
     }
 
-    public void addItem(int position , Category item){
-        data.add(position,item);
+    public void addItem(int position, Category item) {
+        data.add(position, item);
     }
 
-    public void updateItem(ArrayList<Category> categories){
+    public void updateItem(ArrayList<Category> categories) {
         data = categories;
         notifyDataSetChanged();
     }
 
-    public Category getItem(int adapterPosition){
+    public Category getItem(int adapterPosition) {
         return data.get(adapterPosition);
     }
 
@@ -93,13 +94,11 @@ public class MenuAdapter  extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
         }
 
-        public void bind (Category category, CategoryFragmentPresenterImpl p){
+        public void bind(Category category, CategoryFragmentPresenterImpl p) {
             binding.setVariable(BR.category, category);
-            binding.setVariable(BR.presenter,p);
+            binding.setVariable(BR.presenter, p);
             binding.executePendingBindings();
         }
-
-
 
 
     }

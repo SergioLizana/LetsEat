@@ -30,7 +30,7 @@ public class LoginActivity extends BaseActivity {
 
 
     @AfterViews
-    void init(){
+    void init() {
         initComponents();
     }
 
@@ -39,43 +39,43 @@ public class LoginActivity extends BaseActivity {
         swapFragment(isChecked);
     }
 
-    private void swapFragment(boolean isChecked){
-        if (!isChecked){
-            replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,getString(R.string.tag_name_login)
-                    ,false,true);
-        }else{
-            replaceFragment(FragmentRegistro_.builder().build(),R.id.content_login,getString(R.string.tag_name_signup)
-                    ,false,true);
+    private void swapFragment(boolean isChecked) {
+        if (!isChecked) {
+            replaceFragment(FragmentLogin_.builder().build(), R.id.content_login, getString(R.string.tag_name_login)
+                    , false, true);
+        } else {
+            replaceFragment(FragmentRegistro_.builder().build(), R.id.content_login, getString(R.string.tag_name_signup)
+                    , false, true);
         }
     }
 
-    public void swapToLogin(){
-        if(switchButton.isChecked()) {
+    public void swapToLogin() {
+        if (switchButton.isChecked()) {
             switchButton.setChecked(false);
             swapFragment(false);
         }
     }
 
-    public void swapToSignUp(){
-        if(!switchButton.isChecked()) {
+    public void swapToSignUp() {
+        if (!switchButton.isChecked()) {
             switchButton.setChecked(true);
             swapFragment(true);
         }
     }
 
-    private void initComponents(){
-        switchButton.setTrackDrawable(new SwitchTrackTextDrawable(this,R.string.login,R.string.registro));
-        replaceFragment(FragmentLogin_.builder().build(),R.id.content_login,getString(R.string.tag_name_login)
-                ,false,false);
+    private void initComponents() {
+        switchButton.setTrackDrawable(new SwitchTrackTextDrawable(this, R.string.login, R.string.registro));
+        replaceFragment(FragmentLogin_.builder().build(), R.id.content_login, getString(R.string.tag_name_login)
+                , false, false);
     }
 
-    public void showLoader(){
+    public void showLoader() {
         background.setVisibility(View.INVISIBLE);
         container.setVisibility(View.INVISIBLE);
         loader.setVisibility(View.VISIBLE);
     }
 
-    public void hideLoader(){
+    public void hideLoader() {
         background.setVisibility(View.VISIBLE);
         container.setVisibility(View.VISIBLE);
         loader.setVisibility(View.GONE);

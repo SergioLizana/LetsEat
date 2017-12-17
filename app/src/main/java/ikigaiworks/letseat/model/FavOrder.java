@@ -3,6 +3,7 @@ package ikigaiworks.letseat.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,13 +15,21 @@ public class FavOrder implements Parcelable {
     private Date dateOrder;
     private ArrayList<ProductToCart> products;
     private String name;
+    private String dateFormated;
 
-    public FavOrder(){}
+    public FavOrder() {
+    }
 
-    public FavOrder(Date dateOrder, ArrayList<ProductToCart> products,String name) {
+    public FavOrder(Date dateOrder, ArrayList<ProductToCart> products, String name) {
         this.dateOrder = dateOrder;
         this.products = products;
         this.name = name;
+    }
+
+    public String getDateFormated() {
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+        String date = DATE_FORMAT.format(dateOrder);
+        return date;
     }
 
     public String getName() {
