@@ -115,16 +115,8 @@
     <string name="menu_config">Configuración</string>
     <string name="menu_nosotros">Nosotros</string>
     <string name="menu_exit">Salir</string>
-
-
-
-
-
-
-
-
-
-
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 
 </resources>

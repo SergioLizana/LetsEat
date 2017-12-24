@@ -83,9 +83,6 @@ public class CartUtils {
 
     }
 
-    public static void removeFromCart(Producto p) {
-
-    }
 
     public static void removeFromCartPosition(int position) {
         ArrayList<ProductToCart> cart = getCart();

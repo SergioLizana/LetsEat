@@ -47,11 +47,19 @@ public class FavoriteUtils {
         return favList != null ? favList : new LinkedHashMap<String, FavOrder>();
     }
 
-    public static ArrayList<ProductToCart> getFavByName(String name) {
-        return null;
+    public static FavOrder getFavByName(String name) {
+        LinkedHashMap<String, FavOrder> favList = new LinkedHashMap<>(getFavList());
+        return favList!=null&&favList.size()>0?favList.get(name):null;
     }
 
     public static void deleteFavByName(String name) {
+        LinkedHashMap<String, FavOrder> favList = new LinkedHashMap<>(getFavList());
+        if (favList!=null && favList.size()>0){
+            favList.remove(name);
+        }
+    }
+
+    public static void deleteFavList(){
 
     }
 
