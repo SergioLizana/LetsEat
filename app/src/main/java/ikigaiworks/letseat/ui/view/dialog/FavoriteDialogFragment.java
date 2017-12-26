@@ -21,6 +21,7 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.utils.App;
 
 import static ikigaiworks.letseat.app.LetsEatConstants.TAG_SAVE_FAV;
 
@@ -88,11 +89,13 @@ public class FavoriteDialogFragment extends DialogFragment implements DialogInte
 
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {
+
         if (!mFavName.getText().toString().isEmpty()) {
             Fragment f = getTargetFragment();
             Intent intentData = new Intent();
             intentData.putExtra(TAG_SAVE_FAV, mFavName.getText().toString());
             f.onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intentData);
+            App.updateMyWidgets(getActivity().getApplicationContext());
             dialogInterface.dismiss();
         } else {
             getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_CANCELED, getActivity().getIntent());

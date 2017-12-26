@@ -1,7 +1,11 @@
 package ikigaiworks.letseat.utils;
 
 import android.app.Application;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
+
+import ikigaiworks.letseat.widget.WidgetProvider;
 
 
 public class App extends Application {
@@ -39,4 +43,10 @@ public class App extends Application {
         return App.context;
     }
 
+    public static void updateMyWidgets(Context context) {
+        int[] ids = AppWidgetManager.getInstance(context)
+                .getAppWidgetIds(new ComponentName(context, WidgetProvider.class));
+        WidgetProvider myWidget = new WidgetProvider();
+        myWidget.onUpdate(context, AppWidgetManager.getInstance(context),ids);
+    }
 }

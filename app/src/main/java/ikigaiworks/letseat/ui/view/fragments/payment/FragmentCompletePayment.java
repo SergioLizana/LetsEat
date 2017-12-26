@@ -1,7 +1,11 @@
 package ikigaiworks.letseat.ui.view.fragments.payment;
 
 import android.app.Activity;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,6 +40,7 @@ import ikigaiworks.letseat.ui.view.dialog.FavoriteDialogFragment;
 import ikigaiworks.letseat.ui.view.dialog.FavoriteDialogFragment_;
 import ikigaiworks.letseat.utils.CartUtils;
 import ikigaiworks.letseat.utils.FavoriteUtils;
+import ikigaiworks.letseat.widget.WidgetProvider;
 
 /**
  * Created by sergiolizanamontero on 28/11/17.
@@ -94,18 +99,21 @@ public class FragmentCompletePayment extends Fragment {
     @Click(R.id.fav_button)
     void onClick() {
         if (!isFav) {
-            FragmentManager fm = getFragmentManager();
-            FavoriteDialogFragment dialogFragment = FavoriteDialogFragment_.builder().build();
-            dialogFragment.setAllowEnterTransitionOverlap(true);
-            dialogFragment.setAllowReturnTransitionOverlap(true);
-            dialogFragment.setTargetFragment(this, DIALOG_FRAGMENT);
-            dialogFragment.show(fm, "Sample Fragment");
+            if(!((Activity) getActivity()).isFinishing())
+            {
+                FragmentManager fm = getFragmentManager();
+                FavoriteDialogFragment dialogFragment = FavoriteDialogFragment_.builder().build();
+                dialogFragment.setAllowEnterTransitionOverlap(true);
+                dialogFragment.setAllowReturnTransitionOverlap(true);
+                dialogFragment.setTargetFragment(this, DIALOG_FRAGMENT);
+                dialogFragment.show(fm, "Sample Fragment");
+            }
+
         } else {
             likeButtonView.showAnimation();
             Toast.makeText(getActivity().getApplicationContext(), getString(R.string.error_validation_is_fav), Toast.LENGTH_LONG).show();
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
