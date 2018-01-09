@@ -51,7 +51,7 @@
             android:backgroundTint="@android:color/holo_orange_dark"
             app:layout_constraintRight_toRightOf="@+id/picker"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="60dp" />
+            android:layout_marginBottom="@dimen/main_fb_margin_bottom" />
 
         <com.yarolegovich.discretescrollview.DiscreteScrollView
             android:id="@+id/picker"
