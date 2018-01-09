@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="304dp"
+            android:layout_height="@dimen/main_image_height"
             android:src="@drawable/coverheader"
             android:scaleType="fitXY"
             app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +56,7 @@
         <com.yarolegovich.discretescrollview.DiscreteScrollView
             android:id="@+id/picker"
             android:layout_width="fill_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/main_carrusel_height"
             android:elevation="5dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
@@ -66,7 +66,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/main_carrusel_margin_top"
             app:layout_constraintTop_toBottomOf="@+id/titleCarrusel" />
 
 
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Menú"
-            android:textSize="30dp"
+            android:textSize="@dimen/main_title_carrusel_size"
             android:textColor="@android:color/white"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
@@ -90,17 +90,15 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="168dp"
-            android:layout_height="113dp"
-            app:srcCompat="@drawable/logobakery"
+            android:layout_width="@dimen/main_image_bakery_width"
+            android:layout_height="@dimen/main_image_bakery_height"
             android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="52dp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="60dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
+            app:srcCompat="@drawable/logobakery" />
 
     </android.support.constraint.ConstraintLayout>
 

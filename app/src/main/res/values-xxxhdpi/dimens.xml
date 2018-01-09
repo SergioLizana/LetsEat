@@ -25,11 +25,8 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="carrusel_slide_heigth">320dp</dimen>
     <dimen name="carrusel_slide_width">300dp</dimen>
     <dimen name="carrusel_slide_text_size">200dp</dimen>
-    <dimen name="carrusel_slide_image_heigth">180dp</dimen>
-    <dimen name="carrusel_slide_image_width">160dp</dimen>
+    <dimen name="carrusel_slide_image_heigth">170dp</dimen>
+    <dimen name="carrusel_slide_image_width">150dp</dimen>
     <dimen name="carrusel_slide_text_margin_top">10dp</dimen>
-
-
-
 
 </resources>
