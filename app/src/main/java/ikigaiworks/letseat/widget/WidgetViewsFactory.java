@@ -29,12 +29,12 @@ import ikigaiworks.letseat.model.FavOrder;
 import ikigaiworks.letseat.utils.FavoriteUtils;
 import ikigaiworks.letseat.widget.WidgetProvider;
 
-public class LoremViewsFactory implements RemoteViewsService.RemoteViewsFactory {
+public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     private Context ctxt=null;
     private int appWidgetId;
     List<FavOrder> list;
 
-    public LoremViewsFactory(Context ctxt, Intent intent) {
+    public WidgetViewsFactory(Context ctxt, Intent intent) {
         this.ctxt=ctxt;
         appWidgetId=intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                 AppWidgetManager.INVALID_APPWIDGET_ID);
@@ -65,14 +65,15 @@ public class LoremViewsFactory implements RemoteViewsService.RemoteViewsFactory 
         row.setTextViewText(R.id.name, list.get(position).getName());
         row.setTextViewText(R.id.date, list.get(position).getDateFormated());
 
-        Intent i=new Intent();
-        Bundle extras=new Bundle();
 
-        extras.putString(WidgetProvider.EXTRA_WORD, list.get(position).getName());
-        i.putExtras(extras);
-        row.setOnClickFillInIntent(android.R.id.text1, i);
-
-        return(row);
+        final Intent fillInIntent = new Intent();
+        fillInIntent.setAction(WidgetProvider.ACTION_TOAST);
+        final Bundle bundle = new Bundle();
+        bundle.putString(WidgetProvider.EXTRA_WORD,
+                list.get(position).getName());
+        fillInIntent.putExtras(bundle);
+        row.setOnClickFillInIntent(android.R.id.text1, fillInIntent);
+        return row;
     }
 
     @Override

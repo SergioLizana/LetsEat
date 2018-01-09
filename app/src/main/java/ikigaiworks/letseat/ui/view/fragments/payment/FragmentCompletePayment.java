@@ -98,20 +98,21 @@ public class FragmentCompletePayment extends Fragment {
 
     @Click(R.id.fav_button)
     void onClick() {
-        if (!isFav) {
-            if(!((Activity) getActivity()).isFinishing())
-            {
+        if(!((Activity) getActivity()).isFinishing()) {
+            if (!isFav) {
+
                 FragmentManager fm = getFragmentManager();
                 FavoriteDialogFragment dialogFragment = FavoriteDialogFragment_.builder().build();
                 dialogFragment.setAllowEnterTransitionOverlap(true);
                 dialogFragment.setAllowReturnTransitionOverlap(true);
                 dialogFragment.setTargetFragment(this, DIALOG_FRAGMENT);
                 dialogFragment.show(fm, "Sample Fragment");
-            }
 
-        } else {
-            likeButtonView.showAnimation();
-            Toast.makeText(getActivity().getApplicationContext(), getString(R.string.error_validation_is_fav), Toast.LENGTH_LONG).show();
+
+            } else {
+                likeButtonView.showAnimation();
+                Toast.makeText(getActivity().getApplicationContext(), getString(R.string.error_validation_is_fav), Toast.LENGTH_LONG).show();
+            }
         }
     }
 
