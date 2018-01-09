@@ -44,7 +44,7 @@
             android:layout_marginTop="@dimen/carrusel_slide_text_margin_top"
             android:padding="8dp"
             android:autoSizeTextType="uniform"
-            android:textSize="12sp"
+            android:textSize="@dimen/carrusel_text_desc_size"
             android:text="@{slide.text}"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"

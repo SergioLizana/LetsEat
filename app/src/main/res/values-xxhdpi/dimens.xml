@@ -14,19 +14,20 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="widget_margin">8dp</dimen>
 
     <!--Fragment Main-->
-    <dimen name="main_image_height">304dp</dimen>
-    <dimen name="main_image_bakery_width">168dp</dimen>
-    <dimen name="main_image_bakery_height">113dp</dimen>
-    <dimen name="main_title_carrusel_size">30sp</dimen>
-    <dimen name="main_carrusel_height">300dp</dimen>
-    <dimen name="main_carrusel_margin_top">30dp</dimen>
+    <dimen name="main_image_height">250dp</dimen>
+    <dimen name="main_image_bakery_width">145dp</dimen>
+    <dimen name="main_image_bakery_height">93dp</dimen>
+    <dimen name="main_title_carrusel_size">20sp</dimen>
+    <dimen name="main_carrusel_height">280dp</dimen>
+    <dimen name="main_carrusel_margin_top">10dp</dimen>
 
     <!-- Carrusel Dimen-->
-    <dimen name="carrusel_slide_heigth">320dp</dimen>
-    <dimen name="carrusel_slide_width">300dp</dimen>
-    <dimen name="carrusel_slide_text_size">200dp</dimen>
-    <dimen name="carrusel_slide_image_heigth">180dp</dimen>
-    <dimen name="carrusel_slide_image_width">160dp</dimen>
+    <dimen name="carrusel_slide_heigth">270dp</dimen>
+    <dimen name="carrusel_slide_width">245dp</dimen>
+    <dimen name="carrusel_slide_text_size">24dp</dimen>
+    <dimen name="carrusel_slide_image_heigth">140dp</dimen>
+    <dimen name="carrusel_slide_image_width">130dp</dimen>
     <dimen name="carrusel_slide_text_margin_top">5dp</dimen>
+    <dimen name="carrusel_text_desc_size">15sp</dimen>
 
 </resources>
