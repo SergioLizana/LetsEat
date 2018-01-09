@@ -48,12 +48,14 @@
                     app:popupTheme="@style/AppTheme.PopupOverlay" />
 
                 <android.support.design.widget.TabLayout
+
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:background="@color/transparent"
                     app:tabGravity="fill"
                     app:tabMode="fixed"
+                    app:tabTextAppearance="@style/TabLayoutStyle"
                     app:tabSelectedTextColor="@color/toolbar_text_color"
                     app:tabTextColor="@color/toolbar_text_color" />
 

@@ -31,4 +31,15 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="carrusel_slide_image_width">120dp</dimen>
     <dimen name="carrusel_slide_text_margin_top">5dp</dimen>
     <dimen name="carrusel_text_desc_size">14sp</dimen>
+
+    <!-- Menu List -->
+    <dimen name="menu_list_height">155dp</dimen>
+    <dimen name="menu_list_text_size">22sp</dimen>
+
+
+    <!-- Category Menu List -->
+    <dimen name="category_list_content_height_row">130dp</dimen>
+    <dimen name="category_list_content_image_width">115dp</dimen>
+    <dimen name="category_list_content_image_height">95dp</dimen>
+    <dimen name="category_list_content_image_margin_left">15dp</dimen>
 </resources>

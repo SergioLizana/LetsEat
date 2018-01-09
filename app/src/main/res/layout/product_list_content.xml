@@ -17,17 +17,17 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/category_list_content_height_row"
         android:background="@drawable/border_style"
         android:onClick="@{() -> presenter.onClickEvent(producto)}">
 
 
         <ImageView
             android:id="@+id/product_image"
-            android:layout_width="140dp"
-            android:layout_height="130dp"
+            android:layout_width="@dimen/category_list_content_image_width"
+            android:layout_height="@dimen/category_list_content_image_height"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="@dimen/category_list_content_image_margin_left"
             android:layout_marginTop="8dp"
             tools:src="@drawable/product"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
             android:text="@{producto.name}"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.446"
             app:layout_constraintLeft_toRightOf="@+id/product_image"
