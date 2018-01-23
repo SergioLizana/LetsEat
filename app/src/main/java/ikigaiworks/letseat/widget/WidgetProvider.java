@@ -7,11 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ComponentName;
 import android.net.Uri;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.ui.view.activities.FavOrderActivity_;
 import ikigaiworks.letseat.ui.view.activities.MainActivity;
 import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 
@@ -19,6 +21,8 @@ public class WidgetProvider extends AppWidgetProvider {
     public static String EXTRA_WORD =
             "ikigaiworks.letseat.widget.WORD";
     public static final String ACTION_TOAST = "ikigaiworks.letseat.widget.ACTION_TOAST";
+    public static final String WIDGET_ROW_ONCLICK = "ikigaiworks.letseat.widget.ACTION_CLICK";
+
 
     @Override
     public void onUpdate(Context ctxt, AppWidgetManager appWidgetManager,
@@ -36,15 +40,13 @@ public class WidgetProvider extends AppWidgetProvider {
                     svcIntent);
 
 
-            final Intent onItemClick = new Intent(ctxt, WidgetProvider.class);
-            onItemClick.setAction(ACTION_TOAST);
-            onItemClick.setData(Uri.parse(onItemClick
-                    .toUri(Intent.URI_INTENT_SCHEME)));
-            final PendingIntent onClickPendingIntent = PendingIntent
-                    .getBroadcast(ctxt, 0, onItemClick,
-                            PendingIntent.FLAG_UPDATE_CURRENT);
-            widget.setPendingIntentTemplate(R.id.fav_list_widget,
-                    onClickPendingIntent);
+            Intent clickIntentTemplate = new Intent(ctxt, FavOrderActivity_.class);
+            PendingIntent clickPendingIntentTemplate = TaskStackBuilder.create(ctxt)
+                    .addNextIntentWithParentStack(clickIntentTemplate)
+                    .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+            widget.setPendingIntentTemplate(R.id.fav_list_widget, clickPendingIntentTemplate);
+
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds[i], R.id.fav_list_widget);
 
             appWidgetManager.updateAppWidget(appWidgetIds[i], widget);
         }
@@ -55,10 +57,6 @@ public class WidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals(ACTION_TOAST)) {
-            String item = intent.getExtras().getString(EXTRA_WORD);
-            Toast.makeText(context, item, Toast.LENGTH_LONG).show();
-        }
         super.onReceive(context, intent);
     }
 

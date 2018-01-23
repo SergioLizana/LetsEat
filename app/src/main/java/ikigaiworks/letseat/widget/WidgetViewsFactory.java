@@ -13,6 +13,7 @@ package ikigaiworks.letseat.widget; /***
  */
 
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +29,8 @@ import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.FavOrder;
 import ikigaiworks.letseat.utils.FavoriteUtils;
 import ikigaiworks.letseat.widget.WidgetProvider;
+
+import static ikigaiworks.letseat.widget.WidgetProvider.WIDGET_ROW_ONCLICK;
 
 public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     private Context ctxt=null;
@@ -65,14 +68,10 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
         row.setTextViewText(R.id.name, list.get(position).getName());
         row.setTextViewText(R.id.date, list.get(position).getDateFormated());
 
+        Intent fillInIntent = new Intent();
+        fillInIntent.putExtra(WIDGET_ROW_ONCLICK, list.get(position));
+        row.setOnClickFillInIntent(R.id.widget_row, fillInIntent);
 
-        final Intent fillInIntent = new Intent();
-        fillInIntent.setAction(WidgetProvider.ACTION_TOAST);
-        final Bundle bundle = new Bundle();
-        bundle.putString(WidgetProvider.EXTRA_WORD,
-                list.get(position).getName());
-        fillInIntent.putExtras(bundle);
-        row.setOnClickFillInIntent(android.R.id.text1, fillInIntent);
         return row;
     }
 

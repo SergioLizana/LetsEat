@@ -19,9 +19,12 @@ import ikigaiworks.letseat.model.FavOrder;
 import ikigaiworks.letseat.model.LastOrder;
 import ikigaiworks.letseat.ui.presenters.lastorder.LastOrderPresenterImpl;
 import ikigaiworks.letseat.ui.view.activities.CartActivity_;
+import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 import ikigaiworks.letseat.ui.view.adapters.LastOrderAdapter;
 import ikigaiworks.letseat.utils.CartUtils;
 import ikigaiworks.letseat.utils.FavoriteUtils;
+
+import static ikigaiworks.letseat.app.LetsEatConstants.REQ_CODE_WIDGET_FLOW;
 
 /**
  * Created by sergiolizanamontero on 30/11/17.
@@ -31,6 +34,7 @@ import ikigaiworks.letseat.utils.FavoriteUtils;
 public class FragmentFavOrderList extends Fragment {
     LinkedHashMap<String, FavOrder> data;
     LastOrderAdapter adapter;
+
 
     @ViewById(R.id.recyler_menu_categorias)
     protected RecyclerView recyclerView;
@@ -57,9 +61,19 @@ public class FragmentFavOrderList extends Fragment {
     public void goToCart(FavOrder order) {
         CartUtils.deleteCart();
         CartUtils.updateCart(order.getProducts());
-        Intent intent = CartActivity_.intent(this).isFav(true).get();
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        CartActivity_.intent(this)
+                .isFav(true)
+                .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .startForResult(REQ_CODE_WIDGET_FLOW);
+
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode==REQ_CODE_WIDGET_FLOW){
+           MainActivity_.intent(this).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP).start();
+
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

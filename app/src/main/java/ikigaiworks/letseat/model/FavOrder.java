@@ -68,6 +68,7 @@ public class FavOrder implements Parcelable {
         dest.writeLong(this.dateOrder != null ? this.dateOrder.getTime() : -1);
         dest.writeTypedList(this.products);
         dest.writeString(this.name);
+        dest.writeString(this.dateFormated);
     }
 
     protected FavOrder(Parcel in) {
@@ -75,6 +76,7 @@ public class FavOrder implements Parcelable {
         this.dateOrder = tmpDateOrder == -1 ? null : new Date(tmpDateOrder);
         this.products = in.createTypedArrayList(ProductToCart.CREATOR);
         this.name = in.readString();
+        this.dateFormated = in.readString();
     }
 
     public static final Creator<FavOrder> CREATOR = new Creator<FavOrder>() {

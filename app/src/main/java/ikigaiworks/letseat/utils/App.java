@@ -27,6 +27,7 @@ public class App extends Application {
         DiscreteScrollViewOptions.init(this);
         App.context = getApplicationContext();
         appInit = true;
+        updateMyWidgets(this);
     }
 
     @Override

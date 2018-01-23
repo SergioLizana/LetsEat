@@ -131,6 +131,7 @@ public class ProductToCart implements Parcelable {
         }
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -138,23 +139,32 @@ public class ProductToCart implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.cartId);
         dest.writeString(this.name);
         dest.writeDouble(this.price);
         dest.writeDouble(this.discount);
         dest.writeString(this.reference);
         dest.writeString(this.extra);
+        dest.writeString(this.productId);
+        dest.writeString(this.image);
+        dest.writeInt(this.extraVisibility);
+        dest.writeInt(this.quantity);
     }
 
-
     protected ProductToCart(Parcel in) {
+        this.cartId = in.readInt();
         this.name = in.readString();
         this.price = in.readDouble();
         this.discount = in.readDouble();
         this.reference = in.readString();
         this.extra = in.readString();
+        this.productId = in.readString();
+        this.image = in.readString();
+        this.extraVisibility = in.readInt();
+        this.quantity = in.readInt();
     }
 
-    public static final Parcelable.Creator<ProductToCart> CREATOR = new Parcelable.Creator<ProductToCart>() {
+    public static final Creator<ProductToCart> CREATOR = new Creator<ProductToCart>() {
         @Override
         public ProductToCart createFromParcel(Parcel source) {
             return new ProductToCart(source);

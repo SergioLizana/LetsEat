@@ -259,7 +259,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     public void goToMainScreen() {
         Intent intent = MainActivity_.intent(this).get();
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK );
         startActivity(intent);
     }
 
