@@ -11,12 +11,9 @@ import java.util.LinkedHashMap;
 
 import ikigaiworks.letseat.model.FavOrder;
 import ikigaiworks.letseat.model.ProductToCart;
-import ikigaiworks.letseat.utils.CartUtils;
 import ikigaiworks.letseat.utils.FavoriteUtils;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
