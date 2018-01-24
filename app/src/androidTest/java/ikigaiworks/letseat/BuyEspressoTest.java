@@ -3,10 +3,12 @@ package ikigaiworks.letseat;
 import android.support.annotation.NonNull;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
+import android.support.test.espresso.action.ScrollToAction;
 import android.support.test.espresso.contrib.DrawerActions;
 import android.support.test.espresso.contrib.NavigationViewActions;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.matcher.BoundedMatcher;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +26,9 @@ import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.swipeUp;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
@@ -38,6 +43,7 @@ import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsAnything.anything;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
+import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.StringContains.containsString;
 
 /**
@@ -78,11 +84,12 @@ public class BuyEspressoTest {
                 .perform(RecyclerViewActions.scrollToPosition(6)).perform(click());
 
         try{
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         }catch (InterruptedException e){
             e.printStackTrace();
         }
 
+        onView(withId(R.id.spinner_extras)).check(matches(isDisplayed()));
         onView(withId(R.id.spinner_extras)).check(matches(withSpinnerText(containsString("Jamon y Queso"))));
         onView(withId(R.id.addToCart)).perform(click());
 
@@ -115,12 +122,22 @@ public class BuyEspressoTest {
         onView(withId(R.id.pay)).perform(click());
         onView(withId(R.id.pay)).perform(click());
 
-        try{
-            Thread.sleep(2000);
-        }catch (InterruptedException e) {
-            e.printStackTrace();
 
-        }
+        onView(withRecyclerView(R.id.ticket_cart)
+                .atPositionOnView(0, R.id.item_quantity))
+                .check(matches(withText("3")));
+
+        onView(withId(R.id.ocultar)).perform(click());
+        onView(withId(R.id.ticket_cart)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.ocultar)).perform(click());
+        onView(withId(R.id.ticket_cart)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.fav_button)).perform(click());
+        onView(withId(R.id.fav_name)).perform(typeText("hello udacity"), closeSoftKeyboard());
+        onView(withId(R.id.fav_name)).check(matches(withText("hello udacity")));
+        onView(withId(android.R.id.button2)).perform(click());
+        onView(withId(R.id.scrollCompletePayment)).perform(swipeUp());
+        onView(withId(R.id.goToHome)).check(matches(isDisplayed())).perform(click());
 
 
     }
