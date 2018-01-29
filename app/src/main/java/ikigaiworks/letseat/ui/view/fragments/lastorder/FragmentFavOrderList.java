@@ -30,13 +30,13 @@ import static ikigaiworks.letseat.app.LetsEatConstants.REQ_CODE_WIDGET_FLOW;
  * Created by sergiolizanamontero on 30/11/17.
  */
 
-@EFragment(R.layout.fragment_menu_categorias)
+@EFragment(R.layout.fragment_fav_list)
 public class FragmentFavOrderList extends Fragment {
     LinkedHashMap<String, FavOrder> data;
     LastOrderAdapter adapter;
 
 
-    @ViewById(R.id.recyler_menu_categorias)
+    @ViewById(R.id.recycler_fav_list)
     protected RecyclerView recyclerView;
     @ViewById(R.id.progressbar)
     protected ProgressBar progressBar;

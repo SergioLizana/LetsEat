@@ -3,12 +3,10 @@ package ikigaiworks.letseat;
 import android.support.annotation.NonNull;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.action.ScrollToAction;
 import android.support.test.espresso.contrib.DrawerActions;
 import android.support.test.espresso.contrib.NavigationViewActions;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.matcher.BoundedMatcher;
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +21,6 @@ import org.junit.runner.RunWith;
 
 import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
@@ -32,17 +29,12 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
-import static android.support.test.espresso.contrib.RecyclerViewActions.scrollTo;
-import static android.support.test.espresso.matcher.RootMatchers.isPlatformPopup;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.internal.util.Checks.checkNotNull;
 import static org.hamcrest.core.AllOf.allOf;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsAnything.anything;
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.StringContains.containsString;
 
@@ -53,6 +45,9 @@ import static org.hamcrest.core.StringContains.containsString;
 @RunWith(AndroidJUnit4.class)
 public class BuyEspressoTest {
 
+    private static final String SPINNER_TEXT = "Jamon y Queso";
+    private static final String QUANTITY = "3";
+    private static final String DUMMY_TEXT = "hello udacity";
 
     @Rule
     public ActivityTestRule<MainActivity_> mActivityRule =
@@ -90,7 +85,7 @@ public class BuyEspressoTest {
         }
 
         onView(withId(R.id.spinner_extras)).check(matches(isDisplayed()));
-        onView(withId(R.id.spinner_extras)).check(matches(withSpinnerText(containsString("Jamon y Queso"))));
+        onView(withId(R.id.spinner_extras)).check(matches(withSpinnerText(containsString(SPINNER_TEXT))));
         onView(withId(R.id.addToCart)).perform(click());
 
 
@@ -117,15 +112,15 @@ public class BuyEspressoTest {
                 RecyclerViewActions.actionOnItemAtPosition(0, clickChildViewWithId(R.id.AddProductAmount)));
         onView(withRecyclerView(R.id.cart_list)
                 .atPositionOnView(0, R.id.quantity))
-                .check(matches(withText("3")));
-        onView(withId(R.id.amount_products)).check(matches(withText("3")));
+                .check(matches(withText(QUANTITY)));
+        onView(withId(R.id.amount_products)).check(matches(withText(QUANTITY)));
         onView(withId(R.id.pay)).perform(click());
         onView(withId(R.id.pay)).perform(click());
 
 
         onView(withRecyclerView(R.id.ticket_cart)
                 .atPositionOnView(0, R.id.item_quantity))
-                .check(matches(withText("3")));
+                .check(matches(withText(QUANTITY)));
 
         onView(withId(R.id.ocultar)).perform(click());
         onView(withId(R.id.ticket_cart)).check(matches(not(isDisplayed())));
@@ -133,8 +128,8 @@ public class BuyEspressoTest {
         onView(withId(R.id.ticket_cart)).check(matches(isDisplayed()));
 
         onView(withId(R.id.fav_button)).perform(click());
-        onView(withId(R.id.fav_name)).perform(typeText("hello udacity"), closeSoftKeyboard());
-        onView(withId(R.id.fav_name)).check(matches(withText("hello udacity")));
+        onView(withId(R.id.fav_name)).perform(typeText(DUMMY_TEXT), closeSoftKeyboard());
+        onView(withId(R.id.fav_name)).check(matches(withText(DUMMY_TEXT)));
         onView(withId(android.R.id.button2)).perform(click());
         onView(withId(R.id.scrollCompletePayment)).perform(swipeUp());
         onView(withId(R.id.goToHome)).check(matches(isDisplayed())).perform(click());
