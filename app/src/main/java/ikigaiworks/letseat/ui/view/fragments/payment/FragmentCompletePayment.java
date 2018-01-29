@@ -31,6 +31,7 @@ import java.util.Map;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.app.LetsEatConstants;
+import ikigaiworks.letseat.manager.NotificationBackgroundService;
 import ikigaiworks.letseat.model.FavOrder;
 import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.ui.view.adapters.SuccessAdapter;
@@ -87,6 +88,9 @@ public class FragmentCompletePayment extends Fragment {
         if (isFav) {
             likeButtonView.showAnimation();
         }
+        Intent intent = new Intent(Intent.ACTION_SYNC, null, getActivity(), NotificationBackgroundService.class);
+        getActivity().startService(intent);
+
     }
 
     void configureRecyclerView() {
