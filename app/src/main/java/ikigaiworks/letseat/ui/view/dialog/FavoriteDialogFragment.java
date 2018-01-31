@@ -21,7 +21,7 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.utils.App;
+import ikigaiworks.letseat.app.App;
 
 import static ikigaiworks.letseat.app.LetsEatConstants.TAG_SAVE_FAV;
 

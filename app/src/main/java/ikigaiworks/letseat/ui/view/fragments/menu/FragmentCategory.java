@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -64,6 +65,13 @@ public class FragmentCategory extends Fragment {
         pBean.setCategory(category);
         Intent intent = ProductTabActivity_.intent(this).get();
         startActivity(intent);
+    }
+
+    public void onError(){
+        Toast.makeText(getActivity().getApplicationContext(),getString(R.string.generic_error),Toast.LENGTH_LONG).show();
+        if(getActivity()!=null) {
+            getActivity().finish();
+        }
     }
 
     @Override

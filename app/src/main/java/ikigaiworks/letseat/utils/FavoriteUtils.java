@@ -8,14 +8,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.App;
 import ikigaiworks.letseat.model.FavOrder;
-import ikigaiworks.letseat.model.ProductToCart;
-import ikigaiworks.letseat.model.Producto;
 
 import static ikigaiworks.letseat.app.LetsEatConstants.SHARED_PREFERENCES_FAV_LIST;
 

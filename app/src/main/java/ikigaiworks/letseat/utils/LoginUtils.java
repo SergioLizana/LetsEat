@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.App;
 import ikigaiworks.letseat.app.LetsEatConstants;
 
 /**

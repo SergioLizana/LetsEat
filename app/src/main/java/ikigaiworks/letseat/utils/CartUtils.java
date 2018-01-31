@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.App;
 import ikigaiworks.letseat.model.Extra;
 import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.model.Producto;

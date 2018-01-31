@@ -104,6 +104,14 @@
     <string name="goodbye">¡Vuelve Pronto!</string>
     <string name="authenticated">¡ Estás autenticado ya en Lets Eat !</string>
 
+    <string name="generic_error">Ha ocurrido un error con la conexion, intentelo de nuevo</string>
+
+
+    <string name="internet_dialog_title">No estás conectado a internet</string>
+    <string name="internet_dialog_msg">Para utilizar la aplicación de Lets Eat es necesario estar conectado a una red Wifi o de Datos</string>
+    <string name="internet_dialog_wifi_button">Wifi</string>
+    <string name="internet_dialog_settings_button">Configuración</string>
+    <string name="internet_dialog_back_button">Salir</string>
 
     <string name="menu_login">Login</string>
     <string name="menu_inicio">Inicio</string>
@@ -117,6 +125,7 @@
     <string name="menu_exit">Salir</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
 
 
 </resources>

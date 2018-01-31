@@ -35,11 +35,16 @@ public class CategoryFragmentPresenterImpl implements Presenter, Presenter.Opera
 
     @Override
     public void onCategoriesReceived(ArrayList<Category> categories) {
-        fragmentCategory.printData(categories);
+         fragmentCategory.printData(categories);
     }
 
     @Override
     public void launchOperation() {
         firebaseManager.getCategories(this);
+    }
+
+    @Override
+    public void onErrorOperation() {
+        fragmentCategory.onError();
     }
 }

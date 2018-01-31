@@ -1,19 +1,13 @@
 package ikigaiworks.letseat.ui.view.activities;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.app.BaseActivity;
-import ikigaiworks.letseat.manager.NotificationBackgroundService;
 import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
 import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain_;
-import ikigaiworks.letseat.utils.App;
+import ikigaiworks.letseat.app.App;
 import ikigaiworks.letseat.utils.CartUtils;
 import ikigaiworks.letseat.widget.WidgetProvider;
 

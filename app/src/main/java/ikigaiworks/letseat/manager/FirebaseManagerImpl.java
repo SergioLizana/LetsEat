@@ -62,14 +62,10 @@ public class FirebaseManagerImpl implements FirebaseManager {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("test", "on cancelled");
+                Log.d("getCategories", databaseError.getMessage());
+                listener.onErrorOperation();
             }
         });
-
-    }
-
-    @Override
-    public void getSubCategories(Category category, final Presenter.OperationCategories listener) {
 
     }
 
@@ -85,7 +81,8 @@ public class FirebaseManagerImpl implements FirebaseManager {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("error", databaseError.toString());
+                Log.d("getProductos", databaseError.getMessage());
+                listener.onErrorOperation();
             }
         });
     }
@@ -102,53 +99,12 @@ public class FirebaseManagerImpl implements FirebaseManager {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("error", databaseError.toString());
+                Log.d("getProducto", databaseError.getMessage());
+                listener.onErrorOperation();
             }
         });
     }
 
-    @Override
-    public void getFavorites(Presenter.OperationFavorite listener) {
-    }
-
-    @Override
-    public void addFavorite(ProductToCart productToCart) {
-
-        /*DatabaseReference lastOrders =  FirebaseCommon.getFirebaseDatabase().getReference("FAVORITES").child("orders").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        ProductToCart productToCart1 = new ProductToCart("1",1,"TEST",20.0,15.0,"092190","COLACAO","NFJSNDJNS");
-        HashMap<String,ProductToCart> productInCart = new HashMap<>();
-        productInCart.put("0",productToCart1);
-        productInCart.put("1",productToCart1);
-        productInCart.put("2",productToCart1);
-        productInCart.put("3",productToCart1);
-
-        LastOrder order1 = new LastOrder(new Date(),productInCart);
-        HashMap<String,LastOrder> lastOrders2 = new HashMap<String,LastOrder>();
-        lastOrders2.put("2",order1);
-
-        LastOrders orders = new LastOrders();
-        orders.setOrders(lastOrders2);
-
-        OrderModel model = new OrderModel();
-        HashMap<String,LastOrders> orderModel = new HashMap<String,LastOrders>();
-        orderModel.put(FirebaseCommon.getFirebaseAuth().getCurrentUser().getUid(),orders);
-        model.setOrders(orderModel);
-        Map<String, Object> updates = new HashMap<String, Object>();
-        updates.put("orders",orders);
-        lastOrders.updateChildren(updates, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-
-            }
-        });
-
-        lastOrders.setValue(model);*/
-    }
-
-    @Override
-    public void removeFavorite(ProductToCart productToCart, Presenter.OperationFavoriteDelete listener) {
-
-    }
 
     @Override
     public void signUp(String email, String password, final LoginPresenter.SignIn listener) {

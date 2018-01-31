@@ -2,7 +2,9 @@ package ikigaiworks.letseat.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +20,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
@@ -27,6 +30,9 @@ import ikigaiworks.letseat.ui.view.activities.LoginActivity_;
 import ikigaiworks.letseat.ui.view.activities.MainActivity;
 import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 import ikigaiworks.letseat.ui.view.activities.MenuActivity_;
+import ikigaiworks.letseat.utils.InternetUtils;
+
+import static ikigaiworks.letseat.utils.InternetUtils.CONNECTION_CODE;
 
 /**
  * Created by sergiolizanamontero on 22/9/17.
@@ -41,6 +47,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     @ViewById(R.id.nav_view)
     protected NavigationView navigationView;
     ActionBarDrawerToggle toggle;
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        InternetUtils.isOnline(BaseActivity.this);
+    }
 
     public Toolbar addToolbar() {
         if (toolbar != null) {
@@ -263,4 +276,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 0 && requestCode == CONNECTION_CODE){
+            goToMainScreen();
+        }
+    }
 }

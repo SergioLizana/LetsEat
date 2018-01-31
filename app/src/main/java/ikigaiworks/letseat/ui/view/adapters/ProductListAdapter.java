@@ -19,7 +19,7 @@ import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.databinding.ProductListContentBinding;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.menu.ProductListFragmentPresenterImpl;
-import ikigaiworks.letseat.utils.App;
+import ikigaiworks.letseat.app.App;
 
 /**
  * Created by sergiolizanamontero on 12/10/17.

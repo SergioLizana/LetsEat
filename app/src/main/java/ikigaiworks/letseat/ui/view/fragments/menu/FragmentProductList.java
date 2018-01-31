@@ -3,6 +3,7 @@ package ikigaiworks.letseat.ui.view.fragments.menu;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
@@ -57,13 +58,19 @@ public class FragmentProductList extends Fragment {
 
 
     public void showDialog(Producto producto) {
-
         ((ProductTabActivity) getActivity()).showDialogProductos(producto);
     }
 
     public void printData(ArrayList<Producto> data) {
         this.data = data;
         adapter.updateItem(data);
+    }
+
+    public void onError(){
+        Toast.makeText(getActivity().getApplicationContext(),getString(R.string.generic_error),Toast.LENGTH_LONG).show();
+        if(getActivity()!=null) {
+            getActivity().finish();
+        }
     }
 
 

@@ -54,6 +54,11 @@ public class ProductListFragmentPresenterImpl implements Presenter, Presenter.Op
         firebaseManager.getProductos(categorySelected, this);
     }
 
+    @Override
+    public void onErrorOperation() {
+        fragmentProductList.onError();
+    }
+
     public void getProducto(String idProducto) {
         firebaseManager.getProducto(idProducto, this);
     }
