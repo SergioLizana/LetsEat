@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="slide"
+            type="ikigaiworks.letseat.model.CarruselSlide" />
+
+        <variable
+            name="presenter"
+            type="ikigaiworks.letseat.ui.presenters.main.MainFragmentPresenterImpl" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="@dimen/carrusel_slide_width"
+        android:layout_height="@dimen/carrusel_slide_heigth"
+        android:layout_gravity="center"
+        android:background="@android:color/white"
+        android:onClick="@{() -> presenter.onClickEvent(slide)}">
+
+        <ImageView
+            android:id="@+id/imageSlide"
+            android:layout_width="@dimen/carrusel_slide_image_width"
+            android:layout_height="@dimen/carrusel_slide_image_width"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:src="@{slide.icon}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/promos" />
+
+        <TextView
+            android:id="@+id/descSlide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:padding="10dp"
+            android:text="@{slide.text}"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageSlide"
+            tools:text="@string/desc_pedidos" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

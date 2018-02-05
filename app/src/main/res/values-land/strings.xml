@@ -1,0 +1,131 @@
+<resources>
+    <string name="app_name">LetsEat</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="pref_key_transition_time" translatable="false">pref_key_transition_time</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to fragmentLogin -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign UP</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="login_error_invalid_credentials_invalid">El usuario o la password no coinciden. Intentelo de nuevo.</string>
+    <string name="login_error_unexpected">Ha ocurrido un error en la aplicación. Intentalo de nuevo más tarde.</string>
+    <string name="login_error_format_mail">El formato del correo no es correcto, Intentalo de nuevo.</string>
+    <string name="error_validation_fav_name">El campo del nombre no puede estar vacio</string>
+    <string name="error_validation_is_fav">El pedido ya está añadido a favoritos</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="login">LOG IN</string>
+    <string name="registro">SIGN UP</string>
+
+
+    <string name="desc_pedidos">Revisa el estado de tus pedidos o ¡pide de nuevo aquel plato que\n tanto te gustó!</string>
+    <string name="desc_menu">"Descrubre toda nuestra carta. Desayunos, deliciosos dulces,\n pastas y muchos más!"</string>
+    <string name="desc_promos">"¿Tienes cupones de descuento? ¡Consulta todas nuestras promos\n y pide más por menos!"</string>
+    <string name="extra">Extra:  </string>
+
+    <string name="confirm_text_payment">Confirma tus datos de pago</string>
+    <string name="edittext_name_payment">Nombre en la tarjeta</string>
+    <string name="edittext_card_payment">Nº de Tarjeta</string>
+    <string name="expiration_date_payment">Fecha Expiración</string>
+    <string name="cvv_payment">CVV</string>
+    <string name="confirm_pay">CONFIRMAR Y PAGAR</string>
+
+    <string name="signup_fields_error">Tienes que rellenar todos los campos para poder registrarte como usuario de LetsEat!</string>
+    <string name="signup_diferent_password_error">Las contraseñas no coinciden</string>
+    <string name="signup_weak_password_error">La contraseña debe de ser mayor a 4 caracteres.</string>
+    <string name="signup_user_exist_error">El usuario ya existe en la base de datos.</string>
+    <string name="signup_invalid_email_error">El correo no es valido, revisalo e intentalo de nuevo.</string>
+
+    <string name="pay_completed">¡Su pago se ha realizado correctamente!</string>
+    <string name="ticket_sended">Le hemos enviado una copia de su\n factura a su correo electronico</string>
+    <string name="n_pedido">Nº Pedido: 2098</string>
+    <string name="ticket_detail">Detalle de la factura:</string>
+    <string name="hide">Ocultar</string>
+    <string name="show">Mostrar</string>
+    <string name="restaurant_name">RESTAURANTE TASTE BAKERY</string>
+    <string name="company_name">The Bakery S.L.</string>
+    <string name="cif">CIF: A235789071</string>
+    <string name="factura_simplificada">Factura Simplificada N.123</string>
+    <string name="fecha">Fecha: </string>
+    <string name="total">Total: </string>
+    <string name="iva">10% IVA incluido.</string>
+    <string name="mostrador">Acércate al mostrador y \nmuestra esta pantalla para\n recoger tu pedido</string>
+    <string name="price">Precio: </string>
+    <string name="delete">Borrar </string>
+    <string name="fav_name">FAVOURITE NAME</string>
+    <string name="amount_start">0</string>
+    <string name="products">productos</string>
+    <string name="total_2">Total</string>
+    <string name="pay">PAGAR</string>
+    <string name="go">GO!</string>
+    <string name="hardcoded_name">SERGIO LIZANA MONTERO</string>
+    <string name="hardcoded_account">1111-2222-333-444-5555</string>
+    <string name="hardcoded_date">10/1992</string>
+    <string name="hardcoded_number_card">123</string>
+    <string name="add_text">Añadir</string>
+    <string name="auth_requiered">Es necesario Autenticarse en Lets Eat! para realizar un pedido</string>
+    <string name="welcome">Bienvenido a LetsEat</string>
+    <string name="auth_complete">Se ha registrado un usuario correctamente</string>
+    <string name="added">Realizado: </string>
+
+    <string name="shared_name_cart">cart</string>
+    <string name="shared_name_list">listCart</string>
+
+    <string name="tag_name_payment">payment</string>
+    <string name="tag_name_payment_complete">paymentComplete</string>
+    <string name="tag_name_main">main</string>
+    <string name="tag_name_menu">menu</string>
+    <string name="tag_name_login">login</string>
+    <string name="tag_name_signup">signup</string>
+
+    <string name="title_main">Taste Bakery</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_last_orders">Pedidos Favoritos</string>
+    <string name="title_menu">Menú</string>
+
+    <string name="fav_added">Se ha añadido este pedidos a favoritos</string>
+
+    <string name="my_product_error">Tienes que autenticarte en Lets Eat para poder acceder a tus pedidos</string>
+    <string name="news">¡Muy Pronto más novedades en Lets Eat!</string>
+    <string name="goodbye">¡Vuelve Pronto!</string>
+    <string name="authenticated">¡ Estás autenticado ya en Lets Eat !</string>
+
+    <string name="generic_error">Ha ocurrido un error con la conexion, intentelo de nuevo</string>
+
+
+    <string name="internet_dialog_title">No estás conectado a internet</string>
+    <string name="internet_dialog_msg">Para utilizar la aplicación de Lets Eat es necesario estar conectado a una red Wifi o de Datos</string>
+    <string name="internet_dialog_wifi_button">Wifi</string>
+    <string name="internet_dialog_settings_button">Configuración</string>
+    <string name="internet_dialog_back_button">Salir</string>
+
+    <string name="menu_login">Login</string>
+    <string name="menu_inicio">Inicio</string>
+    <string name="menu_carta">Carta</string>
+    <string name="menu_promos">Promociones</string>
+    <string name="menu_go_now">¡Pide Ya!</string>
+    <string name="menu_my_products">Mis pedidos</string>
+    <string name="menu_communicate">Communicate</string>
+    <string name="menu_config">Configuración</string>
+    <string name="menu_nosotros">Nosotros</string>
+    <string name="menu_exit">Salir</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+
+
+</resources>

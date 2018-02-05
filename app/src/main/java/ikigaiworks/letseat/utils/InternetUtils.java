@@ -47,7 +47,7 @@ public class InternetUtils {
                     public void onClick(DialogInterface dialog, int id) {
                         // if this button is clicked, close
                         // current activity
-                        activity.startActivityForResult(new Intent(Settings.ACTION_WIFI_SETTINGS),CONNECTION_CODE);
+                        activity.startActivityForResult(new Intent(Settings.ACTION_WIRELESS_SETTINGS),CONNECTION_CODE);
                     }
                 })
                 .setNeutralButton(App.getInstance().getApplicationContext().getResources().getString(R.string.internet_dialog_settings_button), new DialogInterface.OnClickListener() {

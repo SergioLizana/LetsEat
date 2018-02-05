@@ -35,6 +35,7 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
     @ViewById(R.id.titleCarrusel)
     TextView title;
 
+
     MainFragmentPresenterImpl presenter;
 
     private InfiniteScrollAdapter infiniteAdapter;

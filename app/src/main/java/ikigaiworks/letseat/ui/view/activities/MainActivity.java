@@ -22,9 +22,6 @@ public class MainActivity extends BaseActivity {
         setToolbarTitle(getString(R.string.title_main));
 
         if (findViewById(R.id.content_main) != null) {
-            if (getIntent()!=null && getIntent().getStringExtra(WidgetProvider.EXTRA_WORD)!=null) {
-                String word = getIntent().getStringExtra(WidgetProvider.EXTRA_WORD);
-            }
             fragment = FragmentMain_.builder().build();
             replaceFragment(fragment, R.id.content_main, getString(R.string.tag_name_main), false, false);
         }
