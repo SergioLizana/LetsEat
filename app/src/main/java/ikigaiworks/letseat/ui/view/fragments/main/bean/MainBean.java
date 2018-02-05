@@ -1,5 +1,7 @@
 package ikigaiworks.letseat.ui.view.fragments.main.bean;
 
+import android.os.Parcelable;
+
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
 
@@ -14,6 +16,7 @@ import ikigaiworks.letseat.model.CarruselSlide;
 public class MainBean {
 
     private ArrayList<CarruselSlide> data;
+    private Parcelable mListState;
 
     @AfterInject
     void afterInject() {
@@ -27,4 +30,16 @@ public class MainBean {
     public void setData(ArrayList<CarruselSlide> data) {
         this.data = data;
     }
+
+    public Parcelable getmListState() {
+        return mListState;
+    }
+
+    public void setmListState(Parcelable mListState) {
+        this.mListState = mListState;
+    }
+
+
+
+
 }

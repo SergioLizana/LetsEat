@@ -1,5 +1,6 @@
 package ikigaiworks.letseat.ui.view.fragments.main;
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -40,16 +41,27 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
 
     private InfiniteScrollAdapter infiniteAdapter;
     private CarruselAdapter adapter;
+    public RecyclerView.LayoutManager mLayoutManager;
 
 
     @Bean
     MainBean mainBean;
 
+    @Override
+    public void onSaveInstanceState(Bundle state) {
+        super.onSaveInstanceState(state);
+
+        // Save list state
+        if(mLayoutManager!=null) {
+            mainBean.setmListState(mLayoutManager.onSaveInstanceState());
+        }
+    }
 
     @AfterViews
     protected void init() {
         presenter = new MainFragmentPresenterImpl(getActivity().getApplicationContext(), this);
         presenter.setFragmentMain(this);
+        mLayoutManager = scrollView.getLayoutManager();
         getActivity().setTitle(getString(R.string.title_main));
         initCarruselConf();
     }
@@ -92,6 +104,14 @@ public class FragmentMain extends Fragment implements DiscreteScrollView.OnItemC
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (mainBean.getmListState() != null) {
+            mLayoutManager.onRestoreInstanceState(mainBean.getmListState());
+        }
+    }
 
     @Override
     public void onPause() {
