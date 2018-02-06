@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="category" type="ikigaiworks.letseat.model.Category"/>
+        <variable name="presenter" type="ikigaiworks.letseat.ui.presenters.menu.CategoryFragmentPresenterImpl" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:onClick="@{() -> presenter.onClickEvent(category)}">
+
+        <ImageView
+            android:id="@+id/image_menu_list"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/menu_list_height"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@{category.image}"
+            tools:src="@drawable/drinks"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{category.name}"
+            tools:text="Breakfast"
+            tools:textColor="@android:color/black"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/menu_list_text_size"
+            app:layout_constraintRight_toRightOf="@+id/image_menu_list"
+            app:layout_constraintTop_toTopOf="@+id/image_menu_list" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
