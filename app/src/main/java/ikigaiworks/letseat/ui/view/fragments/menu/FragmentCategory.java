@@ -39,12 +39,17 @@ public class FragmentCategory extends Fragment {
 
     @AfterViews
     void init() {
-        data = new ArrayList<>();
         presenter = new CategoryFragmentPresenterImpl();
         presenter.setMenuFragment(this);
+
+        if (pBean.getData()==null){
+            data = new ArrayList<>();
+            progressBar.setVisibility(View.VISIBLE);
+            presenter.launchOperation();
+        }else{
+            data = pBean.getData();
+        }
         configureRecyclerView();
-        progressBar.setVisibility(View.VISIBLE);
-        presenter.launchOperation();
     }
 
     private void configureRecyclerView() {
