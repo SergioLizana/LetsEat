@@ -34,7 +34,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="?android:attr/actionModePasteDrawable" />
+            android:src="@drawable/ic_content_paste_black_24dp"/>
 
         <TextView
             android:id="@+id/amount_products"
