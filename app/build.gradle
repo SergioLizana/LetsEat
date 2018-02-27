@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 def AAVersion = '4.3.1'
-def supportVersion = '26.1.0'
+def supportVersion = '27.0.1'
 def butterKnifeVersion = '8.7.0'
 def glideVersion = '3.7.0'
 def constraintVersion = '1.0.2'
@@ -25,8 +25,8 @@ buildscript {
 
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "ikigaiworks.letseat"
         minSdkVersion 23

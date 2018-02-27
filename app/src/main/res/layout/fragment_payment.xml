@@ -13,7 +13,7 @@
         android:layout_marginStart="116dp"
         android:layout_marginTop="16dp"
         android:text="@string/total"
-        android:textSize="25sp"
+        android:textSize="@dimen/text_size_payment_fragment"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/colorPrimary"
-        android:textSize="25sp"
+        android:textSize="@dimen/text_size_payment_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.183"
         app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -41,7 +41,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size_payment_title_desc_fragment"
         android:text="@string/confirm_text_payment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,8 +49,8 @@
 
     <ImageButton
         android:id="@+id/visa_button"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
         android:scaleType="fitXY"
@@ -60,8 +60,8 @@
 
     <ImageButton
         android:id="@+id/mastercard_button"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
@@ -74,8 +74,8 @@
 
     <ImageButton
         android:id="@+id/paypal_button"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="60dp"
         android:layout_marginTop="20dp"
         android:scaleType="fitXY"
@@ -91,7 +91,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="@string/edittext_name_payment"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size_payment_title_desc_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
         android:paddingStart="10dp"
         android:textStyle="bold"
         android:ems="8"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_size_payment_title_desc_fragment"
         android:background="@color/background_grey_dark"
         android:text="@string/hardcoded_name"
         android:inputType="text"
@@ -125,7 +125,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:text="@string/edittext_card_payment"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size_payment_title_desc_fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/payment_name" />
 
@@ -142,7 +142,7 @@
         android:paddingBottom="7dp"
         android:paddingStart="10dp"
         android:paddingTop="7dp"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_size_payment_title_desc_fragment"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.262"
@@ -157,7 +157,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="@string/expiration_date_payment"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size_payment_title_desc_fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/payment_card" />
 
@@ -169,6 +169,7 @@
         android:layout_marginTop="8dp"
         android:background="@color/background_grey_dark"
         android:ems="10"
+        android:textSize="@dimen/text_size_payment_title_desc_fragment"
         android:paddingTop="7dp"
         android:paddingBottom="7dp"
         android:paddingStart="10dp"
@@ -185,7 +186,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginTop="16dp"
         android:text="@string/cvv_payment"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size_payment_title_desc_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/payment_card" />
 
@@ -200,6 +201,7 @@
         android:paddingStart="10dp"
         android:paddingTop="7dp"
         android:ems="10"
+        android:textSize="@dimen/text_size_payment_title_desc_fragment"
         android:inputType="number"
         android:maxLength="3"
         android:text="@string/hardcoded_number_card"
@@ -226,10 +228,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/gradient_rectangle"
+        android:padding="15dp"
         android:text="@string/confirm_pay"
         android:textColor="#FFF"
         android:textSize="14dp"
-        android:padding="15dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
