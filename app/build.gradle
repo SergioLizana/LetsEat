@@ -34,6 +34,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     signingConfigs {
         release {
@@ -53,6 +54,7 @@ android {
     dataBinding {
         enabled = true
     }
+
 }
 
 dependencies {
@@ -89,19 +91,16 @@ dependencies {
     compile "com.yarolegovich:discrete-scrollview:$discreteScrollVersion"
     compile "com.github.bumptech.glide:glide:$glideVersion"
     compile "com.android.support.constraint:constraint-layout:$constraintVersion"
-    compile "com.google.firebase:firebase-core:$firebaseVersion"
-    compile "com.google.firebase:firebase-database:$firebaseVersion"
-    compile "com.google.firebase:firebase-storage:$firebaseVersion"
-    compile "com.google.firebase:firebase-auth:$firebaseVersion"
+    implementation "com.google.firebase:firebase-core:11.8.0"
+    implementation "com.google.firebase:firebase-database:11.8.0"
+    implementation "com.google.firebase:firebase-storage:11.8.0"
+    implementation "com.google.firebase:firebase-auth:11.8.0"
     compile "com.weiwangcn.betterspinner:library-material:$materialSpinnerVersion"
     testCompile "junit:junit:$jUnitVersion"
     compile "com.google.code.gson:gson:$gsonVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
     annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
     annotationProcessor "com.android.databinding:compiler:$databindingVersion"
-
-
-
-
 }
+
 apply plugin: 'com.google.gms.google-services'
