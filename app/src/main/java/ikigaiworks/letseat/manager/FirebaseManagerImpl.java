@@ -163,12 +163,16 @@ public class FirebaseManagerImpl implements FirebaseManager {
                                 try {
                                     throw task.getException();
                                 } catch (FirebaseAuthInvalidUserException e) {
+                                    Log.d("errorFirebase",e.getMessage());
                                     listener.loginKO(LetsEatConstants.LOGIN_ERROR_INVALID_CREDENTIALS_CODE);
                                 } catch (FirebaseAuthInvalidCredentialsException e) {
+                                    Log.d("errorFirebase",e.getMessage());
                                     listener.loginKO(LetsEatConstants.LOGIN_ERROR_INVALID_CREDENTIALS_CODE);
                                 } catch (FirebaseNetworkException e) {
+                                    Log.d("errorFirebase",e.getMessage());
                                     listener.loginKO(LetsEatConstants.ERROR_UNEXPECTED_CODE);
                                 } catch (Exception e) {
+                                    Log.d("errorFirebase",e.getMessage());
                                     listener.loginKO(LetsEatConstants.ERROR_UNEXPECTED_CODE);
                                 }
 
@@ -176,8 +180,10 @@ public class FirebaseManagerImpl implements FirebaseManager {
                         }
                     });
         } catch (IllegalArgumentException e) {
+            Log.d("errorFirebase",e.getMessage());
             listener.loginKO(LetsEatConstants.LOGIN_ERROR_PASSWORD_CODE);
         } catch (Exception e) {
+            Log.d("errorFirebase",e.getMessage());
             listener.loginKO(LetsEatConstants.ERROR_UNEXPECTED_CODE);
         }
     }

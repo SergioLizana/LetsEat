@@ -46,4 +46,10 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="category_list_content_image_width">115dp</dimen>
     <dimen name="category_list_content_image_height">95dp</dimen>
     <dimen name="category_list_content_image_margin_left">15dp</dimen>
+
+    <!-- Payment Fragment -->
+    <dimen name="text_size_payment_fragment">16sp</dimen>
+    <dimen name="text_size_payment_title_desc_fragment">16sp</dimen>
+
+
 </resources>
