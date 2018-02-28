@@ -4,12 +4,11 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.App;
 import ikigaiworks.letseat.app.BaseActivity;
 import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain;
 import ikigaiworks.letseat.ui.view.fragments.main.FragmentMain_;
-import ikigaiworks.letseat.app.App;
 import ikigaiworks.letseat.utils.CartUtils;
-import ikigaiworks.letseat.widget.WidgetProvider;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity {

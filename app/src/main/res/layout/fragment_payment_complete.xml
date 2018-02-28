@@ -42,7 +42,7 @@
                 android:layout_marginTop="12dp"
                 android:text="@string/pay_completed"
                 android:textColor="@android:color/holo_green_light"
-                android:textSize="10dp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -52,7 +52,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="12dp"
                 android:text="@string/ticket_sended"
-                android:textSize="10dp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -62,7 +62,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="12dp"
                 android:text="@string/n_pedido"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <ikigaiworks.letseat.ui.view.animation.LikeButtonView_
                 android:id="@+id/fav_button"
@@ -159,9 +159,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/factura_simplificada"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/date_str"
+                android:layout_toEndOf="@id/date_str"
                 tools:text="18/11/2017" />
 
             <android.support.v7.widget.RecyclerView
@@ -187,9 +187,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ticket_cart"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/totalstr"
+                android:layout_toEndOf="@+id/totalstr"
                 android:textStyle="bold"
                 tools:text="8,75€" />
 
@@ -198,9 +198,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ticket_cart"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/total"
+                android:layout_toEndOf="@+id/total"
                 android:text="@string/iva"
                 android:textStyle="bold" />
 

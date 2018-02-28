@@ -20,14 +20,12 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.ui.view.activities.FavOrderActivity_;
 import ikigaiworks.letseat.ui.view.activities.LoginActivity_;
-import ikigaiworks.letseat.ui.view.activities.MainActivity;
 import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 import ikigaiworks.letseat.ui.view.activities.MenuActivity_;
 import ikigaiworks.letseat.utils.InternetUtils;

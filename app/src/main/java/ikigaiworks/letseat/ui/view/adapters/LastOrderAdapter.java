@@ -7,15 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import ikigaiworks.letseat.BR;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.databinding.LastOrderListContentBinding;
 import ikigaiworks.letseat.model.FavOrder;
-import ikigaiworks.letseat.model.LastOrder;
 import ikigaiworks.letseat.ui.presenters.lastorder.LastOrderPresenterImpl;
 
 

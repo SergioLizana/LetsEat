@@ -16,10 +16,10 @@ import java.util.ArrayList;
 
 import ikigaiworks.letseat.BR;
 import ikigaiworks.letseat.R;
+import ikigaiworks.letseat.app.App;
 import ikigaiworks.letseat.databinding.ProductListContentBinding;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.menu.ProductListFragmentPresenterImpl;
-import ikigaiworks.letseat.app.App;
 
 /**
  * Created by sergiolizanamontero on 12/10/17.

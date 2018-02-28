@@ -4,26 +4,11 @@ import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.IBinder;
-import android.os.Parcel;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
-
-import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.EService;
-import org.androidannotations.annotations.SystemService;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.ui.view.activities.MainActivity;
 import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 
 /**

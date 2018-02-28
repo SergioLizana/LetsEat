@@ -11,13 +11,10 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.FavOrder;
-import ikigaiworks.letseat.model.LastOrder;
 import ikigaiworks.letseat.ui.presenters.lastorder.LastOrderPresenterImpl;
 import ikigaiworks.letseat.ui.view.activities.CartActivity_;
 import ikigaiworks.letseat.ui.view.activities.MainActivity_;

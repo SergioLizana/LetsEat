@@ -1,7 +1,6 @@
 package ikigaiworks.letseat.manager;
 
 import ikigaiworks.letseat.model.Category;
-import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.ui.presenters.Presenter;
 import ikigaiworks.letseat.ui.presenters.login.LoginPresenter;
 

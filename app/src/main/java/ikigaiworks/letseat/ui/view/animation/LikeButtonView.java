@@ -20,8 +20,6 @@ import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
 import ikigaiworks.letseat.R;
-import ikigaiworks.letseat.ui.view.animation.CircleView;
-import ikigaiworks.letseat.ui.view.animation.DotsView;
 
 /**
  * Created by Miroslaw Stanek on 20.12.2015.

@@ -13,11 +13,9 @@ package ikigaiworks.letseat.widget; /***
  */
 
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -28,7 +26,6 @@ import java.util.List;
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.model.FavOrder;
 import ikigaiworks.letseat.utils.FavoriteUtils;
-import ikigaiworks.letseat.widget.WidgetProvider;
 
 import static ikigaiworks.letseat.widget.WidgetProvider.WIDGET_ROW_ONCLICK;
 

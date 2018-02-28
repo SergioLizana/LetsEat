@@ -97,7 +97,7 @@ public class CartUtils {
         SharedPreferences prefs = App.getAppContext().getSharedPreferences(App.getAppContext().getString(R.string.shared_name_cart), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     public static ArrayList<ProductToCart> getCart() {

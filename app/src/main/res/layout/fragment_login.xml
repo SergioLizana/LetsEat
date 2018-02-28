@@ -95,7 +95,7 @@
         android:background="@drawable/gradient_circle"
         android:text="@string/go"
         android:textColor="#FFF"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

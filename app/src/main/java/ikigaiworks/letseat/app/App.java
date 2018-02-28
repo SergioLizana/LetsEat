@@ -1,17 +1,9 @@
 package ikigaiworks.letseat.app;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Application;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.provider.Settings;
-import android.widget.Toast;
 
 import ikigaiworks.letseat.utils.DiscreteScrollViewOptions;
 import ikigaiworks.letseat.widget.WidgetProvider;

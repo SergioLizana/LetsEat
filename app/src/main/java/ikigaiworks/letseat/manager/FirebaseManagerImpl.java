@@ -24,7 +24,6 @@ import ikigaiworks.letseat.app.FirebaseCommon;
 import ikigaiworks.letseat.app.LetsEatConstants;
 import ikigaiworks.letseat.model.Category;
 import ikigaiworks.letseat.model.Menu;
-import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.model.Producto;
 import ikigaiworks.letseat.ui.presenters.Presenter;
 import ikigaiworks.letseat.ui.presenters.login.LoginPresenter;

@@ -1,11 +1,7 @@
 package ikigaiworks.letseat.ui.view.fragments.payment;
 
 import android.app.Activity;
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,9 +20,7 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.app.BaseActivity;
@@ -41,7 +35,6 @@ import ikigaiworks.letseat.ui.view.dialog.FavoriteDialogFragment;
 import ikigaiworks.letseat.ui.view.dialog.FavoriteDialogFragment_;
 import ikigaiworks.letseat.utils.CartUtils;
 import ikigaiworks.letseat.utils.FavoriteUtils;
-import ikigaiworks.letseat.widget.WidgetProvider;
 
 /**
  * Created by sergiolizanamontero on 28/11/17.

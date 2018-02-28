@@ -5,17 +5,12 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ComponentName;
 import android.net.Uri;
 import android.support.v4.app.TaskStackBuilder;
-import android.util.Log;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 import ikigaiworks.letseat.R;
 import ikigaiworks.letseat.ui.view.activities.FavOrderActivity_;
-import ikigaiworks.letseat.ui.view.activities.MainActivity;
-import ikigaiworks.letseat.ui.view.activities.MainActivity_;
 
 public class WidgetProvider extends AppWidgetProvider {
     public static String EXTRA_WORD =

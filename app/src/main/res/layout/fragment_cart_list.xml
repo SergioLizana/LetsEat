@@ -91,7 +91,7 @@
             android:text="@string/pay"
             android:background="@drawable/gradient_rectangle"
             android:textColor="#FFF"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

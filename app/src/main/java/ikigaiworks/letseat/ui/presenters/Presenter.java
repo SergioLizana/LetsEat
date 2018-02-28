@@ -3,7 +3,6 @@ package ikigaiworks.letseat.ui.presenters;
 import java.util.ArrayList;
 
 import ikigaiworks.letseat.model.Category;
-import ikigaiworks.letseat.model.ProductToCart;
 import ikigaiworks.letseat.model.Producto;
 
 /**

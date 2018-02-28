@@ -11,11 +11,11 @@
         <TextView
             android:layout_width="0dp"
             android:layout_weight="3"
-            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@android:color/white"
-            android:text="FAVORITE ORDERS"/>
+            android:text="@string/widget_title"/>
     </LinearLayout>
 
     <ListView
