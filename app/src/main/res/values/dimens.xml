@@ -34,6 +34,26 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="carrusel_slide_text_margin_top">10dp</dimen>
     <dimen name="carrusel_text_desc_size">16sp</dimen>
 
+    <!-- PAYMENT DIMEN GENERIC -->
+    <dimen name="margin_start_text_total">116dp</dimen>
+    <dimen name="margin_top_text_total">16dp</dimen>
+    <dimen name="margin_top_desc">24dp</dimen>
+    <dimen name="margin_top_images">20dp</dimen>
+    <dimen name="margin_top_edit_text">24dp</dimen>
+    <dimen name="padding_bottom_edit_text">5dp</dimen>
+    <dimen name="padding_top_edit_text">10dp</dimen>
+    <dimen name="margin_end_edit_text">30dp</dimen>
+    <dimen name="margin_start_edit_text">8dp</dimen>
+    <dimen name="padding_end_edit_expiration">20dp</dimen>
+    <dimen name="margin_end_edit_text_cvv">28dp</dimen>
+    <dimen name="padding_button_pay">12dp</dimen>
+    <dimen name="text_size_button_pay">12sp</dimen>
+
+
+
+
+
+
 
 
 
