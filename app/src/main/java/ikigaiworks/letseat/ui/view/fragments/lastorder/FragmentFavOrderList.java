@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import org.androidannotations.annotations.AfterViews;
@@ -40,6 +41,8 @@ public class FragmentFavOrderList extends Fragment {
     protected RecyclerView recyclerView;
     @ViewById(R.id.progressbar)
     protected ProgressBar progressBar;
+    @ViewById(R.id.empty_list)
+    View emptyList;
     LastOrderPresenterImpl presenter;
 
 
@@ -47,7 +50,15 @@ public class FragmentFavOrderList extends Fragment {
     void init() {
         presenter = new LastOrderPresenterImpl(this);
         data = FavoriteUtils.getFavList();
-        configureRecyclerView();
+        if (data !=null && !data.isEmpty()){
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyList.setVisibility(View.GONE);
+            configureRecyclerView();
+        }else{
+            recyclerView.setVisibility(View.GONE);
+            emptyList.setVisibility(View.VISIBLE);
+        }
+
 
     }
 
