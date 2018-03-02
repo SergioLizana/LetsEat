@@ -24,6 +24,7 @@
             android:adjustViewBounds="true"
             android:src="@{category.image}"
             tools:src="@drawable/drinks"
+            android:contentDescription="@string/content_description_login_background"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

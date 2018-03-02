@@ -31,6 +31,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
+
+                android:contentDescription="@string/content_description_payment_image"
                 android:src="@drawable/ticket_icon" />
 
             <TextView
@@ -237,7 +239,8 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15"
-            app:srcCompat="@drawable/ic_home_white_24dp" />
+            app:srcCompat="@drawable/ic_home_white_24dp"
+            android:focusable="true" />
 
 
     </android.support.constraint.ConstraintLayout>

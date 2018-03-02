@@ -23,6 +23,7 @@
             android:layout_marginTop="8dp"
             android:src="@drawable/product"
             android:visibility="invisible"
+            android:contentDescription="@string/content_description_cart_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"

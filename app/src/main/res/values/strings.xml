@@ -130,5 +130,19 @@
     <string name="widget_title">Pedidos Favoritos</string>
 
 
+    <string name="content_description_login_background">Background</string>
+    <string name="content_description_loveat_logo">LOGO</string>
+    <string name="content_description_tab_logo">LOGO</string>
+    <string name="content_description_carrusel_logo">LOGO</string>
+    <string name="content_description_cart_image">PRODUCT IMAGE</string>
+    <string name="content_description_delete_image">DELETE</string>
+    <string name="content_description_icon_image">ICON</string>
+    <string name="content_description_card_image">CARD LOGO</string>
+    <string name="content_description_payment_image">PAYMENT LOGO</string>
+
+
+
+
+
 
 </resources>

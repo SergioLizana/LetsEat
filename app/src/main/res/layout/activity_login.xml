@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="matrix"
+        android:contentDescription="@string/content_description_login_background"
         android:src="@drawable/login" />
 
     <android.support.constraint.ConstraintLayout
@@ -43,6 +44,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="36dp"
                 android:src="@drawable/loveat_logo"
+                android:contentDescription="@string/content_description_loveat_logo"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
